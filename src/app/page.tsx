@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import { ArrowRight, Play, Disc, Activity, Zap, Globe, Cpu, Music2, Radio, Download } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   const containerRef = useRef(null);
   const [isMobile, setIsMobile] = React.useState(false);
+  const prefersReduced = useReducedMotion();
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -21,10 +22,11 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
 
+  // Clamp ranges and provide lighter ranges on mobile
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, isMobile ? 0.92 : 0.8]);
   
-  const section1Y = useTransform(scrollYProgress, [0.1, 0.4], [100, 0]);
+  const section1Y = useTransform(scrollYProgress, [0.1, 0.4], [isMobile ? 45 : 100, 0]);
   const section1Opacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
 
   return (
@@ -53,10 +55,10 @@ export default function Home() {
         />
       </div>
 
-      {/* HERO SECTION - Sticky on Desktop, Static on Mobile */}
-      <div className="relative md:sticky top-0 h-auto py-20 md:py-0 md:h-screen flex items-center justify-center overflow-hidden">
+      {/* HERO SECTION - Centered on Mobile, Sticky on Desktop */}
+      <div className="relative h-screen md:sticky top-0 py-0 md:py-0 md:h-screen flex items-center justify-center overflow-hidden">
         <motion.div 
-          style={{ opacity: isMobile ? 1 : heroOpacity, scale: isMobile ? 1 : heroScale }}
+          style={{ opacity: prefersReduced ? 1 : heroOpacity, scale: prefersReduced ? 1 : heroScale }}
           className="relative z-10 text-center px-4"
         >
           <div className="mb-8 inline-block">
@@ -103,7 +105,7 @@ export default function Home() {
         
         {/* SECTION 1: THE ENGINE */}
         <motion.div 
-          style={{ y: isMobile ? 0 : section1Y, opacity: isMobile ? 1 : section1Opacity }}
+          style={{ y: prefersReduced ? 0 : section1Y, opacity: prefersReduced ? 1 : section1Opacity }}
           className="max-w-7xl mx-auto mb-32 md:mb-64"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -225,12 +227,21 @@ export default function Home() {
                 <div className={`absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-br ${item.color} opacity-10 blur-[60px] md:blur-[100px] group-hover:opacity-20 transition-opacity duration-700`} />
                 
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-                  <div>
-                    <item.icon size={48} className="mb-6 md:mb-8 text-white/80 md:w-16 md:h-16" />
-                    <h3 className="text-5xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
+                  <div className="w-full">
+                    {/* Mobile: left-aligned single line with icon inline (tighter to fit 320px) */}
+                    <div className="md:hidden flex items-center gap-2">
+                      <item.icon size={32} className="text-white/80 shrink-0" />
+                      <h3 className="whitespace-nowrap overflow-hidden text-ellipsis text-left text-[6.5vw] sm:text-[6vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
+                        {item.title} {item.subtitle}
+                      </h3>
+                    </div>
+
+                    {/* Desktop/Tablet: keep original two-line layout with icon above */}
+                    <item.icon size={48} className="hidden md:block mb-8 text-white/80 md:w-16 md:h-16" />
+                    <h3 className="hidden md:block text-5xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
                       {item.title}
                     </h3>
-                    <h4 className="text-3xl md:text-6xl font-bold text-white/20 tracking-tighter">
+                    <h4 className="hidden md:block text-3xl md:text-6xl font-bold text-white/20 tracking-tighter">
                       {item.subtitle}
                     </h4>
                   </div>

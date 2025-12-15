@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { AudioLines, Palette, Search, Zap, Cast, Lock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -58,13 +58,21 @@ const features = [
 
 export default function FeaturesPage() {
   const containerRef = useRef(null);
+  const prefersReduced = useReducedMotion();
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, isMobile ? 0.94 : 0.8]);
 
   return (
     <div ref={containerRef} className="relative">
@@ -72,7 +80,7 @@ export default function FeaturesPage() {
       {/* HERO SECTION - Sticky */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden pointer-events-none">
         <motion.div 
-          style={{ opacity: heroOpacity, scale: heroScale }}
+          style={{ opacity: prefersReduced ? 1 : heroOpacity, scale: prefersReduced ? 1 : heroScale }}
           className="relative z-10 text-center px-4"
         >
           <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">

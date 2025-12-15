@@ -17,6 +17,10 @@ interface LightPillarProps {
   noiseIntensity?: number;
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
   pillarRotation?: number;
+  /** Force-enable the effect on small screens. Default: false (disabled on mobile). */
+  enableOnMobile?: boolean;
+  /** Specific moment (shader time) to capture for static mobile image. Default: 0.0 */
+  staticTime?: number;
 }
 
 const LightPillar: React.FC<LightPillarProps> = ({
@@ -31,7 +35,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
   pillarHeight = 0.4,
   noiseIntensity = 0.5,
   mixBlendMode = 'screen',
-  pillarRotation = 0
+  pillarRotation = 0,
+  enableOnMobile = false,
+  staticTime = 0.0,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -43,6 +49,10 @@ const LightPillar: React.FC<LightPillarProps> = ({
   const mouseRef = useRef<THREE.Vector2>(new THREE.Vector2(0, 0));
   const timeRef = useRef<number>(0);
   const [webGLSupported, setWebGLSupported] = useState<boolean>(true);
+  const [shouldRun, setShouldRun] = useState<boolean>(true);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [prefersReduced, setPrefersReduced] = useState<boolean>(false);
+  const [mobileSnapshot, setMobileSnapshot] = useState<string | null>(null);
 
   // Check WebGL support
   useEffect(() => {
@@ -54,8 +64,208 @@ const LightPillar: React.FC<LightPillarProps> = ({
     }
   }, []);
 
+  // Environment capability + media queries
   useEffect(() => {
-    if (!containerRef.current || !webGLSupported) return;
+    if (typeof window === 'undefined') return;
+
+    const mqMobile = window.matchMedia('(max-width: 767px)');
+    const mqReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const updateFlags = () => {
+      const mobile = mqMobile.matches;
+      const reduced = mqReduced.matches;
+      setIsMobile(mobile);
+      setPrefersReduced(reduced);
+      setShouldRun(!reduced && (!mobile || enableOnMobile));
+    };
+
+    updateFlags();
+    mqMobile.addEventListener?.('change', updateFlags);
+    mqReduced.addEventListener?.('change', updateFlags);
+
+    return () => {
+      mqMobile.removeEventListener?.('change', updateFlags);
+      mqReduced.removeEventListener?.('change', updateFlags);
+    };
+  }, [enableOnMobile]);
+
+  // Mobile static snapshot generation (render once, then dispose)
+  useEffect(() => {
+    if (!containerRef.current) return;
+    if (!webGLSupported) return;
+    // Generate snapshot only for mobile when animation is disabled but motion not reduced
+    const shouldMakeSnapshot = isMobile && !enableOnMobile && !prefersReduced;
+    if (!shouldMakeSnapshot) return;
+
+    const container = containerRef.current;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    // Prepare offscreen renderer
+    let offRenderer: THREE.WebGLRenderer | null = null;
+    let offMaterial: THREE.ShaderMaterial | null = null;
+    let offScene: THREE.Scene | null = null;
+    let offCamera: THREE.OrthographicCamera | null = null;
+    let offGeometry: THREE.PlaneGeometry | null = null;
+
+    try {
+      offRenderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'low-power', precision: 'lowp', stencil: false, depth: false });
+    } catch (e) {
+      console.warn('Failed to create offscreen WebGL renderer for snapshot:', e);
+      return;
+    }
+    offRenderer.setSize(width, height);
+    offRenderer.setPixelRatio(1); // avoid oversized snapshot on mobile
+
+    // Setup scene
+    offScene = new THREE.Scene();
+    offCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    const parseColor = (hex: string): THREE.Vector3 => {
+      const color = new THREE.Color(hex);
+      return new THREE.Vector3(color.r, color.g, color.b);
+    };
+
+    const vertexShader = `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = vec4(position, 1.0);
+      }
+    `;
+
+    const fragmentShader = `
+      uniform float uTime;
+      uniform vec2 uResolution;
+      uniform vec2 uMouse;
+      uniform vec3 uTopColor;
+      uniform vec3 uBottomColor;
+      uniform float uIntensity;
+      uniform bool uInteractive;
+      uniform float uGlowAmount;
+      uniform float uPillarWidth;
+      uniform float uPillarHeight;
+      uniform float uNoiseIntensity;
+      uniform float uPillarRotation;
+      varying vec2 vUv;
+
+      const float PI = 3.141592653589793;
+      const float EPSILON = 0.001;
+      const float E = 2.71828182845904523536;
+      const float HALF = 0.5;
+
+      mat2 rot(float angle) {
+        float s = sin(angle);
+        float c = cos(angle);
+        return mat2(c, -s, s, c);
+      }
+
+      float noise(vec2 coord) {
+        float G = E;
+        vec2 r = (G * sin(G * coord));
+        return fract(r.x * r.y * (1.0 + coord.x));
+      }
+
+      vec3 applyWaveDeformation(vec3 pos, float timeOffset) {
+        float frequency = 1.0;
+        float amplitude = 1.0;
+        vec3 deformed = pos;
+        for(float i = 0.0; i < 4.0; i++) {
+          deformed.xz *= rot(0.4);
+          float phase = timeOffset * i * 2.0;
+          vec3 oscillation = cos(deformed.zxy * frequency - phase);
+          deformed += oscillation * amplitude;
+          frequency *= 2.0;
+          amplitude *= HALF;
+        }
+        return deformed;
+      }
+
+      float blendMin(float a, float b, float k) {
+        float scaledK = k * 4.0;
+        float h = max(scaledK - abs(a - b), 0.0);
+        return min(a, b) - h * h * 0.25 / scaledK;
+      }
+      float blendMax(float a, float b, float k) { return -blendMin(-a, -b, k); }
+
+      void main() {
+        vec2 fragCoord = vUv * uResolution;
+        vec2 uv = (fragCoord * 2.0 - uResolution) / uResolution.y;
+        float rotAngle = uPillarRotation * PI / 180.0;
+        uv *= rot(rotAngle);
+        vec3 origin = vec3(0.0, 0.0, -10.0);
+        vec3 direction = normalize(vec3(uv, 1.0));
+        float maxDepth = 50.0;
+        float depth = 0.1;
+        mat2 rotX = rot(uTime * 0.3);
+        vec3 color = vec3(0.0);
+        for(float i = 0.0; i < 100.0; i++) {
+          vec3 pos = origin + direction * depth;
+          pos.xz *= rotX;
+          vec3 deformed = pos;
+          deformed.y *= uPillarHeight;
+          deformed = applyWaveDeformation(deformed + vec3(0.0, uTime, 0.0), uTime);
+          vec2 cosinePair = cos(deformed.xz);
+          float fieldDistance = length(cosinePair) - 0.2;
+          float radialBound = length(pos.xz) - uPillarWidth;
+          fieldDistance = blendMax(radialBound, fieldDistance, 1.0);
+          fieldDistance = abs(fieldDistance) * 0.15 + 0.01;
+          vec3 gradient = mix(uBottomColor, uTopColor, smoothstep(15.0, -15.0, pos.y));
+          color += gradient * pow(1.0 / fieldDistance, 1.0);
+          if(fieldDistance < EPSILON || depth > maxDepth) break;
+          depth += fieldDistance;
+        }
+        float widthNormalization = uPillarWidth / 3.0;
+        color = tanh(color * uGlowAmount / widthNormalization);
+        float rnd = noise(gl_FragCoord.xy);
+        color -= rnd / 15.0 * uNoiseIntensity;
+        gl_FragColor = vec4(color * uIntensity, 1.0);
+      }
+    `;
+
+    offMaterial = new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uTime: { value: staticTime },
+        uResolution: { value: new THREE.Vector2(width, height) },
+        uMouse: { value: mouseRef.current },
+        uTopColor: { value: parseColor(topColor) },
+        uBottomColor: { value: parseColor(bottomColor) },
+        uIntensity: { value: intensity },
+        uInteractive: { value: false },
+        uGlowAmount: { value: glowAmount },
+        uPillarWidth: { value: pillarWidth },
+        uPillarHeight: { value: pillarHeight },
+        uNoiseIntensity: { value: noiseIntensity },
+        uPillarRotation: { value: pillarRotation }
+      },
+      transparent: true,
+      depthWrite: false,
+      depthTest: false
+    });
+
+    offGeometry = new THREE.PlaneGeometry(2, 2);
+    const offMesh = new THREE.Mesh(offGeometry, offMaterial);
+    offScene.add(offMesh);
+
+    // Render once and capture
+    offRenderer.render(offScene, offCamera);
+    const dataUrl = (offRenderer.domElement as HTMLCanvasElement).toDataURL('image/png');
+    setMobileSnapshot(dataUrl);
+
+    // Cleanup offscreen resources
+    offMaterial.dispose();
+    offGeometry.dispose();
+    offRenderer.dispose();
+    offRenderer.forceContextLoss();
+
+    // No dependencies on dynamic uniforms besides size and props relevant to visual parity
+  }, [webGLSupported, isMobile, enableOnMobile, prefersReduced, topColor, bottomColor, intensity, glowAmount, pillarWidth, pillarHeight, noiseIntensity, pillarRotation, staticTime]);
+
+  // Animated path (desktop/tablet or when explicitly enabled on mobile)
+  useEffect(() => {
+    if (!containerRef.current || !webGLSupported || !shouldRun) return;
 
     const container = containerRef.current;
     const width = container.clientWidth;
@@ -84,7 +294,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
     }
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Cap pixel ratio on mobile to reduce GPU cost
+    const maxPR = isMobile ? 1.25 : 2;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPR));
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -231,12 +443,12 @@ const LightPillar: React.FC<LightPillarProps> = ({
         uMouse: { value: mouseRef.current },
         uTopColor: { value: parseColor(topColor) },
         uBottomColor: { value: parseColor(bottomColor) },
-        uIntensity: { value: intensity },
-        uInteractive: { value: interactive },
-        uGlowAmount: { value: glowAmount },
-        uPillarWidth: { value: pillarWidth },
-        uPillarHeight: { value: pillarHeight },
-        uNoiseIntensity: { value: noiseIntensity },
+        uIntensity: { value: isMobile ? intensity * 0.6 : intensity },
+        uInteractive: { value: interactive && !isMobile },
+        uGlowAmount: { value: isMobile ? glowAmount * 0.5 : glowAmount },
+        uPillarWidth: { value: isMobile ? pillarWidth * 0.8 : pillarWidth },
+        uPillarHeight: { value: isMobile ? pillarHeight * 0.8 : pillarHeight },
+        uNoiseIntensity: { value: isMobile ? noiseIntensity * 0.3 : noiseIntensity },
         uPillarRotation: { value: pillarRotation }
       },
       transparent: true,
@@ -271,9 +483,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
       container.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
 
-    // Animation loop with fixed timestep
+    // Animation loop with fixed timestep (cap FPS on mobile)
     let lastTime = performance.now();
-    const targetFPS = 60;
+    const targetFPS = isMobile ? 24 : 60;
     const frameTime = 1000 / targetFPS;
 
     const animate = (currentTime: number) => {
@@ -310,9 +522,24 @@ const LightPillar: React.FC<LightPillarProps> = ({
 
     window.addEventListener('resize', handleResize, { passive: true });
 
+    // Pause when tab is hidden to save battery
+    const onVisibility = () => {
+      if (document.hidden) {
+        if (rafRef.current) {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = null;
+        }
+      } else if (!rafRef.current) {
+        lastTime = performance.now();
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', onVisibility);
       if (interactive) {
         container.removeEventListener('mousemove', handleMouseMove);
       }
@@ -351,14 +578,33 @@ const LightPillar: React.FC<LightPillarProps> = ({
     pillarHeight,
     noiseIntensity,
     pillarRotation,
-    webGLSupported
+    webGLSupported,
+    isMobile,
+    shouldRun
   ]);
 
-  if (!webGLSupported) {
+  // If we have a mobile snapshot, use it as a static background
+  if (mobileSnapshot) {
+    const snapshotStyle: React.CSSProperties = {
+      mixBlendMode,
+      backgroundImage: `url(${mobileSnapshot})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      pointerEvents: 'none'
+    };
+    return <div ref={containerRef} className={`light-pillar-fallback ${className}`} style={snapshotStyle} />;
+  }
+
+  // Lightweight gradient fallback for unsupported or disabled environments
+  if (!webGLSupported || (!shouldRun && !isMobile) || prefersReduced) {
+    const fallbackStyle: React.CSSProperties = {
+      mixBlendMode,
+      background: `linear-gradient(180deg, ${topColor}33, ${bottomColor}19)`,
+      pointerEvents: 'none'
+    };
     return (
-      <div className={`light-pillar-fallback ${className}`} style={{ mixBlendMode }}>
-        WebGL not supported
-      </div>
+      <div ref={containerRef} className={`light-pillar-fallback ${className}`} style={fallbackStyle} />
     );
   }
 
