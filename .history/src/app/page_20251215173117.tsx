@@ -103,7 +103,7 @@ export default function Home() {
         
         {/* SECTION 1: THE ENGINE */}
         <motion.div 
-          style={{ y: isMobile ? 0 : section1Y, opacity: isMobile ? 1 : section1Opacity }}
+          style={{ y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : section1Y, opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : section1Opacity }}
           className="max-w-7xl mx-auto mb-32 md:mb-64"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">

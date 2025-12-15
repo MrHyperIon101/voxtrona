@@ -6,15 +6,6 @@ import { Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap } 
 
 export default function DownloadPage() {
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -43,7 +34,7 @@ export default function DownloadPage() {
       {/* HERO SECTION - Sticky on Desktop, Static on Mobile */}
       <div className="relative md:sticky top-0 h-auto py-20 md:py-0 md:h-screen flex items-center justify-center overflow-hidden">
         <motion.div 
-          style={{ opacity: isMobile ? 1 : heroOpacity, scale: isMobile ? 1 : heroScale }}
+          style={{ opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : heroOpacity, scale: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : heroScale }}
           className="relative z-10 text-center px-4 will-change-transform"
         >
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
@@ -65,7 +56,7 @@ export default function DownloadPage() {
         
         {/* PLATFORM SELECTION */}
         <motion.div 
-          style={{ y: isMobile ? 0 : cardsY, opacity: isMobile ? 1 : cardsOpacity }}
+          style={{ y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : cardsY, opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : cardsOpacity }}
           className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-32 md:mb-64 will-change-transform"
         >
           {/* Android Card */}

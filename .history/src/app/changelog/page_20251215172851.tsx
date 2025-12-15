@@ -77,9 +77,9 @@ export default function ChangelogPage() {
                 <div className="ml-20 md:ml-0 md:w-1/2 px-0 md:px-8">
                   <div className="group relative p-[1px] rounded-3xl overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
-                    <div className="relative h-full bg-black/40 md:backdrop-blur-xl rounded-[1.4rem] p-6 md:p-8 border border-white/10 group-hover:border-transparent transition-colors duration-300">
+                    <div className="relative h-full bg-black/40 backdrop-blur-xl rounded-[1.4rem] p-6 md:p-8 border border-white/10 group-hover:border-transparent transition-colors duration-300">
                       <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center gap-3">
                         <Tag size={20} className="text-blue-400" />

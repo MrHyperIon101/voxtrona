@@ -6,15 +6,6 @@ import { Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap } 
 
 export default function DownloadPage() {
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -43,7 +34,7 @@ export default function DownloadPage() {
       {/* HERO SECTION - Sticky on Desktop, Static on Mobile */}
       <div className="relative md:sticky top-0 h-auto py-20 md:py-0 md:h-screen flex items-center justify-center overflow-hidden">
         <motion.div 
-          style={{ opacity: isMobile ? 1 : heroOpacity, scale: isMobile ? 1 : heroScale }}
+          style={{ opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : heroOpacity, scale: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : heroScale }}
           className="relative z-10 text-center px-4 will-change-transform"
         >
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
@@ -65,7 +56,7 @@ export default function DownloadPage() {
         
         {/* PLATFORM SELECTION */}
         <motion.div 
-          style={{ y: isMobile ? 0 : cardsY, opacity: isMobile ? 1 : cardsOpacity }}
+          style={{ y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : cardsY, opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : cardsOpacity }}
           className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-32 md:mb-64 will-change-transform"
         >
           {/* Android Card */}
@@ -139,7 +130,41 @@ export default function DownloadPage() {
             </div>
           </div>
         </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#3b82f6_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-[2.9rem] p-8 md:p-12 overflow-hidden">
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-blue-500/10 blur-[40px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-500/20 transition-colors duration-500" />
 
+              <div className="absolute top-12 right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
+                <Monitor className="w-[150px] h-[150px] md:w-[240px] md:h-[240px]" />
+              </div>
+              
+              <div className="relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                  <Monitor size={40} className="text-blue-400" />
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">Windows</h2>
+                <p className="text-lg md:text-xl text-gray-400 mb-12">
+                  High-fidelity desktop client. <br />
+                  WASAPI Exclusive Mode.
+                </p>
+                
+                <button className="group/btn relative w-full py-6 rounded-2xl bg-white/10 text-white font-bold text-xl overflow-hidden border border-white/10 hover:border-blue-400/50 transition-colors duration-500">
+                  <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    <Download size={24} className="group-hover/btn:animate-bounce" />
+                    Download Installer
+                  </span>
+                </button>
+                <div className="mt-4 text-center text-sm text-gray-500 font-mono">
+                  SHA-256: c3d9...a1f4
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* SYSTEM REQUIREMENTS */}
         <div className="max-w-4xl mx-auto mb-32 md:mb-64">

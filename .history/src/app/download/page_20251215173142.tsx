@@ -65,7 +65,7 @@ export default function DownloadPage() {
         
         {/* PLATFORM SELECTION */}
         <motion.div 
-          style={{ y: isMobile ? 0 : cardsY, opacity: isMobile ? 1 : cardsOpacity }}
+          style={{ y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : cardsY, opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : cardsOpacity }}
           className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-32 md:mb-64 will-change-transform"
         >
           {/* Android Card */}
