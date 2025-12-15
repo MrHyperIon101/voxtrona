@@ -133,10 +133,9 @@ export default function SpatialAudioPage() {
                   {[...Array(20)].map((_, i) => (
                     <motion.div
                       key={i}
-                      initial={{ scaleY: 0.2 }}
-                      animate={{ scaleY: [0.2, 0.8, 0.2] }}
+                      animate={{ height: ["20%", "80%", "20%"] }}
                       transition={{ duration: 1.5, delay: i * 0.05, repeat: Infinity }}
-                      className="w-2 h-full bg-purple-500/50 rounded-full origin-bottom will-change-transform"
+                      className="w-2 bg-purple-500/50 rounded-full"
                     />
                   ))}
                 </div>

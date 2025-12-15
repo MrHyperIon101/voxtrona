@@ -128,10 +128,11 @@ export default function Home() {
                 {[0, 1, 2, 3].map((i) => (
                   <motion.div
                     key={i}
-                    className="absolute rounded-full border border-white/20 w-[50px] h-[50px] will-change-transform"
-                    initial={{ scale: 1, opacity: 0.8 }}
+                    className="absolute rounded-full border border-white/20"
+                    initial={{ width: 50, height: 50, opacity: 0.8 }}
                     animate={{ 
-                      scale: 16, 
+                      width: 800, 
+                      height: 800, 
                       opacity: 0,
                     }}
                     transition={{

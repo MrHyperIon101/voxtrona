@@ -97,11 +97,11 @@ export default function DownloadPage() {
           {/* Windows Card */}
           <div className="group relative p-[2px] rounded-[3rem] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-            <div className="absolute -inset-[100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#3b82f6_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#3b82f6_360deg)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="relative h-full bg-black/80 backdrop-blur-xl rounded-[2.9rem] p-8 md:p-12 overflow-hidden">
               {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-blue-500/10 blur-[40px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-500/20 transition-colors duration-500" />
+              <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-blue-500/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-500/20 transition-colors duration-500" />
 
               <div className="absolute top-12 right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
                 <Monitor className="w-[150px] h-[150px] md:w-[240px] md:h-[240px]" />
