@@ -108,6 +108,7 @@ export default function SpatialAudioPage() {
             
             <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-blue-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2),transparent_70%)] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
@@ -134,9 +135,10 @@ export default function SpatialAudioPage() {
         <div className="py-12 md:py-24 flex items-center border-b border-white/5">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-purple-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-purple-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden transition-colors">
                 <div className="absolute inset-0 flex items-center justify-center gap-1">
                   {[...Array(20)].map((_, i) => (
                     <motion.div
@@ -209,11 +211,12 @@ export default function SpatialAudioPage() {
             </div>
             
             <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-orange-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
-                <div className="absolute inset-0 border-[20px] border-orange-500/10 rounded-full scale-50 group-hover:scale-100 transition-transform duration-700" />
-                <div className="absolute inset-0 border-[20px] border-orange-500/5 rounded-full scale-75 group-hover:scale-125 transition-transform duration-700 delay-100" />
+              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-orange-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden transition-colors">
+                <div className="absolute inset-0 border-[20px] border-orange-500/10 rounded-full scale-50 transition-transform duration-700" />
+                <div className="absolute inset-0 border-[20px] border-orange-500/5 rounded-full scale-75 transition-transform duration-700 delay-100" />
                 <Target size={80} className="text-orange-500 relative z-10" />
               </div>
             </div>
@@ -224,6 +227,7 @@ export default function SpatialAudioPage() {
         <div className="py-12 md:py-24 grid md:grid-cols-2 gap-8">
           <div className="group relative p-[1px] rounded-[2.5rem] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 transition-opacity duration-500" />
             
             <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden transition-colors">
               <div className="absolute top-0 right-0 p-8 opacity-10">
@@ -244,6 +248,7 @@ export default function SpatialAudioPage() {
 
           <div className="group relative p-[1px] rounded-[2.5rem] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 transition-opacity duration-500" />
             
             <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden transition-colors">
               <div className="absolute top-0 right-0 p-8 opacity-10">

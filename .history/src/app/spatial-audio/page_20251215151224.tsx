@@ -6,12 +6,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Headphones, Radio, Speaker, Waves, AudioLines, Box, Circle, Triangle, Zap, Target, Activity, ScanFace, Mic2 } from "lucide-react";
 
 export default function SpatialAudioPage() {
-  
-  // Only apply transforms on desktop to prevent mobile lag
-  // We can't easily detect mobile in SSR, so we'll use a CSS-based approach or just simplify
-  // For now, let's remove the heavy scroll transforms entirely as requested for mobile performance
-  // The user said "hanging the website in mobile like crazy", so we should be conservative.
-  
+  const { scrollYProgress } = useScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -108,6 +106,7 @@ export default function SpatialAudioPage() {
             
             <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-blue-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2),transparent_70%)] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
@@ -135,6 +134,7 @@ export default function SpatialAudioPage() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-purple-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 flex items-center justify-center gap-1">
@@ -210,6 +210,7 @@ export default function SpatialAudioPage() {
             
             <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-orange-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 border-[20px] border-orange-500/10 rounded-full scale-50 group-hover:scale-100 transition-transform duration-700" />
@@ -223,9 +224,10 @@ export default function SpatialAudioPage() {
         {/* Head Tracking & HRTF Grid */}
         <div className="py-12 md:py-24 grid md:grid-cols-2 gap-8">
           <div className="group relative p-[1px] rounded-[2.5rem] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
-            <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden transition-colors">
+            <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden group-hover:border-transparent transition-colors">
               <div className="absolute top-0 right-0 p-8 opacity-10">
                 <ScanFace size={120} />
               </div>
@@ -243,9 +245,10 @@ export default function SpatialAudioPage() {
           </div>
 
           <div className="group relative p-[1px] rounded-[2.5rem] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
-            <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden transition-colors">
+            <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden group-hover:border-transparent transition-colors">
               <div className="absolute top-0 right-0 p-8 opacity-10">
                 <Mic2 size={120} />
               </div>

@@ -244,6 +244,7 @@ export default function SpatialAudioPage() {
 
           <div className="group relative p-[1px] rounded-[2.5rem] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 transition-opacity duration-500" />
             
             <div className="relative h-full p-6 md:p-12 rounded-[2.4rem] bg-white/5 border border-white/10 overflow-hidden transition-colors">
               <div className="absolute top-0 right-0 p-8 opacity-10">
