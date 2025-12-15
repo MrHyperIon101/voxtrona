@@ -130,7 +130,11 @@ export default function SpatialAudioPage() {
         </div>
 
         {/* Dirac Live Section */}
-        <div className="py-12 md:py-24 flex items-center border-b border-white/5">md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="py-12 md:py-24 flex items-center border-b border-white/5">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-purple-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 flex items-center justify-center gap-1">
@@ -138,14 +142,6 @@ export default function SpatialAudioPage() {
                     <motion.div
                       key={i}
                       initial={{ scaleY: 0.2 }}
-                      animate={{ scaleY: [0.2, 0.8, 0.2] }}
-                      transition={{ duration: 1.5, delay: i * 0.05, repeat: Infinity }}
-                      className="hidden md:block w-2 h-full bg-purple-500/50 rounded-full origin-bottom will-change-transform"
-                    />
-                  ))}
-                  {/* Static fallback for mobile */}
-                  {[...Array(20)].map((_, i) => (
-                    <div key={`static-${i}`} className="md:hidden w-2 h-1/2 bg-purple-500/50 rounded-full"   initial={{ scaleY: 0.2 }}
                       animate={{ scaleY: [0.2, 0.8, 0.2] }}
                       transition={{ duration: 1.5, delay: i * 0.05, repeat: Infinity }}
                       className="w-2 h-full bg-purple-500/50 rounded-full origin-bottom will-change-transform"
@@ -206,7 +202,7 @@ export default function SpatialAudioPage() {
                   </li>
                 ))}
               </ul>
-            </div>md:
+            </div>
             
             <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

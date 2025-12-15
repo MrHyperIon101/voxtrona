@@ -51,7 +51,7 @@ export default function Home() {
           className="relative z-10 text-center px-4"
         >
           <div className="mb-8 inline-block">
-            <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 md:backdrop-blur-md">
+            <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
@@ -108,12 +108,12 @@ export default function Home() {
                 Now featuring lossless wireless transmission for studio-quality audio, completely untethered.
               </p>
               <div className="grid grid-cols-2 gap-6">
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
                   <Activity className="text-blue-400 mb-4" size={32} />
                   <div className="text-2xl md:text-3xl font-bold">0.01<span className="text-sm text-gray-500">ms</span></div>
                   <div className="text-sm text-gray-400">Latency</div>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
                   <Radio className="text-purple-400 mb-4" size={32} />
                   <div className="text-2xl md:text-3xl font-bold">Lossless<span className="text-sm text-gray-500"></span></div>
                   <div className="text-sm text-gray-400">Wireless Audio</div>
@@ -122,16 +122,16 @@ export default function Home() {
             </div>
             
             {/* Abstract Visual */}
-            <div className="relative h-[400px] md:h-[600px] w-full rounded-[3rem] border border-white/10 bg-white/5 md:backdrop-blur-md overflow-hidden flex items-center justify-center group">
+            <div className="relative h-[400px] md:h-[600px] w-full rounded-[3rem] border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex items-center justify-center group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
               
               {/* Wireless Energy Animation */}
               <div className="relative flex items-center justify-center w-full h-full">
-                {/* Expanding Ripples - Desktop Only */}
+                {/* Expanding Ripples */}
                 {[0, 1, 2, 3].map((i) => (
                   <motion.div
                     key={i}
-                    className="hidden md:block absolute rounded-full border border-white/20 w-[50px] h-[50px] will-change-transform"
+                    className="absolute rounded-full border border-white/20 w-[50px] h-[50px] will-change-transform"
                     initial={{ scale: 1, opacity: 0.8 }}
                     animate={{ 
                       scale: 16, 
@@ -150,14 +150,14 @@ export default function Home() {
                 <motion.div 
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute w-48 h-48 md:w-64 md:h-64 rounded-full border border-white/10 border-dashed"
+                  className="absolute w-64 h-64 rounded-full border border-white/10 border-dashed"
                 />
 
                 {/* Inner Pulsing Core */}
                 <motion.div 
                   animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute w-24 h-24 md:w-32 md:h-32 bg-blue-500/20 rounded-full blur-2xl"
+                  className="absolute w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"
                 />
                 
                 {/* Center Point */}
