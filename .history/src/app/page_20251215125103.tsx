@@ -176,7 +176,7 @@ export default function Home() {
         </motion.div>
 
         {/* SECTION 2: FEATURES HORIZONTAL */}
-        <div className="max-w-7xl mx-auto space-y-16 md:space-y-32">
+        <div className="max-w-7xl mx-auto space-y-32">
           {[
             { 
               title: "SPATIAL", 
@@ -205,26 +205,26 @@ export default function Home() {
           ].map((item, i) => (
             <div 
               key={i}
-              className="group relative p-[2px] rounded-[2rem] md:rounded-[3rem] overflow-hidden"
+              className="group relative p-[2px] rounded-[3rem] overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full bg-black/80 backdrop-blur-xl rounded-[1.9rem] md:rounded-[2.9rem] p-8 md:p-24 overflow-hidden">
-                <div className={`absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-br ${item.color} opacity-10 blur-[60px] md:blur-[100px] group-hover:opacity-20 transition-opacity duration-700`} />
+              <div className="relative h-full bg-black/80 backdrop-blur-xl rounded-[2.9rem] p-12 md:p-24 overflow-hidden">
+                <div className={`absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br ${item.color} opacity-10 blur-[100px] group-hover:opacity-20 transition-opacity duration-700`} />
                 
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
                   <div>
-                    <item.icon size={48} className="mb-6 md:mb-8 text-white/80 md:w-16 md:h-16" />
-                    <h3 className="text-5xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
+                    <item.icon size={64} className="mb-8 text-white/80" />
+                    <h3 className="text-6xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
                       {item.title}
                     </h3>
-                    <h4 className="text-3xl md:text-6xl font-bold text-white/20 tracking-tighter">
+                    <h4 className="text-4xl md:text-6xl font-bold text-white/20 tracking-tighter">
                       {item.subtitle}
                     </h4>
                   </div>
                   <div className="max-w-md text-right md:text-left">
-                    <p className="text-xl md:text-2xl text-gray-300 font-light">{item.desc}</p>
+                    <p className="text-2xl text-gray-300 font-light">{item.desc}</p>
                     <Link href={item.href} className="mt-8 group relative px-8 py-3 rounded-full border border-white/20 overflow-hidden inline-flex items-center gap-2 font-bold text-white transition-colors hover:border-white/50">
                       <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-300 ease-out group-hover:translate-y-0" />
                       <span className="relative z-10 flex items-center gap-2 group-hover:text-black transition-colors duration-300">

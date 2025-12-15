@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import LightPillar from "@/components/LightPillar";
+import Prism from "@/components/Prism";
 import Footer from "@/components/Footer";
 
 const geistSans = Geist({
@@ -31,25 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white overflow-x-hidden`}
       >
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <LightPillar
-            topColor="#5227FF"
-            bottomColor="#FF9FFC"
-            intensity={1.0}
-            rotationSpeed={0.3}
-            glowAmount={0.005}
-            pillarWidth={3.0}
-            pillarHeight={0.4}
-            noiseIntensity={0.5}
-            pillarRotation={0}
-            interactive={false}
-            mixBlendMode="normal"
-          />
+          <Prism />
         </div>
-        <div className="relative z-10 flex flex-col min-h-screen">
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
+        <div className="relative z-10">
+          {children}
         </div>
         <Navbar />
       </body>
