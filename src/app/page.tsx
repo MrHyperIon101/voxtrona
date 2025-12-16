@@ -55,8 +55,8 @@ export default function Home() {
         />
       </div>
 
-      {/* HERO SECTION - Centered on Mobile, Sticky on Desktop */}
-      <div className="relative h-screen md:sticky top-0 py-0 md:py-0 md:h-screen flex items-center justify-center overflow-hidden">
+      {/* HERO SECTION - Sticky on all viewports to match Features page */}
+      <div className="sticky top-0 h-screen py-0 flex items-center justify-center overflow-hidden">
         <motion.div 
           style={{ opacity: prefersReduced ? 1 : heroOpacity, scale: prefersReduced ? 1 : heroScale }}
           className="relative z-10 text-center px-4"
@@ -100,8 +100,8 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* SCROLL CONTENT - Floats over the sticky hero on Desktop, Normal flow on Mobile */}
-      <div className="relative z-20 mt-0 md:mt-[30vh] lg:mt-[50vh] pb-32 px-4">
+      {/* SCROLL CONTENT - Align mobile spacing with Features page */}
+      <div className="relative z-20 mt-[50vh] md:mt-[30vh] lg:mt-[50vh] pb-32 px-4">
         
         {/* SECTION 1: THE ENGINE */}
         <motion.div 

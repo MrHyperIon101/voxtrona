@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Make background darker on small screens (mobile) for better readability in light mode */
+@media (max-width: 640px) and (prefers-color-scheme: light) {
+  :root {
+    /* Darker slate tone for mobile light mode */
+    --background: #111827; /* slate-900 */
+    --foreground: #e5e7eb; /* gray-200 */
+  }
+}
