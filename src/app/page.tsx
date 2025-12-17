@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import { ArrowRight, Play, Disc, Activity, Zap, Globe, Cpu, Music2, Radio, Download } from "lucide-react";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui";
 import Section from "@/components/Section";
 import { motion as m } from "framer-motion";
 
