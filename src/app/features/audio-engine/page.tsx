@@ -9,8 +9,8 @@ export default function AudioEnginePage() {
   
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="h-[60vh] md:h-[80vh] flex items-center justify-center relative overflow-hidden">
+      {/* Hero Section - vertically centered */}
+      <section className="h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           {/* Mobile Static Background */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_70%)] md:hidden" />

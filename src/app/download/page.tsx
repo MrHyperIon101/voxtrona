@@ -27,23 +27,14 @@ export default function DownloadPage() {
   const cardsOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen md:min-h-[250vh]">
+    <div ref={containerRef} className="relative min-h-[200svh] md:min-h-[250vh]">
       
-      {/* Background Ambience */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
-          animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.1, 1] }}
-          transition={{ duration: 8, repeat: Infinity }}
-          className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_70%)] will-change-transform"
-        />
-        {/* Mobile Static Background */}
-        <div className="md:hidden absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
-      </div>
+      {/* Background Ambience (removed page-local fixed layers to avoid scroll interference on mobile) */}
 
-      {/* HERO SECTION - Sticky on Desktop, Static on Mobile */}
-      <div className="relative md:sticky top-0 h-auto py-20 md:py-0 md:h-screen flex items-center justify-center overflow-hidden">
+      {/* HERO SECTION - Vertically centered on all viewports */}
+      <div className="sticky top-0 h-screen py-0 flex items-center justify-center overflow-hidden pointer-events-none">
         <motion.div 
-          style={{ opacity: isMobile ? 1 : heroOpacity, scale: isMobile ? 1 : heroScale }}
+          style={{ opacity: heroOpacity as any, scale: heroScale as any }}
           className="relative z-10 text-center px-4 will-change-transform"
         >
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
@@ -61,11 +52,11 @@ export default function DownloadPage() {
       </div>
 
       {/* SCROLL CONTENT */}
-      <div className="relative z-20 mt-0 md:mt-[50vh] pb-32 px-4">
+      <div className="relative z-20 mt-[50vh] pb-32 px-4">
         
         {/* PLATFORM SELECTION */}
         <motion.div 
-          style={{ y: isMobile ? 0 : cardsY, opacity: isMobile ? 1 : cardsOpacity }}
+          style={{ y: cardsY as any, opacity: cardsOpacity as any }}
           className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-32 md:mb-64 will-change-transform"
         >
           {/* Android Card */}

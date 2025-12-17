@@ -10,7 +10,7 @@ export default function PowerPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="h-[60vh] md:h-[80vh] flex items-center justify-center relative overflow-hidden">
+      <section className="h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-yellow-500/20 rounded-full blur-[60px] md:blur-[100px] animate-pulse" />
         </div>
