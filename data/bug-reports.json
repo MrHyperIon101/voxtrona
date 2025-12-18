@@ -1,0 +1,38 @@
+[
+  {
+    "id": "bug_orwisp5z_1766037460989",
+    "createdAt": "2025-12-18T05:57:40.989Z",
+    "name": "s",
+    "email": "mrarcplayofficial@gmail.com",
+    "platform": "android",
+    "version": "2.1",
+    "steps": "asdasd",
+    "expected": "asdasdsa",
+    "actual": "asdasdasd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "id": "bug_l5sfxymv_1766036973895",
+    "createdAt": "2025-12-18T05:49:33.895Z",
+    "name": "Souvik",
+    "email": "mrarcplayofficial@gmail.com",
+    "platform": "Android",
+    "version": "2.1.1020",
+    "steps": "snaokdnlksa",
+    "expected": "asdasdsada",
+    "actual": "asdasdadasd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0"
+  },
+  {
+    "id": "bug_82kon26t_1766036626905",
+    "createdAt": "2025-12-18T05:43:46.905Z",
+    "name": "Souvik Bagchi",
+    "email": "mrhyperionai@gmail.com",
+    "platform": "Android",
+    "version": "2.1.1020",
+    "steps": "1) open app",
+    "expected": "sdsdsd",
+    "actual": "sdsdsds",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0"
+  }
+]
