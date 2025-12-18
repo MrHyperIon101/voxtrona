@@ -98,38 +98,45 @@ export default function FeaturesPage() {
 
       {/* SCROLL CONTENT */}
       <div className="relative z-20 mt-[50vh] pb-32 px-4">
-        <div className="max-w-7xl mx-auto space-y-32">
+        <div className="max-w-7xl mx-auto space-y-8 md:space-y-32">
           {features.map((feature, i) => (
-            <div
+            <Link
               key={i}
-              className="group relative p-[2px] rounded-[3rem] overflow-hidden"
+              href={feature.href}
+              className="group relative block p-[2px] rounded-2xl md:rounded-[3rem] overflow-hidden"
             >
               <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700`} />
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10 h-full bg-black/80 backdrop-blur-xl rounded-[2.9rem] p-12 md:p-24 overflow-hidden">
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-12">
-                  <div className={`p-8 rounded-3xl bg-white/5 border border-white/10 ${feature.color}`}>
-                    <feature.icon size={64} />
+
+              <div className="relative z-10 h-full bg-black/80 backdrop-blur-xl rounded-2xl md:rounded-[2.9rem] p-6 md:p-24 overflow-hidden">
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+                  <div className={`p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10 ${feature.color}`}>
+                    <feature.icon size={isMobile ? 48 : 64} />
                   </div>
-                  
+
                   <div className="flex-1">
-                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">{feature.title}</h2>
-                    <p className="text-2xl text-gray-400 font-light leading-relaxed max-w-2xl">
+                    <h2 className="text-3xl md:text-7xl font-black tracking-tighter mb-3 md:mb-6">{feature.title}</h2>
+                    <p className="text-base md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl">
                       {feature.desc}
                     </p>
                   </div>
 
+                  {/* Desktop Arrow Button */}
                   <div className="hidden md:block">
-                    <Link href={feature.href} className="relative w-24 h-24 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group/btn hover:border-white transition-colors duration-300">
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                      <ArrowRight size={32} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
-                    </Link>
+                    <div className="relative w-24 h-24 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group/btn group-hover:border-white transition-colors duration-300">
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={32} className="relative z-10 -rotate-45 group-hover:rotate-0 group-hover:text-black transition-all duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Mobile Arrow Indicator */}
+                  <div className="md:hidden absolute top-6 right-6">
+                    <ArrowRight size={24} className="text-white/40 group-hover:text-white transition-colors" />
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

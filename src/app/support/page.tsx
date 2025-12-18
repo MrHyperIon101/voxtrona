@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, MessageSquare, Book, Bug, Mail, ChevronDown, Send } from "lucide-react";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -50,23 +51,24 @@ export default function SupportPage() {
         {/* Quick Actions */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
           {[
-            { icon: Book, label: "Documentation", color: "text-blue-400" },
-            { icon: MessageSquare, label: "Community", color: "text-green-400" },
-            { icon: Bug, label: "Report Bug", color: "text-red-400" },
-            { icon: Mail, label: "Contact Us", color: "text-purple-400" }
+            { icon: Book, label: "Documentation", color: "text-blue-400", href: "/docs" },
+            { icon: MessageSquare, label: "Community", color: "text-green-400", href: "/community" },
+            { icon: Bug, label: "Report Bug", color: "text-red-400", href: "/report-bug" },
+            { icon: Mail, label: "Contact Us", color: "text-purple-400", href: "#contact" }
           ].map((action, i) => (
-            <button
+            <Link
               key={i}
-              className="group relative p-[1px] rounded-3xl overflow-hidden w-full"
+              href={action.href}
+              className="group relative p-[1px] rounded-3xl overflow-hidden w-full block"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative h-full bg-black/40 backdrop-blur-xl rounded-[1.4rem] p-8 flex flex-col items-center gap-4 border border-white/10 group-hover:border-transparent transition-colors">
                 <action.icon size={32} className={`relative z-10 ${action.color} group-hover:scale-110 transition-transform duration-300`} />
                 <span className="relative z-10 font-bold group-hover:text-white transition-colors">{action.label}</span>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -111,7 +113,7 @@ export default function SupportPage() {
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div id="contact">
             <h2 className="text-3xl font-bold mb-8">Direct Line</h2>
             <form className="space-y-6 p-8 rounded-3xl bg-white/5 border border-white/10">
               <div className="space-y-2">

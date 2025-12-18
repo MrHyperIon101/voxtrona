@@ -4,16 +4,18 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Home, Download, List, LifeBuoy, Headphones, Star } from "lucide-react";
+import { Home, Download, List, LifeBuoy, Headphones, Star, BookOpenText, Users, Bug } from "lucide-react";
 import { clsx } from "clsx";
 
 const navItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "Features", href: "/features", icon: Star },
-  { name: "Spatial Audio", href: "/spatial-audio", icon: Headphones },
+  { name: "Docs", href: "/docs", icon: BookOpenText },
+  { name: "Community", href: "/community", icon: Users },
+  { name: "Report Bug", href: "/report-bug", icon: Bug },
+  { name: "Support", href: "/support", icon: LifeBuoy },
   { name: "Download", href: "/download", icon: Download },
   { name: "Changelog", href: "/changelog", icon: List },
-  { name: "Support", href: "/support", icon: LifeBuoy },
 ];
 
 export default function Navbar() {

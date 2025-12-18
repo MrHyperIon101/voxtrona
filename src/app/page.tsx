@@ -20,39 +20,40 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // On mobile, avoid scroll-linked transforms to prevent stutter when the hero leaves viewport
+  // Scroll-linked animations
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Desktop-like behavior on all devices as requested
+  // Hero animations - keep the cool effects!
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
-  
+
+  // Section animations - cool scroll effects for all devices
   const section1Y = useTransform(scrollYProgress, [0.1, 0.4], [isMobile ? 45 : 100, 0]);
   const section1Opacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen md:min-h-[300vh]">
-      
-      {/* Fixed Background Elements - Purely decorative and transparent */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
-          animate={{ 
+    <div ref={containerRef} className="relative min-h-[200vh] md:min-h-[300vh]">
+
+      {/* Fixed Background Elements - Desktop only */}
+      <div className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
             scale: [1, 1.2, 1],
             opacity: [0.05, 0.1, 0.05],
           }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="hidden md:block absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px] will-change-transform"
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px] will-change-transform"
         />
-        <motion.div 
-          animate={{ 
+        <motion.div
+          animate={{
             scale: [1, 1.5, 1],
             opacity: [0.05, 0.08, 0.05],
           }}
           transition={{ duration: 15, repeat: Infinity, delay: 2 }}
-          className="hidden md:block absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[120px] will-change-transform"
+          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[120px] will-change-transform"
         />
       </div>
 
@@ -154,14 +155,6 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
-
-        {/* Sticky mobile CTA bar */}
-        <div className="md:hidden fixed bottom-4 inset-x-4 z-10">
-          <div className="rounded-2xl border border-white/10 bg-black/60 backdrop-blur-md p-3 flex items-center gap-3">
-            <Button href="/download" className="flex-1" size="md">Download</Button>
-            <Button href="/features" variant="secondary" size="md">Features</Button>
-          </div>
-        </div>
       </div>
 
       {/* SCROLL CONTENT - wrapped in Section for consistent spacing */}
@@ -182,34 +175,34 @@ export default function Home() {
                 Our proprietary 64-bit audio engine processes sound with surgical precision. 
                 Now featuring lossless wireless transmission for studio-quality audio, completely untethered.
               </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
-                  <Activity className="text-blue-400 mb-4" size={32} />
-                  <div className="text-2xl md:text-3xl font-bold">0.01<span className="text-sm text-gray-500">ms</span></div>
-                  <div className="text-sm text-gray-400">Latency</div>
+              <div className="grid grid-cols-2 gap-4 md:gap-6">
+                <div className="p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
+                  <Activity className="text-blue-400 mb-3 md:mb-4" size={28} />
+                  <div className="text-xl md:text-3xl font-bold">0.01<span className="text-xs md:text-sm text-gray-500">ms</span></div>
+                  <div className="text-xs md:text-sm text-gray-400 mt-1">Latency</div>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
-                  <Radio className="text-purple-400 mb-4" size={32} />
-                  <div className="text-2xl md:text-3xl font-bold">Lossless<span className="text-sm text-gray-500"></span></div>
-                  <div className="text-sm text-gray-400">Wireless Audio</div>
+                <div className="p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
+                  <Radio className="text-purple-400 mb-3 md:mb-4" size={28} />
+                  <div className="text-xl md:text-3xl font-bold">Lossless</div>
+                  <div className="text-xs md:text-sm text-gray-400 mt-1">Wireless Audio</div>
                 </div>
               </div>
             </div>
             
             {/* Abstract Visual */}
-            <div className="relative h-[400px] md:h-[600px] w-full rounded-[3rem] border border-white/10 bg-white/5 md:backdrop-blur-md overflow-hidden flex items-center justify-center group">
+            <div className="hidden md:block relative h-[600px] w-full rounded-[3rem] border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
-              
-              {/* Wireless Energy Animation */}
+
+              {/* Wireless Energy Animation - Desktop Only */}
               <div className="relative flex items-center justify-center w-full h-full">
-                {/* Expanding Ripples - Desktop Only */}
+                {/* Expanding Ripples */}
                 {[0, 1, 2, 3].map((i) => (
                   <motion.div
                     key={i}
-                    className="hidden md:block absolute rounded-full border border-white/20 w-[50px] h-[50px] will-change-transform"
+                    className="absolute rounded-full border border-white/20 w-[50px] h-[50px] will-change-transform"
                     initial={{ scale: 1, opacity: 0.8 }}
-                    animate={{ 
-                      scale: 16, 
+                    animate={{
+                      scale: 16,
                       opacity: 0,
                     }}
                     transition={{
@@ -222,19 +215,23 @@ export default function Home() {
                 ))}
 
                 {/* Rotating Dashed Ring */}
-                <motion.div 
+                <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute w-48 h-48 md:w-64 md:h-64 rounded-full border border-white/10 border-dashed"
+                  transition={{
+                    duration: 30,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="absolute w-64 h-64 rounded-full border border-white/10 border-dashed"
                 />
 
                 {/* Inner Pulsing Core */}
-                <motion.div 
+                <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute w-24 h-24 md:w-32 md:h-32 bg-blue-500/20 rounded-full blur-2xl"
+                  className="absolute w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"
                 />
-                
+
                 {/* Center Point */}
                 <div className="relative z-10 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,0.8)] animate-pulse" />
               </div>
@@ -291,20 +288,23 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full bg-black/80 backdrop-blur-xl rounded-[1.9rem] md:rounded-[2.9rem] p-8 md:p-24 overflow-hidden">
-                <div className={`absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-br ${item.color} opacity-10 blur-[60px] md:blur-[100px] group-hover:opacity-20 transition-opacity duration-700`} />
-                
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+              <div className="relative h-full bg-black/80 backdrop-blur-xl rounded-[1.9rem] md:rounded-[2.9rem] p-6 md:p-24 overflow-hidden">
+                <div className={`absolute top-0 right-0 w-[200px] h-[200px] md:w-[500px] md:h-[500px] bg-gradient-to-br ${item.color} opacity-10 blur-[40px] md:blur-[100px] group-hover:opacity-20 transition-opacity duration-700`} />
+
+                <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-12">
                   <div className="w-full">
-                    {/* Mobile: left-aligned single line with icon inline (tighter to fit 320px) */}
-                    <div className="md:hidden flex items-center gap-2">
-                      <item.icon size={32} className="text-white/80 shrink-0" />
-                      <h3 className="whitespace-nowrap overflow-hidden text-ellipsis text-left text-[6.5vw] sm:text-[6vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
-                        {item.title} {item.subtitle}
+                    {/* Mobile: Vertical layout with icon on top */}
+                    <div className="md:hidden space-y-3">
+                      <item.icon size={36} className="text-white/80" />
+                      <h3 className="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
+                        {item.title}
                       </h3>
+                      <h4 className="text-2xl font-bold text-white/30 tracking-tighter">
+                        {item.subtitle}
+                      </h4>
                     </div>
 
-                    {/* Desktop/Tablet: keep original two-line layout with icon above */}
+                    {/* Desktop/Tablet: keep original layout */}
                     <item.icon size={48} className="hidden md:block mb-8 text-white/80 md:w-16 md:h-16" />
                     <h3 className="hidden md:block text-5xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
                       {item.title}
@@ -313,9 +313,9 @@ export default function Home() {
                       {item.subtitle}
                     </h4>
                   </div>
-                  <div className="max-w-md text-right md:text-left">
-                    <p className="text-xl md:text-2xl text-gray-300 font-light">{item.desc}</p>
-                    <Button href={item.href} variant="secondary" size="md" className="mt-8">
+                  <div className="w-full md:max-w-md">
+                    <p className="text-base md:text-2xl text-gray-300 font-light leading-relaxed">{item.desc}</p>
+                    <Button href={item.href} variant="secondary" size="sm" className="mt-6 md:mt-8 w-full md:w-auto">
                       Explore <ArrowRight size={16} />
                     </Button>
                   </div>
