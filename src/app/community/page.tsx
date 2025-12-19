@@ -1,4 +1,4 @@
-import { Users, MessageSquare, Github, Globe } from "lucide-react";
+import { Users, Instagram } from "lucide-react";
 
 export default function CommunityPage() {
   return (
@@ -12,27 +12,13 @@ export default function CommunityPage() {
         <p className="mt-3 text-gray-400">Connect with other users, get help, and contribute.</p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer" className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+      <div className="grid md:grid-cols-1 gap-6">
+        <a href="https://www.instagram.com/mrhyperion/" target="_blank" rel="noopener noreferrer" className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
           <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-            <MessageSquare />
+            <Instagram size={28} className="text-pink-500" />
           </div>
-          <div className="text-xl font-semibold">Discord</div>
-          <div className="text-gray-400 text-sm mt-1">Chat with the team and users in real-time.</div>
-        </a>
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-          <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-            <Github />
-          </div>
-          <div className="text-xl font-semibold">GitHub</div>
-          <div className="text-gray-400 text-sm mt-1">Report issues, request features, or contribute code.</div>
-        </a>
-        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-          <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-            <Globe />
-          </div>
-          <div className="text-xl font-semibold">Social</div>
-          <div className="text-gray-400 text-sm mt-1">Follow updates and share feedback.</div>
+          <div className="text-xl font-semibold">Instagram</div>
+          <div className="text-gray-400 text-sm mt-1">Follow us on Instagram for updates and community highlights.</div>
         </a>
       </div>
 
