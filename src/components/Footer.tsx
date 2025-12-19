@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Github, Twitter, MessageCircle } from "lucide-react";
+// import { Github, Twitter, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -44,20 +44,16 @@ export default function Footer() {
           </p>
           
           <div className="flex gap-4">
-            {[
-              { icon: Github, href: "#" },
-              { icon: Twitter, href: "#" },
-              { icon: MessageCircle, href: "#" }
-            ].map((social, i) => (
-              <a 
-                key={i} 
-                href={social.href} 
-                className="group relative w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 overflow-hidden hover:border-white/30 transition-colors"
-              >
-                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                <social.icon size={20} className="relative z-10 text-gray-400 group-hover:text-black transition-colors duration-300" />
-              </a>
-            ))}
+            <a
+              href="https://www.instagram.com/mrhyperion/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 overflow-hidden hover:border-white/30 transition-colors"
+            >
+              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              {/* Instagram SVG icon */}
+              <svg className="relative z-10 text-gray-400 group-hover:text-black transition-colors duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
+            </a>
           </div>
         </div>
       </div>

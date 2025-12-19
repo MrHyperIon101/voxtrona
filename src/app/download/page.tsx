@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap,
-  CheckCircle2, AlertCircle, ExternalLink, Copy, Check, Star, Users,
+  CheckCircle2, AlertCircle, ExternalLink, Star, Users,
   TrendingUp, Package, FileText, Github, MessageCircle
 } from "lucide-react";
 
 export default function DownloadPage() {
   const containerRef = useRef(null);
   const [isMobile, setIsMobile] = React.useState(false);
-  const [copiedLink, setCopiedLink] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -31,17 +32,11 @@ export default function DownloadPage() {
   const cardsY = useTransform(scrollYProgress, [0.1, 0.4], [100, 0]);
   const cardsOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
 
-  const copyDownloadLink = () => {
-    navigator.clipboard.writeText("https://drive.google.com/file/d/1iaP445F5YzdtCoB3lc_ZvLryJ4r_T72G/view?usp=sharing");
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
-  };
-
   return (
     <div ref={containerRef} className="relative min-h-[200svh] md:min-h-[250vh]">
 
       {/* Animated Background Particles - Desktop Only */}
-      {typeof window !== 'undefined' && (
+      {mounted && (
         <div className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden">
           {[...Array(20)].map((_, i) => {
             const randomX = Math.random() * 100;
@@ -153,28 +148,15 @@ export default function DownloadPage() {
                   </div>
                 </div>
 
-                <a
-                  href="https://drive.google.com/file/d/1iaP445F5YzdtCoB3lc_ZvLryJ4r_T72G/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group/btn relative w-full py-5 md:py-6 rounded-2xl bg-white text-black font-bold text-lg md:text-xl overflow-hidden shadow-[0_0_40px_rgba(34,197,94,0.3)] hover:shadow-[0_0_80px_rgba(34,197,94,0.6)] transition-all duration-500"
-                >
-                  <div className="absolute inset-0 bg-green-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                  <span className="relative z-10 flex items-center justify-center gap-3 group-hover/btn:text-white transition-colors duration-300">
-                    <Download size={24} className="group-hover/btn:animate-bounce" />
-                    Download APK
+                <button disabled className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-gray-800 text-gray-400 font-bold text-lg md:text-xl overflow-hidden cursor-not-allowed">
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    <Download size={24} />
+                    Coming Soon
                   </span>
-                </a>
+                </button>
 
-                <div className="mt-4 flex items-center justify-between text-sm">
-                  <span className="text-gray-500 font-mono">v2.1.1020 • 45MB</span>
-                  <button
-                    onClick={copyDownloadLink}
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                  >
-                    {copiedLink ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
-                    {copiedLink ? "Copied!" : "Copy Link"}
-                  </button>
+                <div className="mt-4 text-center text-sm text-gray-500 font-mono">
+                  v2.1.1020 • 45MB
                 </div>
               </div>
             </div>
