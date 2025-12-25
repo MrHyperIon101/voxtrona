@@ -157,14 +157,8 @@ export default function DownloadPage() {
                   {/* Beta Button (Active) */}
                   {/* Beta Button (Active) */}
                   <a 
-                    href="#" // TODO: Replace with GitHub Release Link
+                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Beta/Voxtrona.For.New.Devices.arm64.apk"
                     className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-white text-black font-bold text-lg md:text-xl overflow-hidden block text-center hover:scale-[1.02] transition-transform active:scale-[0.98]"
-                    onClick={(e) => {
-                       if(e.currentTarget.getAttribute('href') === '#') {
-                          e.preventDefault();
-                          alert("Beta download link coming soon!");
-                       }
-                    }}
                   >
                     <span className="relative z-10 flex items-center justify-center gap-3">
                       <Download size={24} />

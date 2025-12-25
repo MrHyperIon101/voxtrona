@@ -350,7 +350,7 @@ export default function DocsPage() {
                     <p className="text-gray-300 mb-4">
                       Voxtrona for Android is now in Beta! You can download the latest APK directly from our website.
                     </p>
-                    <a href="/download" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
+                    <a href="https://github.com/MrHyperIon101/voxtrona/releases/download/Beta/Voxtrona.For.New.Devices.arm64.apk" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
                       <Download size={18} />
                       Download Beta v2.1.1020
                     </a>
