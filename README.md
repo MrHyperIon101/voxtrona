@@ -12,8 +12,8 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Three.js](https://img.shields.io/badge/Three.js-Fiber-black?style=for-the-badge&logo=three.js)](https://docs.pmnd.rs/react-three-fiber)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=for-the-badge&logo=kotlin)](https://kotlinlang.org/)
+[![Android](https://img.shields.io/badge/Android-14-3DDC84?style=for-the-badge&logo=android)](https://developer.android.com/)
 
 </div>
 
@@ -21,36 +21,66 @@
 
 ## 🚀 Introduction
 
-**Voxtrona** is a cutting-edge web platform serving as the central hub for the Voxtrona application suite. It features a highly immersive, sci-fi inspired interface designed to "wow" users from the first interaction.
+**Voxtrona** is a YouTube Music client for Android with premium-grade features like Spotify Canvas, SponsorBlock, ReturnYouTubeDislike, and now **Spatial Audio**.
 
-Built with **Next.js 16 (App Router)** and **React 19**, the site leverages advanced animation libraries like **Framer Motion** and **React Three Fiber** to create a liquid, glassmorphic experience that feels alive.
+It features a highly immersive, sci-fi inspired interface designed to "wow" users from the first interaction. The Android app is powered by a custom audio engine developed in partnership with industry leaders.
 
-## ✨ Key Features
+> [!WARNING] > **Voxtrona is in beta.** Occasional player errors are normal due to dependencies on YouTube Music APIs.
 
-- **Premium UI/UX**: A dark, futuristic aesthetic featuring glassmorphism, dynamic gradients, and fluid animations.
-- **Interactive 3D Elements**: Particle systems and 3D scenes integrated seamlessly into the DOM.
-- **Responsive Design**: Fully optimized for all devices, from ultrawide desktops to mobile phones.
-- **Performance First**: Built on Next.js 16 with optimized assets and code-splitting.
-- **Direct Downloads**: Easy access to the latest application builds for Android and Windows.
+## ✨ Features
+
+- **Free Streaming**: Play music from YouTube Music or YouTube for free, without ads and in the background.
+- **Lightning Fast**: Browse Home, Charts, Podcasts, and Moods & Genres with optimized data fetching.
+- **Unified Search**: Search across YouTube and YouTube Music seamlessly.
+- **Smart Playlists**: Analyze listening habits and create custom smart playlists.
+- **Visual Experience**: **Spotify Canvas** support and 1080p video playback with subtitles.
+- **AI Integration**: AI-based song suggestions and notifications for new artist releases.
+- **Offline Ready**: Full offline caching and playback support.
+- **Synced Lyrics**: Lyrics from LRCLIB, Spotify (login required), YouTube Transcript, and AI Translation (BETA).
+- **Personalization**: Multi-account support and extensive customization.
+- **Community Tools**: Built-in **SponsorBlock** & **ReturnYouTubeDislike** integration.
+- **Platform Integration**: Sleep Timer and **Android Auto** support.
+- **Spatial Audio**: Powered by a custom engine developed in partnership with **Dirac**, **Dolby**, and **DTS:X** for a studio-grade 3D experience.
 
 ## 🛠️ Tech Stack
 
+### Website (This Repo)
+
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Library**: [React 19](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **3D Graphics**: [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) / [Drei](https://github.com/pmndrs/drei)
-- **Icons**: [Lucide React](https://lucide.dev/)
+- **3D Graphics**: [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
 
-## ⚡ Getting Started
+### Android Application
 
-### Prerequisites
+- **Language**: **Kotlin** (100% Native)
+- **Architecture**: MVVM / Clean Architecture
+- **UI**: Jetpack Compose
+- **Audio Engine**: Custom C++ / Kotlin implementation
 
-- Node.js 20+ installed on your machine.
-- npm or yarn package manager.
+## 📊 Data Usage
 
-### Installation
+- Uses hidden APIs from YouTube Music with optimized data extraction.
+- Integrates Spotify Web API for Canvas and Lyrics.
+- **Powered by:**
+  - [InnerTune](https://github.com/z-huang/InnerTune)
+  - [SmartTube](https://github.com/yuliskov/SmartTube)
+  - [SponsorBlock](https://sponsor.ajay.app/)
+  - [ReturnYouTubeDislike](https://returnyoutubedislike.com/)
+  - [LRCLIB](https://lrclib.net/)
+
+## ❓ FAQ
+
+**1. Wrong Lyrics?**
+Lyrics are fetched from LRCLIB, Spotify, or YouTube Transcripts. Sometimes mismatches occur due to timing or metadata variance.
+
+**2. Why the name Voxtrona?**
+It's a fusion of _Vox_ (voice) and _Electronica_. Voxtrona isn't just music — it's an experience.
+
+For more FAQs or support, join our Discord community (coming soon).
+
+## ⚡ Getting Started (Website)
 
 1.  Clone the repository:
 
@@ -63,8 +93,6 @@ Built with **Next.js 16 (App Router)** and **React 19**, the site leverages adva
 
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
 3.  Run the development server:
@@ -73,30 +101,12 @@ Built with **Next.js 16 (App Router)** and **React 19**, the site leverages adva
     npm run dev
     ```
 
-4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
+4.  Open [http://localhost:3000](http://localhost:3000)
 
-## 📂 Project Structure
+## � Developer / Team
 
-```
-src/
-├── app/              # Next.js App Router pages and layouts
-├── components/       # Reusable React components
-│   ├── ui/           # Basic UI building blocks
-│   └── ...           # Complex feature components
-├── lib/              # Utility functions and shared logic
-└── styles/           # Global styles and tailwind config
-public/               # Static assets (images, icons)
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+- **[MrHyperIon](https://github.com/MrHyperIon101)** — Founder, Lead Developer, Designer
+- Open for contributors and maintainers!
 
 ## 📄 License
 
