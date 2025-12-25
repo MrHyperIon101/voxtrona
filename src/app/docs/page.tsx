@@ -331,8 +331,8 @@ export default function DocsPage() {
 
               <DocSubsection title="Supported Platforms" id="introduction-supported-platforms">
                 <div className="grid md:grid-cols-3 gap-4">
-                  <PlatformCard icon={Smartphone} title="Android" status="Coming Soon" statusColor="yellow" />
-                  <PlatformCard icon={Laptop} title="Windows" status="Coming Soon" statusColor="yellow" />
+                  <PlatformCard icon={Smartphone} title="Android" status="Beta Available" statusColor="green" />
+                  <PlatformCard icon={Laptop} title="Windows" status="Coming Q2 2026" statusColor="yellow" />
                   <PlatformCard icon={Laptop} title="macOS" status="Coming Soon" statusColor="yellow" />
                 </div>
               </DocSubsection>
@@ -342,18 +342,18 @@ export default function DocsPage() {
             <DocSection id="getting-started" icon={Download} title="Getting Started">
               <DocSubsection title="Installation" id="getting-started-installation">
                 <div className="space-y-6">
-                  <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20">
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-500/20">
                     <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
-                      <Smartphone size={20} className="text-purple-400" />
-                      Coming Soon
+                      <Smartphone size={20} className="text-green-400" />
+                      Beta Available
                     </h4>
                     <p className="text-gray-300 mb-4">
-                      Voxtrona is currently in development. Native apps for Android, Windows, and macOS will be available soon.
-                      Check the <a href="/download" className="text-purple-400 hover:underline">Download page</a> for the latest updates.
+                      Voxtrona for Android is now in Beta! You can download the latest APK directly from our website.
                     </p>
-                    <p className="text-sm text-gray-400">
-                      In the meantime, you can explore the web interface and stay updated on our progress through our community channels.
-                    </p>
+                    <a href="/download" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
+                      <Download size={18} />
+                      Download Beta v2.1.1020
+                    </a>
                   </div>
                 </div>
               </DocSubsection>

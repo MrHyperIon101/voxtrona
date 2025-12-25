@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap,
   CheckCircle2, AlertCircle, ExternalLink, Star, Users,
-  TrendingUp, Package, FileText, Github, MessageCircle
+  TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers
 } from "lucide-react";
 
 export default function DownloadPage() {
@@ -80,7 +80,7 @@ export default function DownloadPage() {
             <span className="text-sm font-bold tracking-widest">LATEST BUILD: v2.1.1020</span>
           </div>
 
-          <h1 className="text-[15vw] md:text-[10vw] leading-[0.8] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-transparent mix-blend-overlay">
+          <h1 className="text-[15vw] md:text-[10vw] leading-[0.8] font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-white to-transparent mix-blend-overlay">
             DEPLOY
           </h1>
           <h1 className="text-[15vw] md:text-[10vw] leading-[0.8] font-black tracking-tighter text-white/10">
@@ -105,8 +105,8 @@ export default function DownloadPage() {
             transition={{ duration: 0.6 }}
             className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-green-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-            <div className="absolute -inset-[100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#22c55e_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-b from-green-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-full bg-[conic-gradient(from_0deg,transparent_0_340deg,#22c55e_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden">
               {/* Background Glow */}
@@ -134,29 +134,55 @@ export default function DownloadPage() {
 
                 {/* Features List */}
                 <div className="mb-8 space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
-                    <CheckCircle2 size={16} className="text-green-400" />
-                    <span>Full offline support</span>
+                  <div className="flex items-start gap-2 text-sm text-gray-300">
+                    <Sparkles size={16} className="text-green-400 mt-0.5 shrink-0" />
+                    <span>Best in class <b>Spatial Audio</b> co-engineered by Dolby, Dirac & DTS:X</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-300">
-                    <CheckCircle2 size={16} className="text-green-400" />
+                    <Music size={16} className="text-green-400 shrink-0" />
+                    <span>Supports <b>Lossless Audio</b> (FLAC/WAV)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                    <Layers size={16} className="text-green-400 shrink-0" />
+                    <span><b>Spotify Canvas</b> & Lyrics for free</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                    <CheckCircle2 size={16} className="text-green-400 shrink-0" />
                     <span>Background playback</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
-                    <CheckCircle2 size={16} className="text-green-400" />
-                    <span>Android 8.0+</span>
                   </div>
                 </div>
 
-                <button disabled className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-gray-800 text-gray-400 font-bold text-lg md:text-xl overflow-hidden cursor-not-allowed">
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    <Download size={24} />
-                    Coming Soon
-                  </span>
-                </button>
+                {/* Download Actions */}
+                <div className="space-y-4">
+                  {/* Beta Button (Active) */}
+                  {/* Beta Button (Active) */}
+                  <a 
+                    href="#" // TODO: Replace with GitHub Release Link
+                    className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-white text-black font-bold text-lg md:text-xl overflow-hidden block text-center hover:scale-[1.02] transition-transform active:scale-[0.98]"
+                    onClick={(e) => {
+                       if(e.currentTarget.getAttribute('href') === '#') {
+                          e.preventDefault();
+                          alert("Beta download link coming soon!");
+                       }
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                      <Download size={24} />
+                      Download Beta v2.1.1020
+                    </span>
+                  </a>
+
+                  {/* Stable Info (Disabled) */}
+                  <div className="relative w-full py-4 rounded-2xl bg-gray-800/50 border border-white/5 text-gray-400 font-medium text-center">
+                    <div className="flex items-center justify-center gap-2 text-sm">
+                      <Star size={16} className="text-yellow-500" />
+                      <span>Stable Release coming <b>Jan 1st, 2026</b></span>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="mt-4 text-center text-sm text-gray-500 font-mono">
-                  v2.1.1020 • 45MB
+                  v2.1.1020 • Latest
                 </div>
               </div>
             </div>
@@ -215,7 +241,7 @@ export default function DownloadPage() {
                 <button disabled className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-gray-800 text-gray-400 font-bold text-lg md:text-xl overflow-hidden cursor-not-allowed">
                   <span className="relative z-10 flex items-center justify-center gap-3">
                     <Package size={24} />
-                    Coming Q2 2025
+                    Coming Q2 2026
                   </span>
                 </button>
 

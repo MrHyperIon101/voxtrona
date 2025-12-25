@@ -11,7 +11,7 @@ import {
 const releases = [
   {
     version: "v2.1.1020",
-    date: "2025-12-15",
+    date: "2025-12-25",
     type: "major",
     title: "The \"Unleashed\" Update",
     tag: "Latest",
