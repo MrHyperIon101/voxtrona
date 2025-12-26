@@ -156,13 +156,14 @@ export default function DownloadPage() {
                 <div className="space-y-4">
                   {/* Beta Button (Active) */}
                   {/* Beta Button (Active) */}
+                  {/* Beta Button (Active) */}
                   <a 
-                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Beta/Voxtrona.For.New.Devices.arm64.apk"
+                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev2/app-full-arm64-v8a-release.apk"
                     className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-white text-black font-bold text-lg md:text-xl overflow-hidden block text-center hover:scale-[1.02] transition-transform active:scale-[0.98]"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-3">
                       <Download size={24} />
-                      Download Beta v2.1.1020
+                      Download Beta V2.0.1020PB-Rev2
                     </span>
                   </a>
 
@@ -176,7 +177,7 @@ export default function DownloadPage() {
                 </div>
 
                 <div className="mt-4 text-center text-sm text-gray-500 font-mono">
-                  v2.1.1020 • Latest
+                  V2.0.1020PB-Rev2 • Latest
                 </div>
               </div>
             </div>

@@ -284,11 +284,11 @@ export default function ChangelogPage() {
                                 {/* Download Link */}
                                 {release.version === "v2.1.1020" && (
                                   <a
-                                    href="/download"
+                                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev2/app-full-arm64-v8a-release.apk"
                                     className="mt-6 flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all"
                                   >
                                     <Download size={18} />
-                                    Download This Version
+                                    Download V2.0.1020PB-Rev2
                                     <ExternalLink size={14} />
                                   </a>
                                 )}
