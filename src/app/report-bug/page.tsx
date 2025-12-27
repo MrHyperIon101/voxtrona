@@ -28,7 +28,7 @@ export default function ReportBugPage() {
     <div className="min-h-screen pt-24 pb-24 relative overflow-hidden">
       
       {/* Background Ambient */}
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-red-500/10 blur-[120px] rounded-full mix-blend-screen" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-500/10 blur-[120px] rounded-full mix-blend-screen" />
       </div>
@@ -47,10 +47,10 @@ export default function ReportBugPage() {
                         <Bug size={16} />
                         <span className="font-semibold tracking-wider uppercase text-xs">Bug Tracker</span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-r from-white via-white to-gray-500">
+                    <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-r from-white via-white to-gray-500">
                         Help Us <br /> Fix It.
                     </h1>
-                    <p className="text-xl text-gray-400 leading-relaxed max-w-2xl">
+                    <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl">
                         Found a glitch in the matrix? Let us know. The more detail you provide, the faster our engineers can squash it.
                     </p>
                 </motion.div>
@@ -70,7 +70,7 @@ export default function ReportBugPage() {
                             exit={{ opacity: 0, height: 0 }}
                             className="bg-green-500/10 border border-green-500/20 rounded-2xl p-6 flex items-start gap-4"
                         >
-                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
                                 <CheckCircle2 className="text-green-400" size={20} />
                             </div>
                             <div>
@@ -86,7 +86,7 @@ export default function ReportBugPage() {
                                 exit={{ opacity: 0, height: 0 }}
                                 className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 flex items-start gap-4"
                             >
-                                <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
                                     <AlertTriangle className="text-red-400" size={20} />
                                 </div>
                                 <div>
@@ -99,7 +99,7 @@ export default function ReportBugPage() {
 
                     {/* Section 1: User Info */}
                     <div className="p-px rounded-3xl bg-linear-to-b from-white/10 to-transparent">
-                        <div className="bg-black/40 backdrop-blur-xl rounded-[23px] p-8 border border-white/5">
+                        <div className="bg-black/40 backdrop-blur-xl rounded-[23px] p-5 md:p-8 border border-white/5">
                             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                                 <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">1</span>
                                 Submitters Info
@@ -130,7 +130,7 @@ export default function ReportBugPage() {
 
                     {/* Section 2: Bug Details */}
                     <div className="p-px rounded-3xl bg-linear-to-b from-white/10 to-transparent">
-                        <div className="bg-black/40 backdrop-blur-xl rounded-[23px] p-8 border border-white/5">
+                        <div className="bg-black/40 backdrop-blur-xl rounded-[23px] p-5 md:p-8 border border-white/5">
                             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                                 <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">2</span>
                                 Incident Details

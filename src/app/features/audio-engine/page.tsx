@@ -25,7 +25,7 @@ export default function AudioEnginePage() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/0">
+            <h1 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-white/0">
               AUDIO
             </h1>
             <p className="text-lg md:text-3xl font-light tracking-[0.5em] md:tracking-[1em] text-blue-200 uppercase">
@@ -65,11 +65,11 @@ export default function AudioEnginePage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+              <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-blue-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-blue-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2),transparent_70%)]" />
                 <Waves size={120} className="text-blue-500/20 md:animate-pulse md:w-[200px] md:h-[200px]" />
               </div>
@@ -80,11 +80,11 @@ export default function AudioEnginePage() {
         {/* Format Support */}
         <div className="py-12 md:py-24 flex items-center">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+              <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-purple-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-purple-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="grid grid-cols-2 gap-4 md:gap-8 text-center">
                    {['FLAC', 'DSD', 'WAV', 'MQA'].map((fmt) => (
                      <div key={fmt} className="p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10">

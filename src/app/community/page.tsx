@@ -10,7 +10,7 @@ export default function CommunityPage() {
     <div className="min-h-screen pt-24 pb-24 relative overflow-hidden">
       
       {/* Background Ambient */}
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-purple-500/10 blur-[120px] rounded-full mix-blend-screen" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen" />
       </div>
@@ -32,16 +32,16 @@ export default function CommunityPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-r from-white via-white to-gray-500"
+              className="text-4xl md:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-r from-white via-white to-gray-500"
             >
-              Join the <br className="md:hidden" /> Movement.
+              Join the Movement.
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
             >
               Voxtrona isn't just an app. It's a community of music lovers, audiophiles, and creators.
               Connect, share, and help shape the future of audio.
@@ -49,7 +49,7 @@ export default function CommunityPage() {
         </div>
 
         {/* Social Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-24">
             
             {/* Instagram */}
             <motion.a 
@@ -59,17 +59,17 @@ export default function CommunityPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="group relative p-8 rounded-3xl bg-black/40 border border-white/10 overflow-hidden hover:border-pink-500/50 transition-colors duration-500 flex flex-col justify-between h-[300px]"
+              className="group relative p-6 md:p-8 rounded-3xl bg-black/40 border border-white/10 overflow-hidden hover:border-pink-500/50 transition-colors duration-500 flex flex-col justify-between h-auto min-h-[260px] md:h-[300px]"
             >
                <div className="absolute inset-0 bg-linear-to-br from-pink-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-pink-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-pink-500/20 group-hover:scale-110 transition-transform duration-500">
-                      <Instagram size={28} className="text-white" />
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-linear-to-br from-pink-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-pink-500/20 group-hover:scale-110 transition-transform duration-500">
+                      <Instagram size={24} className="text-white md:w-7 md:h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Instagram</h3>
-                  <p className="text-gray-400">Follow for visual updates, sneak peaks, and aesthetic showcases.</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Instagram</h3>
+                  <p className="text-sm md:text-base text-gray-400">Follow for visual updates, sneak peaks, and aesthetic showcases.</p>
                </div>
-               <div className="relative z-10 flex items-center text-pink-400 font-semibold mt-4 group-hover:translate-x-2 transition-transform">
+               <div className="relative z-10 flex items-center text-pink-400 font-semibold mt-4 group-hover:translate-x-2 transition-transform text-sm md:text-base">
                   Follow us <ArrowRight size={16} className="ml-2" />
                </div>
             </motion.a>
@@ -82,17 +82,17 @@ export default function CommunityPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="group relative p-8 rounded-3xl bg-black/40 border border-white/10 overflow-hidden hover:border-white/50 transition-colors duration-500 flex flex-col justify-between h-[300px]"
+              className="group relative p-6 md:p-8 rounded-3xl bg-black/40 border border-white/10 overflow-hidden hover:border-white/50 transition-colors duration-500 flex flex-col justify-between h-auto min-h-[260px] md:h-[300px]"
             >
                <div className="absolute inset-0 bg-linear-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20 group-hover:scale-110 transition-transform duration-500">
-                      <Github size={28} className="text-white" />
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20 group-hover:scale-110 transition-transform duration-500">
+                      <Github size={24} className="text-white md:w-7 md:h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">GitHub</h3>
-                  <p className="text-gray-400">Check the source, report bugs, and contribute to the codebase.</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">GitHub</h3>
+                  <p className="text-sm md:text-base text-gray-400">Check the source, report bugs, and contribute to the codebase.</p>
                </div>
-               <div className="relative z-10 flex items-center text-white font-semibold mt-4 group-hover:translate-x-2 transition-transform">
+               <div className="relative z-10 flex items-center text-white font-semibold mt-4 group-hover:translate-x-2 transition-transform text-sm md:text-base">
                   Star Repo <ArrowRight size={16} className="ml-2" />
                </div>
             </motion.a>
@@ -145,13 +145,13 @@ export default function CommunityPage() {
                   className="group relative p-px rounded-2xl bg-linear-to-b from-white/10 to-transparent overflow-hidden"
                 >
                    <div className="relative p-6 md:p-8 rounded-[15px] bg-black/80 backdrop-blur-xl flex flex-col md:flex-row gap-6 md:items-center">
-                      <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center shrink-0">
                          <Megaphone size={32} className="text-green-400" />
                       </div>
                       <div className="flex-1">
                          <div className="flex items-center gap-3 mb-2">
                              <span className="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-bold border border-green-500/20">RELEASE</span>
-                             <span className="text-gray-500 text-sm">Dec 25, 2025</span>
+                             <span className="text-gray-500 text-sm">Dec 28, 2025</span>
                          </div>
                          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Voxtrona Android Beta v2.1.1020 Released</h3>
                          <p className="text-gray-400">
@@ -173,14 +173,14 @@ export default function CommunityPage() {
                   transition={{ delay: 0.1 }}
                   className="group relative p-px rounded-2xl bg-linear-to-b from-white/5 to-transparent overflow-hidden"
                 >
-                   <div className="relative p-6 md:p-8 rounded-[15px] bg-black/60 backdrop-blur-xl flex flex-col md:flex-row gap-6 md:items-center">
-                      <div className="w-16 h-16 rounded-2xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                   <div className="relative p-6 md:p-8 rounded-[15px] bg-black/20 backdrop-blur-xl flex flex-col md:flex-row gap-6 md:items-center">
+                      <div className="w-16 h-16 rounded-2xl bg-red-500/20 flex items-center justify-center shrink-0">
                          <Heart size={32} className="text-red-400" />
                       </div>
                       <div className="flex-1">
                          <div className="flex items-center gap-3 mb-2">
                              <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-bold border border-red-500/20">MILESTONE</span>
-                             <span className="text-gray-500 text-sm">Dec 20, 2025</span>
+                             <span className="text-gray-500 text-sm">Dec 28, 2025</span>
                          </div>
                          <h3 className="text-xl font-bold text-white mb-2">20,000+ Active Users</h3>
                          <p className="text-gray-400">

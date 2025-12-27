@@ -66,7 +66,7 @@ export default function SettingsPage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -88,7 +88,7 @@ export default function SettingsPage() {
         {/* Section 2: Account & Sync */}
         <div className="flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+                <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
                   <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -173,11 +173,11 @@ export default function SettingsPage() {
               </div>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-emerald-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-emerald-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="w-full h-full p-6 font-mono text-xs text-emerald-500/50 overflow-hidden leading-relaxed select-none">
                     {Array.from({length: 20}).map((_, i) => (
                         <div key={i} className="whitespace-nowrap opacity-50">
@@ -186,7 +186,7 @@ export default function SettingsPage() {
                         </div>
                     ))}
                  </div>
-                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                 <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
               </div>
             </div>
           </div>

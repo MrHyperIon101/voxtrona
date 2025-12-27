@@ -25,7 +25,7 @@ export default function VisualsPage() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/0">
+            <h1 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-white/0">
               VISUALS
             </h1>
             <p className="text-lg md:text-3xl font-light tracking-[0.5em] md:tracking-[1em] text-pink-200 uppercase">
@@ -65,13 +65,13 @@ export default function VisualsPage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+              <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-pink-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-pink-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.2),transparent_70%)]" />
-                <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 shadow-2xl rotate-12" />
+                <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl bg-linear-to-br from-pink-500 to-purple-600 shadow-2xl rotate-12" />
               </div>
             </div>
           </div>
@@ -80,11 +80,11 @@ export default function VisualsPage() {
         {/* Synced Lyrics */}
         <div className="py-12 md:py-24 flex items-center">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute -inset-[100%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+              <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-gradient-to-br from-purple-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-purple-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="space-y-4 text-center">
                    <p className="text-xl md:text-3xl font-bold text-white/20 blur-sm">Is this the real life?</p>
                    <p className="text-2xl md:text-4xl font-black text-white scale-110">Is this just fantasy?</p>

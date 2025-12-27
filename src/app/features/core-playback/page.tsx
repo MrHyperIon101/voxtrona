@@ -69,11 +69,11 @@ export default function CorePlaybackPage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-red-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-red-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.2),transparent_70%)]" />
                 <Play size={100} className="text-red-500/40 md:w-[150px] md:h-[150px] fill-current" />
               </div>
@@ -84,7 +84,7 @@ export default function CorePlaybackPage() {
         {/* Audio Quality */}
         <div className="flex items-center">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-             <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+             <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -160,7 +160,7 @@ export default function CorePlaybackPage() {
               </div>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[300px] md:h-[400px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               

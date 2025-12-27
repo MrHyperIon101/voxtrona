@@ -65,11 +65,11 @@ export default function AudioFXPage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-amber-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-amber-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="flex items-end gap-3 h-48 md:h-64 px-8 w-full justify-between">
                     {[40, 70, 50, 90, 60, 80, 45, 75].map((h, i) => (
                         <div key={i} className="flex-1 bg-amber-500 rounded-t-lg relative group/bar">
@@ -91,7 +91,7 @@ export default function AudioFXPage() {
         {/* Section 2: Spatial Audio */}
         <div className="flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+                <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
                   <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -169,7 +169,7 @@ export default function AudioFXPage() {
                </div>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               

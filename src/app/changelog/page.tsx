@@ -116,7 +116,7 @@ export default function ChangelogPage() {
   return (
     <div className="min-h-screen pt-32 pb-32">
         {/* Background Ambient */}
-        <div className="fixed inset-0 pointer-events-none">
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
             <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen" />
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/5 blur-[100px] rounded-full mix-blend-screen" />
         </div>
@@ -138,7 +138,7 @@ export default function ChangelogPage() {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
-             className="text-6xl md:text-8xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-linear-to-b from-white to-white/50"
+             className="text-5xl md:text-8xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-linear-to-b from-white to-white/50"
            >
              Release Notes
            </motion.h1>
@@ -147,7 +147,7 @@ export default function ChangelogPage() {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.2 }}
-             className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
+             className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
            >
              Every update brings us closer to audio perfection. Explore the technical evolution of Voxtrona.
            </motion.p>
@@ -169,12 +169,12 @@ export default function ChangelogPage() {
                         {/* Summary Section / Header */}
                         <div 
                             onClick={() => toggleVersion(release.version)}
-                            className="p-6 md:p-10 cursor-pointer hover:bg-white/5 transition-colors"
+                            className="p-5 md:p-10 cursor-pointer hover:bg-white/5 transition-colors"
                         >
                             <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                                 
                                 {/* Version Badge & Date */}
-                                <div className="flex-shrink-0 flex md:flex-col items-center gap-4 md:gap-2 min-w-[120px]">
+                                <div className="shrink-0 flex md:flex-col items-center gap-4 md:gap-2 min-w-[120px]">
                                      <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 font-bold text-xl group-hover:scale-110 transition-transform duration-500">
                                          {release.type === 'major' ? <Zap size={24} className="text-yellow-400" /> : <Package size={24} className="text-blue-400" />}
                                      </div>
@@ -199,7 +199,7 @@ export default function ChangelogPage() {
                                         </div>
                                     </div>
                                     
-                                    <h3 className="text-xl text-gray-400 font-medium mb-6">{release.title}</h3>
+                                    <h3 className="text-lg md:text-xl text-gray-400 font-medium mb-6">{release.title}</h3>
 
                                     {/* Highlights Chips */}
                                     <div className="flex flex-wrap gap-2 mb-6">
@@ -230,7 +230,7 @@ export default function ChangelogPage() {
                                     exit={{ height: 0, opacity: 0 }}
                                     className="border-t border-white/5"
                                 >
-                                    <div className="p-6 md:p-10 bg-black/20">
+                                    <div className="p-5 md:p-10 bg-black/20">
                                         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                                             {release.features.map((section, si) => (
                                                 <div key={si}>
@@ -240,7 +240,7 @@ export default function ChangelogPage() {
                                                     <ul className="space-y-4">
                                                         {section.items.map((item, ii) => (
                                                             <li key={ii} className="flex items-start gap-3 text-gray-300 leading-relaxed text-sm">
-                                                                <div className="mt-1.5 w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
+                                                                <div className="mt-1.5 w-1 h-1 rounded-full bg-white/30 shrink-0" />
                                                                 <span className="opacity-90">{item}</span>
                                                             </li>
                                                         ))}

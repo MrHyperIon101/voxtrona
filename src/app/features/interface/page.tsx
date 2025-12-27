@@ -66,11 +66,11 @@ export default function InterfacePage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="absolute inset-0 bg-linear-to-tr from-cyan-500/20 via-blue-500/20 to-purple-500/20 animate-pulse" />
                  <div className="w-64 h-24 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl flex items-center justify-center transform group-hover:scale-105 transition-transform duration-500">
                     <span className="text-white/80 font-medium tracking-widest">GLASS_UI</span>
@@ -83,12 +83,12 @@ export default function InterfacePage() {
         {/* Section 2: OLED & Dark Mode */}
         <div className="flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+                <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
                   <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  <div className="relative h-full rounded-[1.4rem] bg-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
-                     <div className="w-full h-full bg-black flex items-center justify-center relative">
+                  <div className="relative h-full rounded-[1.4rem] bg-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+                     <div className="w-full h-full bg-transparent flex items-center justify-center relative">
                         <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent pointer-events-none" />
                          <Moon size={120} className="text-white fill-white shadow-[0_0_50px_rgba(255,255,255,0.5)]" />
                      </div>
@@ -156,11 +156,11 @@ export default function InterfacePage() {
                </div>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="grid grid-cols-2 gap-4">
                     <div className="w-16 h-16 rounded-full bg-rose-500 shadow-[0_0_30px_rgba(244,63,94,0.5)]" />
                     <div className="w-16 h-16 rounded-full bg-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.5)]" />
@@ -175,11 +175,11 @@ export default function InterfacePage() {
          {/* Section 4: Layout Density */}
          <div className="flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+                <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
                   <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  <div className="relative h-full rounded-[1.4rem] bg-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors p-8">
+                  <div className="relative h-full rounded-[1.4rem] bg-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors p-8">
                      <div className="w-full space-y-4">
                         <div className="h-12 w-full bg-white/10 rounded-lg animate-pulse" />
                         <div className="h-12 w-full bg-white/10 rounded-lg animate-pulse delay-75" />

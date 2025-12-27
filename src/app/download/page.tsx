@@ -90,7 +90,7 @@ export default function DownloadPage() {
       </div>
 
       {/* SCROLL CONTENT */}
-      <div className="relative z-20 mt-[50vh] pb-32 px-4">
+      <div className="relative z-20 mt-[20vh] pb-32 px-4">
 
         {/* PLATFORM SELECTION */}
         <motion.div
@@ -217,7 +217,7 @@ export default function DownloadPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden opacity-60"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-b from-blue-500/20 to-transparent opacity-100 transition-opacity duration-500" />
 
             <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden flex flex-col">
               {/* Background Glow */}
@@ -298,9 +298,9 @@ export default function DownloadPage() {
               <a
                 key={i}
                 href={link.href}
-                className="group relative p-[1px] rounded-2xl overflow-hidden block"
+                className="group relative p-px rounded-2xl overflow-hidden block"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-b from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className={`relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-${link.color}-500/30 transition-all text-center`}>
                   <link.icon className={`mx-auto mb-3 text-${link.color}-400`} size={28} />
                   <div className="text-sm font-semibold">{link.label}</div>
@@ -318,7 +318,7 @@ export default function DownloadPage() {
           className="max-w-4xl mx-auto mb-32 md:mb-64"
         >
           <div className="rounded-3xl border border-white/10 bg-black/40 md:backdrop-blur-md overflow-hidden">
-            <div className="p-6 md:p-8 border-b border-white/10 bg-gradient-to-r from-purple-500/10 to-blue-500/10">
+            <div className="p-6 md:p-8 border-b border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10">
               <h3 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
                 <Terminal size={28} className="text-purple-400" />
                 System Requirements
@@ -398,7 +398,7 @@ export default function DownloadPage() {
                 transition={{ delay: i * 0.1 }}
                 className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all group"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center font-bold text-xl border border-purple-500/30 group-hover:scale-110 transition-transform">
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center font-bold text-xl border border-purple-500/30 group-hover:scale-110 transition-transform">
                   {item.step}
                 </div>
                 <div className="flex-1">

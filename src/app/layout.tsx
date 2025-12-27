@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import BackgroundBeams from "@/components/BackgroundBeams";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import Preloader from "@/components/Preloader";
+import DarkVeil from "@/components/DarkVeil";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -93,15 +93,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white overflow-x-hidden`}
       >
         <div className="fixed inset-0 z-0">
-          <BackgroundBeams />
+          <DarkVeil />
         </div>
         <div className="relative z-10 flex flex-col min-h-screen">
-          <main className="flex-grow">
+          <main className="grow">
             {children}
           </main>
           <Footer />

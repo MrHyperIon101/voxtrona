@@ -62,10 +62,10 @@ export default function Preloader() {
                 filter: "blur(20px)",
                 transition: { duration: 0.8, ease: "easeInOut" } 
             }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black perspective-[1000px]"
+            className="fixed inset-0 z-9999 flex items-center justify-center bg-black perspective-[1000px]"
         >
             {/* Deep Space Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-blue-900/20 via-black to-black" />
             
             {/* Floating Audio Particles (Simulating Audio Objects) */}
             {[...Array(6)].map((_, i) => (

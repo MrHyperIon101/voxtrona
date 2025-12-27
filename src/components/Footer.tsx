@@ -11,11 +11,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto relative group">
         
         {/* Animated Border/Glow Container */}
-        <div className="absolute -inset-px rounded-[2.5rem] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-30 group-hover:opacity-100 blur-sm transition-opacity duration-700" />
+        <div className="absolute -inset-px rounded-[2.5rem] bg-linear-to-r from-transparent via-white/20 to-transparent opacity-30 group-hover:opacity-100 blur-sm transition-opacity duration-700" />
         <div className="absolute inset-0 rounded-[2.5rem] bg-linear-to-b from-white/10 to-white/2 opacity-100" />
         
         {/* Main Card Content */}
-        <div className="relative rounded-[2.4rem] bg-black/80 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl">
+        <div className="relative rounded-[2.4rem] bg-black/95 md:bg-black/80 backdrop-blur-none md:backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl">
            
            {/* Dynamic Ambient Glows - Neutral/White to match other cards */}
            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 blur-[150px] rounded-full pointer-events-none animate-pulse-slow" />
@@ -54,7 +54,7 @@ export default function Footer() {
                           rel="noopener noreferrer"
                           className="group/icon relative w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 shadow-lg"
                         >
-                          <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute inset-0 bg-linear-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300" />
                           <social.icon size={20} className="relative z-10 text-gray-400 group-hover/icon:text-white transition-colors duration-300" />
                         </a>
                     ))}

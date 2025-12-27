@@ -160,12 +160,12 @@ export default function DocsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 text-purple-300 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 text-purple-300 mb-6">
             <BookOpenText size={16} />
             <span className="font-semibold tracking-wider uppercase text-xs">Documentation</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-blue-200">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-purple-200 to-blue-200">
               Voxtrona Docs
             </span>
           </h1>
@@ -209,7 +209,7 @@ export default function DocsPage() {
                         }}
                         className="flex items-center gap-3 p-3 rounded-xl hover:bg-purple-500/20 transition-colors group"
                       >
-                        <result.icon className="text-purple-400 flex-shrink-0" size={18} />
+                        <result.icon className="text-purple-400 shrink-0" size={18} />
                         <div className="flex-1 min-w-0">
                           <div className="font-semibold text-white truncate">{result.title}</div>
                           {result.parent && (
@@ -235,9 +235,9 @@ export default function DocsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="group relative p-[1px] rounded-2xl overflow-hidden"
+              className="group relative p-px rounded-2xl overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-b from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-purple-500/30 transition-all">
                 <link.icon className="text-purple-400 mb-3 group-hover:scale-110 transition-transform" size={24} />
                 <div className="font-bold text-sm">{link.label}</div>
@@ -325,7 +325,7 @@ export default function DocsPage() {
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-6">
                   <FeatureCard icon={Smartphone} title="Native Android" description="Built with Kotlin & Jetpack Compose" />
-                  <FeatureCard icon={Waves} title="Hi-Res Audio" description="Custom C++ Audio Engine" />
+                  <FeatureCard icon={Waves} title="Hi-Res Audio" description="Custom Audio Engine" />
                   <FeatureCard icon={Lock} title="Privacy Core" description="Zero Telemetry & SponsorBlock" />
                 </div>
               </DocSubsection>
@@ -354,7 +354,7 @@ export default function DocsPage() {
             <DocSection id="getting-started" icon={Download} title="Getting Started">
               <DocSubsection title="Installation" id="getting-started-installation">
                 <div className="space-y-6">
-                  <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-500/20">
+                  <div className="p-6 rounded-2xl bg-linear-to-br from-green-500/10 to-blue-500/10 border border-green-500/20">
                     <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
                       <Smartphone size={20} className="text-green-400" />
                       Beta Available
@@ -377,21 +377,21 @@ export default function DocsPage() {
                 </p>
                 <div className="space-y-3 text-gray-400">
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <Lock className="text-blue-400 flex-shrink-0 mt-1" size={20} />
+                    <Lock className="text-blue-400 shrink-0 mt-1" size={20} />
                     <div>
                       <div className="font-semibold text-white mb-1">Permissions</div>
                       <div className="text-sm">Grant generic permissions for Notifications and File Access (for local library).</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <Users className="text-purple-400 flex-shrink-0 mt-1" size={20} />
+                    <Users className="text-purple-400 shrink-0 mt-1" size={20} />
                     <div>
                       <div className="font-semibold text-white mb-1">Account Login</div>
                       <div className="text-sm">Log in with your Google account for YouTube Music or Spotify account for integration.</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <Headphones className="text-green-400 flex-shrink-0 mt-1" size={20} />
+                    <Headphones className="text-green-400 shrink-0 mt-1" size={20} />
                     <div>
                       <div className="font-semibold text-white mb-1">Face Scan (Optional)</div>
                       <div className="text-sm">For Spatial Audio users, set up your HRTF profile using the camera wizard.</div>
@@ -442,7 +442,7 @@ export default function DocsPage() {
             {/* Audio Enhancements */}
             <DocSection id="audio-enhancements" icon={Waves} title="Audio Enhancements">
               <DocSubsection title="Spatial Audio" id="audio-enhancements-spatial-audio">
-                 <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-6">
+                 <div className="p-6 rounded-2xl bg-linear-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-6">
                   <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
                     <Headphones className="text-indigo-400" size={20} />
                     Native Spatial Audio (Android 13+)
@@ -524,7 +524,7 @@ export default function DocsPage() {
                        <span className="text-purple-400 font-mono">100MB - Unlimited</span>
                     </div>
                     <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                       <div className="h-full w-2/3 bg-gradient-to-r from-purple-500 to-blue-500"></div>
+                       <div className="h-full w-2/3 bg-linear-to-r from-purple-500 to-blue-500"></div>
                     </div>
                  </div>
               </DocSubsection>
@@ -641,17 +641,17 @@ export default function DocsPage() {
                   Need more help? We're here for you.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4">
-                  <a href="/community" className="p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 hover:border-purple-500/40 transition-all group">
+                  <a href="/community" className="p-4 rounded-xl bg-linear-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 hover:border-purple-500/40 transition-all group">
                     <Users className="text-purple-400 mb-3 group-hover:scale-110 transition-transform" size={24} />
                     <h4 className="font-bold mb-1">Community</h4>
                     <p className="text-xs text-gray-400">Join our Discord and Reddit</p>
                   </a>
-                  <a href="/report-bug" className="p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/20 hover:border-red-500/40 transition-all group">
+                  <a href="/report-bug" className="p-4 rounded-xl bg-linear-to-br from-red-500/10 to-orange-500/10 border border-red-500/20 hover:border-red-500/40 transition-all group">
                     <Code className="text-red-400 mb-3 group-hover:scale-110 transition-transform" size={24} />
                     <h4 className="font-bold mb-1">Report Bug</h4>
                     <p className="text-xs text-gray-400">Found an issue? Let us know</p>
                   </a>
-                  <a href="/support" className="p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 hover:border-green-500/40 transition-all group">
+                  <a href="/support" className="p-4 rounded-xl bg-linear-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 hover:border-green-500/40 transition-all group">
                     <Shield className="text-green-400 mb-3 group-hover:scale-110 transition-transform" size={24} />
                     <h4 className="font-bold mb-1">Support</h4>
                     <p className="text-xs text-gray-400">Contact us directly</p>
@@ -665,7 +665,7 @@ export default function DocsPage() {
 
       {/* Footer Navigation */}
       <div className="max-w-7xl mx-auto px-4 mt-24">
-        <div className="flex items-center justify-between p-6 rounded-2xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20">
+        <div className="flex items-center justify-between p-6 rounded-2xl bg-linear-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20">
           <div>
             <div className="text-sm text-gray-400 mb-1">Ready to experience the future?</div>
             <div className="font-bold text-xl">Download Voxtrona Today</div>
@@ -691,7 +691,7 @@ function DocSection({ id, icon: Icon, title, children }: any) {
       className="scroll-mt-24"
     >
       <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-500/30">
+        <div className="p-3 rounded-xl bg-linear-to-br from-purple-500/20 to-blue-500/20 border border-purple-500/30">
           <Icon className="text-purple-400" size={24} />
         </div>
         <h2 className="text-4xl md:text-5xl font-black tracking-tight">{title}</h2>
@@ -725,7 +725,7 @@ function FeatureCard({ icon: Icon, title, description }: any) {
 function FeatureItem({ icon: Icon, title, description }: any) {
   return (
     <div className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/20 transition-all">
-      <div className="flex-shrink-0 p-2 h-fit rounded-lg bg-purple-500/20">
+      <div className="shrink-0 p-2 h-fit rounded-lg bg-purple-500/20">
         <Icon className="text-purple-400" size={20} />
       </div>
       <div>

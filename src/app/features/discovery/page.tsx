@@ -65,7 +65,7 @@ export default function DiscoveryPage() {
               </ul>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -77,13 +77,13 @@ export default function DiscoveryPage() {
                  <div className="relative w-48 h-48 md:w-64 md:h-64 group-hover:scale-105 transition-transform duration-500">
                     
                     {/* Back Card (Left) */}
-                    <div className="absolute top-4 -left-12 w-full h-full rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 shadow-2xl transform -rotate-12 scale-90 opacity-60 group-hover:-translate-x-4 transition-transform duration-500 border border-white/10" />
+                    <div className="absolute top-4 -left-12 w-full h-full rounded-2xl bg-linear-to-br from-pink-500 to-rose-600 shadow-2xl transform -rotate-12 scale-90 opacity-60 group-hover:-translate-x-4 transition-transform duration-500 border border-white/10" />
 
                     {/* Back Card (Right) */}
-                    <div className="absolute top-4 -right-12 w-full h-full rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-2xl transform rotate-12 scale-90 opacity-60 group-hover:translate-x-4 transition-transform duration-500 border border-white/10" />
+                    <div className="absolute top-4 -right-12 w-full h-full rounded-2xl bg-linear-to-br from-cyan-500 to-blue-600 shadow-2xl transform rotate-12 scale-90 opacity-60 group-hover:translate-x-4 transition-transform duration-500 border border-white/10" />
 
                     {/* Main Center Card */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 shadow-2xl z-10 border border-white/20 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-purple-600 to-indigo-600 shadow-2xl z-10 border border-white/20 flex items-center justify-center overflow-hidden">
                         {/* Inner gradient/texture */}
                         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-size-[250%_250%] animate-shimmer" />
 
@@ -104,7 +104,7 @@ export default function DiscoveryPage() {
         {/* Section 2: Mood Mixes */}
         <div className="flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                <div className="order-2 md:order-1 group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+                <div className="order-2 md:order-1 group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
                   <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -202,13 +202,13 @@ export default function DiscoveryPage() {
                </div>
             </div>
             
-            <div className="group relative p-[1px] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+            <div className="group relative p-px rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-rose-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
+              <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-rose-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                   <BarChart3 size={120} className="text-rose-500/50" />
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black to-transparent" />
               </div>
             </div>
           </div>

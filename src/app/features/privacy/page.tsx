@@ -21,7 +21,7 @@ export default function PrivacyPage() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/0">
+            <h1 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-white/0">
               PRIVACY
             </h1>
             <p className="text-lg md:text-3xl font-light tracking-[1em] text-red-200 uppercase">
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
               </ul>
             </div>
             
-            <div className="relative h-[300px] md:h-[400px] rounded-3xl bg-gradient-to-br from-red-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden">
+            <div className="relative h-[300px] md:h-[400px] rounded-3xl bg-linear-to-br from-red-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.2),transparent_70%)]" />
               <Shield size={200} className="text-red-500/20" />
             </div>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
         {/* Open Source */}
         <div className="py-12 md:py-24 flex items-center">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div className="order-2 md:order-1 relative h-[300px] md:h-[400px] rounded-3xl bg-gradient-to-br from-gray-900/20 to-black border border-white/10 flex items-center justify-center overflow-hidden">
+            <div className="order-2 md:order-1 relative h-[300px] md:h-[400px] rounded-3xl bg-linear-to-br from-gray-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden">
                <FileKey size={150} className="text-gray-500/20" />
             </div>
 
