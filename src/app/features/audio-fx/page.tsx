@@ -72,15 +72,16 @@ export default function AudioFXPage() {
               <div className="relative h-full rounded-[1.4rem] bg-linear-to-br from-amber-900/20 to-black/30 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-transparent transition-colors">
                  <div className="flex items-end gap-3 h-48 md:h-64 px-8 w-full justify-between">
                     {[40, 70, 50, 90, 60, 80, 45, 75].map((h, i) => (
-                        <div key={i} className="flex-1 bg-amber-500 rounded-t-lg relative group/bar">
+                        <motion.div 
+                            key={i}
+                            initial={{ height: "0%" }}
+                            whileInView={{ height: `${h}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: i * 0.1, type: "spring" }}
+                            className="flex-1 bg-amber-500 rounded-t-lg relative group/bar hover:bg-amber-400 transition-colors"
+                        >
                             <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover/bar:opacity-100 transition-opacity" />
-                            <motion.div 
-                                initial={{ height: "0%" }}
-                                whileInView={{ height: `${h}%` }}
-                                transition={{ duration: 1, delay: i * 0.1, type: "spring" }}
-                                className="w-full bg-amber-500 rounded-t-lg h-full"
-                            />
-                        </div>
+                        </motion.div>
                     ))}
                  </div>
               </div>
