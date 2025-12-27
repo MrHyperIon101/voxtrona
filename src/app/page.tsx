@@ -160,6 +160,31 @@ export default function Home() {
       {/* SCROLL CONTENT - wrapped in Section for consistent spacing */}
       <Section className="relative z-20 mt-[50vh] md:mt-[30vh] lg:mt-[50vh] pb-32">
         
+        {/* MILESTONES SECTION */}
+        <div className="max-w-7xl mx-auto px-4 mb-32 md:mb-48">
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                {[
+                  { label: "Active Users", value: "20k+", icon: Globe },
+                  { label: "Downloads", value: "500k+", icon: Download },
+                  { label: "Rating", value: "4.9", icon: Activity },
+                  { label: "Songs Streamed", value: "10M+", icon: Music2 },
+                ].map((stat, i) => (
+                   <motion.div 
+                     key={i}
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: i * 0.1 }}
+                     className="p-6 md:p-8 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 flex flex-col items-center justify-center text-center group hover:border-white/20 transition-colors"
+                   >
+                      <stat.icon className="text-gray-400 mb-4 group-hover:text-blue-400 transition-colors" size={24} />
+                      <div className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter">{stat.value}</div>
+                      <div className="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest">{stat.label}</div>
+                   </motion.div>
+                ))}
+             </div>
+         </div>
+
         {/* SECTION 1: THE ENGINE */}
         <motion.div 
           style={{ y: prefersReduced ? 0 : section1Y, opacity: prefersReduced ? 1 : section1Opacity }}

@@ -7,7 +7,7 @@ import {
   Radio, Smartphone, Laptop, Zap, Lock, Cloud, HardDrive,
   Settings, Volume2, Waves, Sparkles, Globe, Users,
   PlayCircle, Search, ChevronRight, Code, Terminal, Database,
-  Sliders, Cpu, Gauge, FileAudio, Layers, Box, ArrowRight
+  Sliders, Cpu, Gauge, FileAudio, Layers, Box, ArrowRight, Layout, Languages, Clock, Heart, Palette, Moon, Mic
 } from "lucide-react";
 
 const sections = [
@@ -15,50 +15,62 @@ const sections = [
     id: "introduction",
     title: "Introduction",
     icon: BookOpenText,
-    subsections: ["What is Voxtrona?", "Key Features", "Supported Platforms"]
+    subsections: ["What is Voxtrona?", "Supported Platforms"]
   },
   {
     id: "getting-started",
     title: "Getting Started",
     icon: Download,
-    subsections: ["Installation", "First Launch", "Quick Setup"]
+    subsections: ["Installation", "First Launch"]
   },
   {
-    id: "audio-engine",
-    title: "Audio Engine",
+    id: "core-playback",
+    title: "Core Playback",
+    icon: PlayCircle,
+    subsections: ["Audio Quality", "Playback Controls", "Gapless & Crossfade"]
+  },
+  {
+    id: "audio-enhancements",
+    title: "Audio Enhancements",
+    icon: Waves,
+    subsections: ["Spatial Audio", "Equalizer & Effects", "Head Tracking"]
+  },
+  {
+    id: "lyrics",
+    title: "Lyrics",
     icon: Music2,
-    subsections: ["Bit-Perfect Playback", "Spatial Audio", "Neural EQ", "Codecs & Formats"]
+    subsections: ["Synced Lyrics", "AI Translation", "Spotify Canvas"]
   },
   {
     id: "library",
-    title: "Library Management",
+    title: "Library & Playlists",
     icon: Database,
-    subsections: ["Local Library", "Cloud Integration", "Playlists", "Search & Filter"]
+    subsections: ["Library Management", "Offline Caching"]
   },
   {
-    id: "playback",
-    title: "Playback Controls",
-    icon: PlayCircle,
-    subsections: ["Queue Management", "Playback Speed", "Gapless Playback", "Crossfade"]
+    id: "discovery",
+    title: "Home & Discovery",
+    icon: Globe,
+    subsections: ["Personalized Feed", "Charts & Trends"]
   },
   {
-    id: "privacy",
-    title: "Privacy & Security",
-    icon: Shield,
-    subsections: ["Zero Telemetry", "Data Storage", "Cloud Sync"]
+    id: "interface",
+    title: "Interface",
+    icon: Layout,
+    subsections: ["Liquid Glass UI", "Theming & Customization"]
   },
   {
-    id: "advanced",
-    title: "Advanced Settings",
-    icon: Cog,
-    subsections: ["Audio Tweaks", "Custom Scripts", "Export/Import", "Developer Mode"]
+    id: "settings",
+    title: "Settings & Accounts",
+    icon: Settings,
+    subsections: ["Integrations", "Privacy & Data"]
   },
   {
-    id: "troubleshooting",
-    title: "Troubleshooting",
-    icon: Terminal,
-    subsections: ["Common Issues", "Performance Tips", "Support"]
-  },
+    id: "localization",
+    title: "Localization",
+    icon: Languages,
+    subsections: ["Languages", "Regional Content"]
+  }
 ];
 
 const quickLinks = [
@@ -307,25 +319,25 @@ export default function DocsPage() {
             <DocSection id="introduction" icon={BookOpenText} title="Introduction">
               <DocSubsection title="What is Voxtrona?">
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Voxtrona is a modern music player designed for music enthusiasts who value high-quality audio playback and a beautiful user experience.
-                  Built with cutting-edge web technologies, Voxtrona aims to provide an immersive listening experience with an emphasis on
-                  performance, aesthetics, and user privacy.
+                  Voxtrona is a cutting-edge YouTube Music client for Android, engineered for audiophiles who demand the best.
+                  It combines the vast catalog of YouTube with a custom high-fidelity listening engine, offering features like
+                  Native Spatial Audio, Synced Lyrics, and an immersive Liquid Glass interface that feels alive.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-6">
-                  <FeatureCard icon={Zap} title="Lightning Fast" description="Optimized for instant response" />
-                  <FeatureCard icon={Waves} title="High Quality" description="Premium audio playback" />
-                  <FeatureCard icon={Lock} title="Privacy First" description="Your data stays with you" />
+                  <FeatureCard icon={Smartphone} title="Native Android" description="Built with Kotlin & Jetpack Compose" />
+                  <FeatureCard icon={Waves} title="Hi-Res Audio" description="Custom C++ Audio Engine" />
+                  <FeatureCard icon={Lock} title="Privacy Core" description="Zero Telemetry & SponsorBlock" />
                 </div>
               </DocSubsection>
 
               <DocSubsection title="Key Features" id="introduction-key-features">
                 <div className="space-y-4">
-                  <FeatureItem icon={Music2} title="High-Quality Playback" description="Superior audio quality with modern web audio APIs" />
-                  <FeatureItem icon={Headphones} title="Spatial Audio" description="Immersive 3D audio experience" />
-                  <FeatureItem icon={FileAudio} title="Multi-Format Support" description="Support for popular audio formats including MP3, FLAC, and more" />
-                  <FeatureItem icon={Globe} title="Modern Interface" description="Beautiful, intuitive design built with React and Next.js" />
-                  <FeatureItem icon={Shield} title="Privacy Focused" description="No unnecessary tracking or data collection" />
-                  <FeatureItem icon={Sparkles} title="Smooth Animations" description="Framer Motion powered UI transitions" />
+                  <FeatureItem icon={Music2} title="YouTube Music Integration" description="Stream millions of songs directly from YouTube Music with account sync." />
+                  <FeatureItem icon={Headphones} title="Native Spatial Audio" description="Immersive 3D audio via Android Spatializer API with Head Tracking support." />
+                  <FeatureItem icon={FileAudio} title="Unified Library" description="Merge local tracks, YouTube playlists, and Spotify collections in one place." />
+                  <FeatureItem icon={Palette} title="Liquid Glass Interface" description="Stunning OLED-optimized UI with dynamic blur and mesh gradients." />
+                  <FeatureItem icon={Mic} title="Synced Lyrics & AI" description="Real-time lyrics from multiple sources with AI translation capabilities." />
+                  <FeatureItem icon={Shield} title="Community Tools" description="Integrated SponsorBlock, ReturnYouTubeDislike, and background playback." />
                 </div>
               </DocSubsection>
 
@@ -348,11 +360,12 @@ export default function DocsPage() {
                       Beta Available
                     </h4>
                     <p className="text-gray-300 mb-4">
-                      Voxtrona for Android is now in Beta! You can download the latest APK directly from our website.
+                      Voxtrona is currently available for Android devices (Android 12+ recommended). 
+                      Download the latest APK to get started.
                     </p>
-                    <a href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev2/app-full-arm64-v8a-release.apk" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
+                    <a href="https://github.com/MrHyperIon101/voxtrona/releases" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
                       <Download size={18} />
-                      Download Beta V2.0.1020PB-Rev2
+                      Download Latest Beta
                     </a>
                   </div>
                 </div>
@@ -360,277 +373,221 @@ export default function DocsPage() {
 
               <DocSubsection title="First Launch" id="getting-started-first-launch">
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Once Voxtrona launches, you'll experience a clean, modern interface designed for optimal music listening.
+                  Upon first launch, Voxtrona will guide you through a quick setup process.
                 </p>
                 <div className="space-y-3 text-gray-400">
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <Globe className="text-blue-400 flex-shrink-0 mt-1" size={20} />
+                    <Lock className="text-blue-400 flex-shrink-0 mt-1" size={20} />
                     <div>
-                      <div className="font-semibold text-white mb-1">Web Interface</div>
-                      <div className="text-sm">Access Voxtrona from any modern browser</div>
+                      <div className="font-semibold text-white mb-1">Permissions</div>
+                      <div className="text-sm">Grant generic permissions for Notifications and File Access (for local library).</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <Headphones className="text-purple-400 flex-shrink-0 mt-1" size={20} />
+                    <Users className="text-purple-400 flex-shrink-0 mt-1" size={20} />
                     <div>
-                      <div className="font-semibold text-white mb-1">Audio Playback</div>
-                      <div className="text-sm">Premium quality audio using Web Audio API</div>
+                      <div className="font-semibold text-white mb-1">Account Login</div>
+                      <div className="text-sm">Log in with your Google account for YouTube Music or Spotify account for integration.</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <Sparkles className="text-green-400 flex-shrink-0 mt-1" size={20} />
+                    <Headphones className="text-green-400 flex-shrink-0 mt-1" size={20} />
                     <div>
-                      <div className="font-semibold text-white mb-1">Beautiful UI</div>
-                      <div className="text-sm">Stunning animations and modern design</div>
+                      <div className="font-semibold text-white mb-1">Face Scan (Optional)</div>
+                      <div className="text-sm">For Spatial Audio users, set up your HRTF profile using the camera wizard.</div>
                     </div>
                   </div>
-                </div>
-              </DocSubsection>
-
-              <DocSubsection title="Quick Setup" id="getting-started-quick-setup">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Voxtrona is designed to work out of the box with sensible defaults. Simply launch the app and start enjoying your music.
-                  Customize settings as needed to match your preferences and audio hardware.
-                </p>
-              </DocSubsection>
-            </DocSection>
-
-            {/* Audio Engine */}
-            <DocSection id="audio-engine" icon={Music2} title="Audio Engine">
-              <DocSubsection title="Bit-Perfect Playback" id="audio-engine-bit-perfect-playback">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Voxtrona is designed to deliver high-quality audio playback using modern web audio technologies.
-                  The audio engine prioritizes quality and performance for the best listening experience.
-                </p>
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 mb-6">
-                  <h4 className="font-bold mb-3 flex items-center gap-2">
-                    <Cpu className="text-blue-400" size={20} />
-                    Web Audio API
-                  </h4>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    Voxtrona leverages the Web Audio API to provide high-quality audio playback directly in your browser.
-                    This ensures low latency and efficient processing for a smooth listening experience.
-                  </p>
-                </div>
-              </DocSubsection>
-
-              <DocSubsection title="Spatial Audio" id="audio-engine-spatial-audio">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Experience immersive 3D audio with Voxtrona's spatial audio features (coming soon).
-                  Transform your listening experience with advanced audio positioning.
-                </p>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-                    <Layers className="text-purple-400 mb-3" size={24} />
-                    <h4 className="font-bold mb-2">3D Audio</h4>
-                    <p className="text-sm text-gray-400">Immersive soundstage for enhanced listening experience</p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-                    <Gauge className="text-blue-400 mb-3" size={24} />
-                    <h4 className="font-bold mb-2">Advanced Processing</h4>
-                    <p className="text-sm text-gray-400">Real-time audio processing for optimal quality</p>
-                  </div>
-                </div>
-              </DocSubsection>
-
-              <DocSubsection title="Neural EQ" id="audio-engine-neural-eq">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Smart equalization features to customize your audio experience (planned feature).
-                </p>
-              </DocSubsection>
-
-              <DocSubsection title="Codecs & Formats" id="audio-engine-codecs-formats">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Voxtrona aims to support a wide range of audio formats. Format support will expand as the platform develops.
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="text-left py-3 px-4 font-bold text-purple-400">Format</th>
-                        <th className="text-left py-3 px-4 font-bold text-purple-400">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-gray-300">
-                      <tr className="border-b border-white/5">
-                        <td className="py-3 px-4">MP3</td>
-                        <td className="py-3 px-4"><span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-400 text-xs">Planned</span></td>
-                      </tr>
-                      <tr className="border-b border-white/5">
-                        <td className="py-3 px-4">FLAC</td>
-                        <td className="py-3 px-4"><span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-400 text-xs">Planned</span></td>
-                      </tr>
-                      <tr className="border-b border-white/5">
-                        <td className="py-3 px-4">WAV</td>
-                        <td className="py-3 px-4"><span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-400 text-xs">Planned</span></td>
-                      </tr>
-                      <tr className="border-b border-white/5">
-                        <td className="py-3 px-4">AAC</td>
-                        <td className="py-3 px-4"><span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-400 text-xs">Planned</span></td>
-                      </tr>
-                      <tr className="border-b border-white/5">
-                        <td className="py-3 px-4">OGG</td>
-                        <td className="py-3 px-4"><span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-400 text-xs">Planned</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </DocSubsection>
             </DocSection>
 
-            {/* Library Management */}
-            <DocSection id="library" icon={Database} title="Library Management">
-              <DocSubsection title="Local Library" id="library-local-library">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Organize and manage your music collection with Voxtrona's library features (in development).
+            {/* Core Playback */}
+            <DocSection id="core-playback" icon={PlayCircle} title="Core Playback">
+              <DocSubsection title="Audio Quality" id="core-playback-audio-quality">
+                 <p className="text-gray-300 leading-relaxed mb-4">
+                  Voxtrona offers configurable audio quality settings to balance data usage and fidelity.
                 </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    { label: "Low", detail: "96kbps", color: "bg-red-500/10 text-red-400 border-red-500/20" },
+                    { label: "Medium", detail: "160kbps", color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
+                    { label: "High", detail: "320kbps", color: "bg-green-500/10 text-green-400 border-green-500/20" },
+                    { label: "Ultra", detail: "FLAC", color: "bg-purple-500/10 text-purple-400 border-purple-500/20" }
+                  ].map((q, i) => (
+                    <div key={i} className={`p-4 rounded-xl border ${q.color} text-center`}>
+                      <div className="font-bold text-lg">{q.detail}</div>
+                      <div className="text-xs opacity-70 uppercase tracking-widest">{q.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </DocSubsection>
+
+              <DocSubsection title="Playback Controls" id="core-playback-playback-controls">
                 <div className="space-y-4">
-                  <FeatureItem
-                    icon={HardDrive}
-                    title="Music Organization"
-                    description="Keep your music library organized and accessible"
-                  />
-                  <FeatureItem
-                    icon={Search}
-                    title="Search"
-                    description="Find your favorite tracks quickly"
-                  />
-                  <FeatureItem
-                    icon={Box}
-                    title="Metadata"
-                    description="View and manage track information"
-                  />
+                   <FeatureItem icon={PlayCircle} title="Background Playback" description="Listen to music while using other apps or with the screen off." />
+                   <FeatureItem icon={Box} title="Picture-in-Picture (PiP)" description="Watch music videos in a floating window while multitasking." />
+                   <FeatureItem icon={Sliders} title="Speed & Pitch" description="Adjust playback tempo and pitch independently for learning or fun." />
+                   <FeatureItem icon={Volume2} title="Normalize Volume" description="Automatically adjust volume to maintain consistent levels across tracks." />
                 </div>
               </DocSubsection>
-
-              <DocSubsection title="Cloud Integration" id="library-cloud-integration">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Future versions will support integration with popular streaming services.
-                </p>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-6 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
-                    <Radio className="text-green-400 mb-3" size={24} />
-                    <h4 className="font-bold mb-2">Spotify</h4>
-                    <p className="text-sm text-gray-400 mb-3">Planned integration</p>
-                    <span className="text-xs px-2 py-1 rounded bg-yellow-500/20 text-yellow-400">Coming Soon</span>
-                  </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-br from-red-500/10 to-pink-500/10 border border-red-500/20">
-                    <Radio className="text-red-400 mb-3" size={24} />
-                    <h4 className="font-bold mb-2">Apple Music</h4>
-                    <p className="text-sm text-gray-400 mb-3">Planned integration</p>
-                    <span className="text-xs px-2 py-1 rounded bg-yellow-500/20 text-yellow-400">Coming Soon</span>
-                  </div>
-                </div>
-              </DocSubsection>
-
-              <DocSubsection title="Playlists" id="library-playlists">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Create and manage playlists to organize your favorite music (coming soon).
-                </p>
+              
+               <DocSubsection title="Gapless & Crossfade" id="core-playback-gapless-crossfade">
+                 <div className="grid md:grid-cols-2 gap-4">
+                    <FeatureCard icon={Layers} title="Gapless Playback" description="Seamless transitions between tracks in an album, perfect for live recordings." />
+                    <FeatureCard icon={Waves} title="Smart Crossfade" description="Smoothly fade between tracks with configurable duration for a radio-like experience." />
+                 </div>
               </DocSubsection>
             </DocSection>
 
-            {/* Playback Controls */}
-            <DocSection id="playback" icon={PlayCircle} title="Playback Controls">
-              <DocSubsection title="Queue Management" id="playback-queue-management">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Control your music playback with intuitive controls and queue management (in development).
-                </p>
-              </DocSubsection>
-
-              <DocSubsection title="Playback Speed" id="playback-playback-speed">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Adjust playback speed to match your preferences (planned feature).
-                </p>
-              </DocSubsection>
-
-              <DocSubsection title="Gapless Playback" id="playback-gapless-playback">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Seamless transitions between tracks for uninterrupted listening (planned feature).
-                </p>
-              </DocSubsection>
-
-              <DocSubsection title="Crossfade" id="playback-crossfade">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Smooth transitions between tracks with customizable crossfade (planned feature).
-                </p>
-              </DocSubsection>
-            </DocSection>
-
-            {/* Privacy & Security */}
-            <DocSection id="privacy" icon={Shield} title="Privacy & Security">
-              <DocSubsection title="Zero Telemetry" id="privacy-zero-telemetry">
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 mb-4">
+            {/* Audio Enhancements */}
+            <DocSection id="audio-enhancements" icon={Waves} title="Audio Enhancements">
+              <DocSubsection title="Spatial Audio" id="audio-enhancements-spatial-audio">
+                 <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-6">
                   <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
-                    <Lock className="text-green-400" size={20} />
-                    Your Privacy is Sacred
+                    <Headphones className="text-indigo-400" size={20} />
+                    Native Spatial Audio (Android 13+)
                   </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    Voxtrona has a strict <strong>zero-telemetry policy</strong>. We don't track what you listen to,
-                    when you listen, or how you use the app. No analytics, no tracking pixels, no data harvesting.
-                    Your music library and listening habits are yours alone.
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Integration with Android's Spatializer API for system-level spatial audio processing.
+                    Supports head tracking with compatible headphones (Galaxy Buds Pro, Pixel Buds Pro, etc.).
                   </p>
-                </div>
-                <div className="space-y-3 text-gray-400">
-                  <div className="flex items-center gap-3">
-                    <ChevronRight className="text-green-400" size={16} />
-                    <span>No usage analytics or crash reporting sent to servers</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <ChevronRight className="text-green-400" size={16} />
-                    <span>All processing happens locally on your device</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <ChevronRight className="text-green-400" size={16} />
-                    <span>Optional cloud sync is end-to-end encrypted</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <ChevronRight className="text-green-400" size={16} />
-                    <span>Open-source components for transparency</span>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                     {[
+                       { name: "Dirac Live", desc: "High bass & virtualizer" },
+                       { name: "Dolby Atmos", desc: "Wide soundstage" },
+                       { name: "DTS:X Ultra", desc: "Extreme impact" }
+                     ].map((p, i) => (
+                        <div key={i} className="bg-black/20 p-3 rounded-lg border border-white/5">
+                           <div className="font-bold text-indigo-300 text-sm">{p.name}</div>
+                           <div className="text-xs text-gray-500">{p.desc}</div>
+                        </div>
+                     ))}
                   </div>
                 </div>
               </DocSubsection>
 
-              <DocSubsection title="Data Storage" id="privacy-data-storage">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  All your data is stored locally on your device in encrypted SQLite databases. Library metadata,
-                  playlists, and settings never leave your device unless you explicitly enable cloud sync.
-                </p>
-              </DocSubsection>
-
-              <DocSubsection title="Cloud Sync" id="privacy-cloud-sync">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  When enabled, cloud sync uses end-to-end encryption (AES-256) with keys derived from your password.
-                  Even we can't read your synced data. You can also self-host the sync server using our open-source backend.
-                </p>
+              <DocSubsection title="Equalizer & Effects" id="audio-enhancements-equalizer-effects">
+                 <div className="space-y-4">
+                    <FeatureItem icon={Sliders} title="Multi-Band EQ" description="5-band equalizer with custom presets." />
+                    <FeatureItem icon={Volume2} title="Bass Boost" description="Adjustable bass enhancement (0-1000 strength)." />
+                    <FeatureItem icon={Waves} title="Virtualizer" description="Surround sound simulation (0-1000 strength)." />
+                 </div>
               </DocSubsection>
             </DocSection>
 
-            {/* Advanced Settings */}
-            <DocSection id="advanced" icon={Cog} title="Advanced Settings">
-              <DocSubsection title="Audio Tweaks" id="advanced-audio-tweaks">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Advanced audio settings will be available to customize your listening experience (in development).
-                </p>
+            {/* Lyrics */}
+             <DocSection id="lyrics" icon={Music2} title="Lyrics">
+              <DocSubsection title="Synced Lyrics" id="lyrics-synced-lyrics">
+                <p className="text-gray-300 mb-4">Real-time time-synced lyrics from multiple providers:</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                   {["SimpMusic", "LRCLIB", "YouTube", "Spotify"].map(p => (
+                      <span key={p} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">{p}</span>
+                   ))}
+                </div>
+                <FeatureItem icon={Sparkles} title="AI Translation" description="Translate lyrics on-the-fly using Gemini or OpenAI APIs." />
+              </DocSubsection>
+              
+               <DocSubsection title="Spotify Canvas" id="lyrics-spotify-canvas">
+                   <div className="flex items-center gap-4 p-4 rounded-xl bg-green-500/5 border border-green-500/10">
+                      <div className="p-3 bg-green-500/20 rounded-lg text-green-400">
+                         <FileAudio size={24} />
+                      </div>
+                      <div>
+                         <h4 className="font-bold text-white">Animated Backgrounds</h4>
+                         <p className="text-sm text-gray-400">
+                            Display Spotify Canvas looping videos for supported tracks. Requires Spotify account integration.
+                         </p>
+                      </div>
+                   </div>
+              </DocSubsection>
+            </DocSection>
+
+
+            {/* Library & Playlists */}
+            <DocSection id="library" icon={Database} title="Library & Playlists">
+              <DocSubsection title="Library Management" id="library-library-management">
+                <div className="grid md:grid-cols-2 gap-4">
+                   <FeatureCard icon={HardDrive} title="Local Playlists" description="Create and manage offline playlists completely on-device." />
+                   <FeatureCard icon={Cloud} title="YouTube Sync" description="Access and edit your YouTube Music online playlists." />
+                   <FeatureCard icon={Clock} title="History" description="Recently played tracks and listening history." />
+                   <FeatureCard icon={Heart} title="Liked Songs" description="Synced favorites collection from YouTube Music." />
+                </div>
               </DocSubsection>
 
-              <DocSubsection title="Custom Scripts" id="advanced-custom-scripts">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Future versions may include scripting capabilities for advanced automation (planned feature).
-                </p>
+              <DocSubsection title="Offline Caching" id="library-offline-caching">
+                 <p className="text-gray-300 mb-4">
+                    Download songs for offline playback with smart cache management.
+                 </p>
+                 <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                    <div className="flex justify-between text-sm mb-2">
+                       <span className="text-gray-400">Cache Size</span>
+                       <span className="text-purple-400 font-mono">100MB - Unlimited</span>
+                    </div>
+                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                       <div className="h-full w-2/3 bg-gradient-to-r from-purple-500 to-blue-500"></div>
+                    </div>
+                 </div>
               </DocSubsection>
+            </DocSection>
 
-              <DocSubsection title="Export/Import" id="advanced-export-import">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Export and import your settings and preferences (planned feature).
-                </p>
-              </DocSubsection>
+            {/* Discovery */}
+            <DocSection id="discovery" icon={Globe} title="Home & Discovery">
+               <DocSubsection title="Personalized Feed" id="discovery-personalized-feed">
+                   <FeatureItem icon={Sparkles} title="Quick Picks" description="Algorithmically generated recommendations based on your listening habits." />
+                   <FeatureItem icon={Radio} title="Mood Mixes" description="Curated stations for Focus, Workout, Sleep, Party, and more." />
+               </DocSubsection>
+               <DocSubsection title="Charts & Trends" id="discovery-charts-trends">
+                   <p className="text-gray-300">
+                      Explore Top 100 global charts and viral hits from over available 60+ countries.
+                   </p>
+               </DocSubsection>
+            </DocSection>
 
-              <DocSubsection title="Developer Mode" id="advanced-developer-mode">
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Developer tools and debugging features for advanced users (planned feature).
-                </p>
-              </DocSubsection>
+            {/* Interface */}
+             <DocSection id="interface" icon={Layout} title="Interface">
+               <DocSubsection title="Liquid Glass UI" id="interface-liquid-glass-ui">
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                     <FeatureCard icon={Sparkles} title="Blur Effects" description="Real-time blur on player backgrounds and navigation bars." />
+                     <FeatureCard icon={Palette} title="Mesh Gradients" description="Dynamic background gradients generated from album artwork." />
+                  </div>
+               </DocSubsection>
+               <DocSubsection title="Theming" id="interface-theming">
+                  <FeatureItem icon={Moon} title="OLED Dark Mode" description="True pitch-black theme (#000000) for AMOLED battery savings." />
+                  <FeatureItem icon={Smartphone} title="Mini Player" description="Swipe gestures for quick control (Next/Prev/Dismiss)." />
+               </DocSubsection>
+            </DocSection>
+
+            {/* Settings */}
+             <DocSection id="settings" icon={Settings} title="Settings & Accounts">
+               <DocSubsection title="Integrations" id="settings-integrations">
+                  <div className="space-y-4">
+                     <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/5">
+                        <h4 className="font-bold text-red-400 mb-1">YouTube Music</h4>
+                        <p className="text-sm text-gray-400">Full account login via cookies. Syncs library and recommendations.</p>
+                     </div>
+                     <div className="p-4 rounded-xl border border-green-500/20 bg-green-500/5">
+                        <h4 className="font-bold text-green-400 mb-1">Spotify</h4>
+                        <p className="text-sm text-gray-400">Login for Lyrics, Canvas, and metadata access.</p>
+                     </div>
+                  </div>
+               </DocSubsection>
+               <DocSubsection title="Privacy & Data" id="settings-privacy-data">
+                   <FeatureItem icon={Shield} title="SponsorBlock" description="Automatically skip non-music segments like intros, outros, and promotions." />
+                   <FeatureItem icon={Lock} title="Proxy Support" description="Configure HTTP/SOCKS5 proxies for region bypassing." />
+                   <FeatureItem icon={HardDrive} title="Backup" description="Export downloads and settings to preserve data across updates." />
+               </DocSubsection>
+            </DocSection>
+
+             {/* Localization */}
+            <DocSection id="localization" icon={Languages} title="Localization">
+               <DocSubsection title="Global Support" id="localization-global-support">
+                   <div className="flex flex-wrap gap-3">
+                      {["English", "日本語", "한국어", "中文", "Español", "Français", "Deutsch", "Italino", "Русский", "Polski", "Português", "Türkçe", "Tiếng Việt", "Indonesian", "Ukrainian", "Arabic", "Hindi"].map(l => (
+                         <span key={l} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-sm">{l}</span>
+                      ))}
+                      <span className="px-3 py-1 text-gray-500 italic text-sm">+ many more</span>
+                   </div>
+               </DocSubsection>
             </DocSection>
 
             {/* Troubleshooting */}

@@ -29,18 +29,58 @@ It features a highly immersive, sci-fi inspired interface designed to "wow" user
 
 ## ✨ Features
 
-- **Free Streaming**: Play music from YouTube Music or YouTube for free, without ads and in the background.
-- **Lightning Fast**: Browse Home, Charts, Podcasts, and Moods & Genres with optimized data fetching.
-- **Unified Search**: Search across YouTube and YouTube Music seamlessly.
-- **Smart Playlists**: Analyze listening habits and create custom smart playlists.
-- **Visual Experience**: **Spotify Canvas** support and 1080p video playback with subtitles.
-- **AI Integration**: AI-based song suggestions and notifications for new artist releases.
-- **Offline Ready**: Full offline caching and playback support.
-- **Synced Lyrics**: Lyrics from LRCLIB, Spotify (login required), YouTube Transcript, and AI Translation (BETA).
-- **Personalization**: Multi-account support and extensive customization.
-- **Community Tools**: Built-in **SponsorBlock** & **ReturnYouTubeDislike** integration.
-- **Platform Integration**: Sleep Timer and **Android Auto** support.
-- **Spatial Audio**: Powered by a custom engine developed in partnership with **Dirac**, **Dolby**, and **DTS:X** for a studio-grade 3D experience.
+### 🎧 Core Playback
+
+- **Lossless Streaming**: High-fidelity audio streaming up to FLAC quality.
+- **Voxtron Engine**: Custom audio processing pipeline for gapless playback and smart crossfade.
+- **Background Play**: Seamless background playback with Picture-in-Picture (PiP) support.
+- **Speed & Pitch**: Real-time control over playback speed and pitch.
+
+### 🎛️ Audio FX
+
+- **Spatial Audio**: Native spatial audio support (Android 13+) with head tracking.
+- **Dirac & Dolby**: Integrated profiles for Dirac Live and Dolby Atmos.
+- **Professional EQ**: Multi-band equalizer with bass boost, virtualizer, and reverb.
+- **Liquid EQ**: Visual audio spectrum analyzer.
+
+### 🎤 Lyrics & Canvas
+
+- **Synced Lyrics**: Real-time time-synced lyrics from multiple providers (LRCLIB, Musixmatch).
+- **AI Translation**: On-the-fly lyric translation powered by Gemini/OpenAI.
+- **Spotify Canvas**: High-quality looping video backgrounds for supported tracks.
+- **Fullscreen Mode**: immersive blur mode for pure lyric enjoyment.
+
+### 📚 Library Management
+
+- **Unified Library**: Merge local tracks, YouTube playlists, and Spotify collections.
+- **Offline Mode**: Smart caching and manual downloads for offline listening.
+- **Backup & Sync**: Cross-device playlist and setting synchronization.
+
+### 🧭 Discovery
+
+- **Personalized Feeds**: "For You" mixes, "Forgotten Favorites", and daily curated playlists.
+- **Mood Mixes**: Activity-based stations (Focus, Workout, Sleep, Party).
+- **Global Charts**: Top 100 charts from over 100 countries and viral trends.
+- **3D Card Interface**: Premium 3D interaction for browsing mixes.
+
+### 🎨 Interface (Liquid Glass)
+
+- **Liquid Glass UI**: Stunning blur effects, mesh gradients, and smooth animations.
+- **OLED Mode**: True pitch-black theme for AMOLED displays.
+- **Customization**: Dynamic album art gradients and layout density controls.
+- **Mini Player**: Gesture-based swipe controls.
+
+### ⚙️ Advanced Settings
+
+- **Privacy Core**: Built-in proxy support (HTTP/SOCKS5) and Incognito mode.
+- **Content Filtering**: **SponsorBlock** integration to skip non-music segments.
+- **Account Sync**: Seamless integration with YouTube Music and Spotify accounts.
+- **Developer Tools**: Advanced debug logs and performance metrics.
+
+### 🌍 Global
+
+- **Localization**: Fully translated into 26+ languages.
+- **Regional Content**: unlock region-specific charts and recommendations.
 
 ## 🛠️ Tech Stack
 

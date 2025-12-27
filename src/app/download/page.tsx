@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap,
   CheckCircle2, AlertCircle, ExternalLink, Star, Users,
-  TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers
+  TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers, ArrowRight
 } from "lucide-react";
 
 export default function DownloadPage() {
@@ -133,7 +133,7 @@ export default function DownloadPage() {
                 </p>
 
                 {/* Features List */}
-                <div className="mb-8 space-y-3">
+                <div className="mb-10 space-y-3">
                   <div className="flex items-start gap-2 text-sm text-gray-300">
                     <Sparkles size={16} className="text-green-400 mt-0.5 shrink-0" />
                     <span>Best in class <b>Spatial Audio</b> co-engineered by Dolby, Dirac & DTS:X</span>
@@ -152,32 +152,58 @@ export default function DownloadPage() {
                   </div>
                 </div>
 
-                {/* Download Actions */}
-                <div className="space-y-4">
-                  {/* Beta Button (Active) */}
-                  {/* Beta Button (Active) */}
-                  {/* Beta Button (Active) */}
-                  <a 
-                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev2/app-full-arm64-v8a-release.apk"
-                    className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-white text-black font-bold text-lg md:text-xl overflow-hidden block text-center hover:scale-[1.02] transition-transform active:scale-[0.98]"
-                  >
-                    <span className="relative z-10 flex items-center justify-center gap-3">
-                      <Download size={24} />
-                      Download Beta V2.0.1020PB-Rev2
-                    </span>
-                  </a>
-
-                  {/* Stable Info (Disabled) */}
-                  <div className="relative w-full py-4 rounded-2xl bg-gray-800/50 border border-white/5 text-gray-400 font-medium text-center">
-                    <div className="flex items-center justify-center gap-2 text-sm">
-                      <Star size={16} className="text-yellow-500" />
-                      <span>Stable Release coming <b>Jan 1st, 2026</b></span>
+                {/* Download Actions - Official & Beta */}
+                <div className="grid grid-cols-1 gap-4 mb-8">
+                  
+                  {/* Official (Disabled/Future) */}
+                  <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-1">Official</h3>
+                      <p className="text-sm text-gray-400">Stable Release • Coming Jan 1st</p>
+                    </div>
+                    {/* Arrow Button (Static/Disabled look) */}
+                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
+                       <ArrowRight size={24} className="text-white/20" />
                     </div>
                   </div>
+
+                  {/* Beta (Active) */}
+                  <a 
+                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev3/app-full-arm64-v8a-release.apk"
+                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                  >
+                    <div className="relative z-10">
+                      <h3 className="text-2xl font-bold text-white mb-1">Beta</h3>
+                      <p className="text-sm text-green-400 font-bold">Latest Build • v2.1.1020Rev3</p>
+                    </div>
+
+                    {/* Animated Arrow Button */}
+                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
+                        <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                        <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                    </div>
+                  </a>
+
                 </div>
 
-                <div className="mt-4 text-center text-sm text-gray-500 font-mono">
-                  V2.0.1020PB-Rev2 • Latest
+                {/* Version Metadata */}
+                <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs font-mono text-gray-500">
+                  <div className="flex gap-4">
+                     <div>
+                       <span className="block text-gray-600 mb-1">VERSION</span>
+                       <span className="text-gray-400">v2.1.1020Rev3</span>
+                     </div>
+                     <div>
+                       <span className="block text-gray-600 mb-1">SIZE</span>
+                       <span className="text-gray-400">44.6 MB</span>
+                     </div>
+                  </div>
+                  <div className="flex gap-4">
+                      <div>
+                       <span className="block text-gray-600 mb-1">DATE</span>
+                       <span className="text-gray-400">Dec 28, 2025</span>
+                     </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,7 +219,7 @@ export default function DownloadPage() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent opacity-100 transition-opacity duration-500" />
 
-            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden">
+            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden flex flex-col">
               {/* Background Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 transition-colors duration-500" />
 
@@ -201,7 +227,7 @@ export default function DownloadPage() {
                 <Monitor className="w-32 h-32 md:w-[240px] md:h-[240px]" />
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center">
                     <Monitor size={32} className="text-blue-400" />
@@ -218,7 +244,7 @@ export default function DownloadPage() {
                 </p>
 
                 {/* Features List */}
-                <div className="mb-8 space-y-3">
+                <div className="mb-10 space-y-3">
                   <div className="flex items-center gap-2 text-sm text-gray-300">
                     <AlertCircle size={16} className="text-yellow-400" />
                     <span>Advanced audio controls</span>
@@ -233,16 +259,22 @@ export default function DownloadPage() {
                   </div>
                 </div>
 
-                <button disabled className="group/btn relative w-full py-5 md:py-6 rounded-2xl bg-gray-800 text-gray-400 font-bold text-lg md:text-xl overflow-hidden cursor-not-allowed">
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    <Package size={24} />
-                    Coming Q2 2026
-                  </span>
-                </button>
-
-                <div className="mt-4 text-center text-sm text-gray-500 font-mono">
-                  Pre-Alpha Build
+                {/* Download Actions placeholder */}
+                <div className="mt-auto">
+                    <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
+                        <div>
+                        <h3 className="text-2xl font-bold text-white mb-1">Official</h3>
+                        <p className="text-sm text-gray-400">Coming Q2 2026</p>
+                        </div>
+                        <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
+                          <Package size={24} className="text-white/20" />
+                        </div>
+                    </div>
                 </div>
+                
+                 {/* Version Metadata Spacer */}
+                 <div className="h-6"></div>
+
               </div>
             </div>
           </motion.div>
