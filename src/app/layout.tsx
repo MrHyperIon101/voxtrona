@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import BackgroundBeams from "@/components/BackgroundBeams";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
+import Preloader from "@/components/Preloader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,6 +111,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Analytics />
+        <Preloader />
       </body>
     </html>
   );
