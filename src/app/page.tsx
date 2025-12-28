@@ -103,7 +103,7 @@ export default function Home() {
               </p>
 
               <p className="mt-4 md:mt-6 text-sm md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                Hear your library like the first time. Lossless wireless, neural EQ, and spatial upmixing—beautifully packaged for everyday listening.
+                Studio clarity meets intelligent processing - adapting perfectly to you.
               </p>
 
               <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3">
@@ -148,12 +148,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Trust row */}
-              <div className="mt-6 md:mt-8 flex items-center justify-center md:justify-start gap-6 text-xs text-gray-400">
-                <span className="opacity-80">No tracking</span>
-                <span className="opacity-80">Offline-first</span>
-                <span className="opacity-80">Open formats</span>
-              </div>
             </div>
 
             {/* Micro demo card */}
@@ -192,90 +186,112 @@ export default function Home() {
              </div>
          </div>
 
-        {/* SECTION 1: THE ENGINE */}
+        {/* SECTION 1: THE ENGINE - NEXT LEVEL UPGRADE */}
         <motion.div 
           style={{ y: prefersReduced ? 0 : section1Y, opacity: prefersReduced ? 1 : section1Opacity }}
           className="mx-auto mb-32 md:mb-64"
         >
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white/90">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Text Content */}
+            <div className="space-y-8 relative z-10">
+              <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white/90">
                 PURE <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 to-purple-500">ENERGY</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-x bg-[size:200%_auto]">ENERGY</span>
               </h2>
-              <p className="text-xl md:text-2xl text-gray-400 leading-relaxed">
-                Our proprietary 64-bit audio engine processes sound with surgical precision. 
-                Now featuring lossless wireless transmission for studio-quality audio, completely untethered.
+              <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light">
+                Our proprietary <span className="text-blue-400 font-bold">64-bit audio engine</span> processes sound with surgical precision. 
+                Experience a soundstage so wide, it feels infinite. Completely untethered.
               </p>
-              <div className="grid grid-cols-2 gap-4 md:gap-6">
-                <div className="p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
-                  <Activity className="text-blue-400 mb-3 md:mb-4" size={28} />
-                  <div className="text-xl md:text-3xl font-bold">0.01<span className="text-xs md:text-sm text-gray-500">ms</span></div>
-                  <div className="text-xs md:text-sm text-gray-400 mt-1">Latency</div>
-                </div>
-                <div className="p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 md:backdrop-blur-sm">
-                  <Radio className="text-purple-400 mb-3 md:mb-4" size={28} />
-                  <div className="text-xl md:text-3xl font-bold">Lossless</div>
-                  <div className="text-xs md:text-sm text-gray-400 mt-1">Wireless Audio</div>
-                </div>
+              
+              {/* Feature Tags - Minimalist */}
+              <div className="flex flex-wrap gap-3">
+                 <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-gray-300">
+                   Neural Processing
+                 </div>
+                 <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-gray-300">
+                   Real-time Upscaling
+                 </div>
               </div>
             </div>
             
-            {/* Abstract Visual */}
-            <div className="hidden md:block relative h-[600px] w-full rounded-[3rem] border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-purple-500/10" />
+            {/* Right Column: Pure Organic Energy Visual */}
+            <div className="relative h-[500px] md:h-[600px] w-full rounded-[3rem] border border-white/10 bg-black overflow-hidden flex items-center justify-center">
+              
+              {/* Interactive Background */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-blue-900/20 via-black to-black" />
 
-              {/* Wireless Energy Animation - Desktop Only */}
-              <div className="relative flex items-center justify-center w-full h-full">
-                {/* Expanding Ripples */}
-                {[0, 1, 2, 3].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute rounded-full border border-white/20 w-[50px] h-[50px] will-change-transform"
-                    initial={{ scale: 1, opacity: 0.8 }}
-                    animate={{
-                      scale: 16,
-                      opacity: 0,
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      delay: i * 1,
-                      ease: "easeOut"
-                    }}
-                  />
-                ))}
+              {/* LIQUID ENERGY CORE */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                 {/* Blob 1: Blue - Calm movement */}
+                 <motion.div 
+                   animate={{ 
+                     scale: [1, 1.1, 1],
+                     x: [-10, 10, -10],
+                     y: [-10, 10, -10],
+                   }}
+                   transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                   className="absolute w-48 h-48 md:w-96 md:h-96 bg-blue-600 rounded-full blur-[80px] md:blur-[100px] opacity-50 mix-blend-screen"
+                 />
+                 
+                 {/* Blob 2: Purple - Calm counter movement */}
+                 <motion.div 
+                   animate={{ 
+                     scale: [1.1, 1, 1.1],
+                     x: [10, -10, 10],
+                     y: [10, -10, 10],
+                   }}
+                   transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+                   className="absolute w-48 h-48 md:w-80 md:h-80 bg-purple-600 rounded-full blur-[60px] md:blur-[80px] opacity-50 mix-blend-screen"
+                 />
 
-                {/* Rotating Dashed Ring */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  className="absolute w-64 h-64 rounded-full border border-white/10 border-dashed"
-                />
+                 {/* Blob 3: Core White Heat - Subtle */}
+                 <motion.div 
+                   animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.4, 0.3] }}
+                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                   className="absolute w-24 h-24 md:w-32 md:h-32 bg-white rounded-full blur-[40px] md:blur-[50px] opacity-30 mix-blend-overlay"
+                 />
 
-                {/* Inner Pulsing Core */}
-                <motion.div
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"
-                />
+                 {/* Central Physical Element (The "Source") */}
+                 <div className="relative z-10 w-28 h-28 md:w-40 md:h-40 bg-black/50 backdrop-blur-3xl rounded-full border border-white/20 shadow-[0_0_40px_rgba(59,130,246,0.2)] flex items-center justify-center group">
+                    <div className="absolute inset-0 rounded-full bg-linear-to-br from-blue-500/10 to-purple-500/10" />
+                    <Activity size={36} className="text-white relative z-20 md:w-12 md:h-12 group-hover:scale-110 transition-transform duration-500" />
+                    
+                    {/* Orbiting Particle - Slower */}
+                    <div className="absolute inset-0 animate-[spin_8s_linear_infinite]">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_#3b82f6]" />
+                    </div>
+                 </div>
 
-                {/* Center Point */}
-                <div className="relative z-10 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,0.8)] animate-pulse" />
-              </div>
+                 {/* Floating Elegant Stats - Pushed to Corners */}
+                 {/* Stat 1: Latency (Bottom Left) */}
+                 <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="absolute left-6 bottom-6 md:left-20 md:bottom-1/3 flex items-center gap-4 py-2 px-4 rounded-full bg-black/20 backdrop-blur-md md:bg-transparent md:p-0"
+                 >
+                    <div className="text-right">
+                       <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter">0.01ms</div>
+                       <div className="text-[10px] md:text-xs text-blue-400 font-mono tracking-widest uppercase">Ultra Low Latency</div>
+                    </div>
+                    {/* Line only on Desktop */}
+                    <div className="hidden md:block w-12 h-px bg-linear-to-r from-blue-500 to-transparent" />
+                 </motion.div>
 
-              <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10">
-                <div className="flex items-center gap-4">
-                  <div className="w-2 h-12 bg-green-500 rounded-full animate-pulse" />
-                  <div>
-                    <div className="text-xs text-gray-400 uppercase tracking-wider">System Status</div>
-                    <div className="font-mono text-green-400">PROCESSING AUDIO STREAM</div>
-                  </div>
-                </div>
+                 {/* Stat 2: Lossless (Top Right) */}
+                 <motion.div 
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="absolute right-6 top-6 md:right-20 md:top-1/3 flex items-center gap-4 py-2 px-4 rounded-full bg-black/20 backdrop-blur-md md:bg-transparent md:p-0"
+                 >
+                    {/* Line only on Desktop */}
+                    <div className="hidden md:block w-12 h-px bg-linear-to-l from-purple-500 to-transparent" />
+                    <div className="text-left">
+                       <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter">LOSSLESS</div>
+                       <div className="text-[10px] md:text-xs text-purple-400 font-mono tracking-widest uppercase">Bit-Perfect Audio</div>
+                    </div>
+                 </motion.div>
               </div>
             </div>
           </div>

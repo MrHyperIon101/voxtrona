@@ -2,52 +2,60 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AudioWaveform, Zap, Globe, Headphones, Disc } from "lucide-react";
-
-const words = [
-  "INITIALIZING SPATIAL ENGINE",
-  "MAPPING 7.1.4 CHANNELS",
-  "CALIBRATING HRTF PROFILE",
-  "SYNCHRONIZING AUDIO OBJECTS",
-  "ENTERING VOXTRONA REALITY"
-];
+import { AudioWaveform } from "lucide-react";
 
 export default function Preloader() {
-  const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    
+    // Store timer ID in ref to ensure it's accessible in cleanup
+    const timerRef = { current: null as NodeJS.Timeout | null };
 
-    const totalDuration = 2500;
-    const intervalTime = totalDuration / 100;
+    // Play audio on mount with fade in
+    if (audioRef.current) {
+      audioRef.current.volume = 0;
+      audioRef.current.play().catch(e => console.log("Audio play failed (autoplay policy):", e));
+      
+      // Fade in (faster)
+      const fadeIn = setInterval(() => {
+        if (audioRef.current && audioRef.current.volume < 0.5) {
+          audioRef.current.volume = Math.min(0.5, audioRef.current.volume + 0.1);
+        } else {
+          clearInterval(fadeIn);
+        }
+      }, 100);
+    }
 
-    const progressTimer = setInterval(() => {
+    // Simulate loading progress (Faster for LCP < 2.5s)
+    timerRef.current = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(progressTimer);
+          if (timerRef.current) clearInterval(timerRef.current);
+          
+          // Fade out audio quickly before unmounting
+          const fadeOut = setInterval(() => {
+            if (audioRef.current && audioRef.current.volume > 0) {
+              audioRef.current.volume = Math.max(0, audioRef.current.volume - 0.1);
+            } else {
+              clearInterval(fadeOut);
+              setIsLoading(false);
+              document.body.style.overflow = "auto";
+              window.scrollTo(0, 0);
+            }
+          }, 50);
+          
           return 100;
         }
-        return prev + 1;
+        return prev + 2;
       });
-    }, intervalTime);
-
-    const wordTimer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 500);
-
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-      document.body.style.overflow = "auto";
-      window.scrollTo(0, 0);
-    }, 3000);
+    }, 30);
 
     return () => {
-      clearInterval(progressTimer);
-      clearInterval(wordTimer);
-      clearTimeout(timeout);
-      document.body.style.overflow = "auto";
+      if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []);
 
@@ -58,111 +66,134 @@ export default function Preloader() {
             initial={{ opacity: 1 }}
             exit={{ 
                 opacity: 0,
-                scale: 2, 
+                scale: 1.2, 
                 filter: "blur(20px)",
                 transition: { duration: 0.8, ease: "easeInOut" } 
             }}
-            className="fixed inset-0 z-9999 flex items-center justify-center bg-black perspective-[1000px]"
+            className="fixed inset-0 z-9999 flex items-center justify-center bg-black overflow-hidden"
         >
-            {/* Deep Space Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-blue-900/20 via-black to-black" />
-            
-            {/* Floating Audio Particles (Simulating Audio Objects) */}
-            {[...Array(6)].map((_, i) => (
-                <motion.div
-                    key={i}
-                    animate={{
-                        x: [Math.random() * 400 - 200, Math.random() * 400 - 200],
-                        y: [Math.random() * 400 - 200, Math.random() * 400 - 200],
-                        scale: [0, 1, 0],
-                        opacity: [0, 0.8, 0]
-                    }}
-                    transition={{
-                        duration: 2 + Math.random() * 2,
-                        repeat: Infinity,
-                        repeatType: "mirror",
-                        delay: i * 0.3
-                    }}
-                    className="absolute w-2 h-2 rounded-full bg-blue-400/50 shadow-[0_0_15px_rgba(96,165,250,0.8)] filter blur-[1px]"
-                />
-            ))}
+            {/* Cheap Static Gradient for Mobile (No Animation/Blur cost) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.15)_0%,transparent_70%)] md:hidden" />
 
-            <div className="relative z-10 flex flex-col items-center justify-center">
+            {/* Heavy Animated Glows - Desktop Only */}
+            <motion.div
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.4, 0.6, 0.4],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="hidden md:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/40 rounded-full blur-[150px]"
+            />
+            <motion.div
+              animate={{
+                scale: [1, 1.4, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="hidden md:block absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[120px]"
+            />
+
+            {/* Main Content Container - Using responsive sizing instead of scale to fix layout issues */}
+            <div className="relative z-10 flex flex-col items-center justify-center gap-8 md:gap-16 origin-center">
                 
-                {/* 3D Spatial Core Visualization */}
-                <div className="relative w-64 h-64 flex items-center justify-center mb-16 perspective-[1000px] transform-style-3d">
-                    
-                    {/* Inner Core (Listener) */}
-                    <motion.div 
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        className="relative z-20 w-16 h-16 rounded-full bg-white shadow-[0_0_50px_rgba(255,255,255,0.8)] flex items-center justify-center"
-                    >
-                         <Headphones size={24} className="text-black fill-black" />
-                    </motion.div>
+                {/* Dolby-Style 2-Phase Spatial Transition */}
+                <div className="relative w-[220px] h-[220px] md:w-96 md:h-96 flex items-center justify-center perspective-[1000px] transform-style-3d">
+                  
+                  {/* Central Head/Listener (Persistent) */}
+                  <motion.div 
+                    className="relative z-20 w-20 h-20 md:w-32 md:h-32 flex items-center justify-center"
+                    animate={{ scale: [0.8, 1], opacity: [0, 1] }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                  >
+                     {/* Circular Progress Indicator */}
+                     <svg className="absolute inset-0 w-full h-full -rotate-90 z-20" viewBox="0 0 128 128">
+                       {/* Track */}
+                       <circle 
+                         cx="64" cy="64" r="60" 
+                         fill="none" 
+                         stroke="rgba(255,255,255,0.1)" 
+                         strokeWidth="4" 
+                       />
+                       {/* Progress */}
+                       <motion.circle 
+                         cx="64" cy="64" r="60" 
+                         fill="none" 
+                         stroke="url(#progress-gradient)" 
+                         strokeWidth="4"
+                         strokeLinecap="round"
+                         initial={{ pathLength: 0 }}
+                         animate={{ pathLength: progress / 100 }}
+                         transition={{ duration: 0.1, ease: "linear" }}
+                       />
+                       <defs>
+                         <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                           <stop offset="0%" stopColor="#3b82f6" />
+                           <stop offset="50%" stopColor="#a855f7" />
+                           <stop offset="100%" stopColor="#3b82f6" />
+                         </linearGradient>
+                       </defs>
+                     </svg>
 
-                    {/* Ring 1 - Fast Rotation */}
-                    <motion.div 
-                        animate={{ rotateX: 60, rotateZ: 360 }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="absolute w-32 h-32 rounded-full border-2 border-blue-500/30 border-t-white/80 shadow-[0_0_30px_rgba(59,130,246,0.3)]"
-                    />
+                     {/* Head Model Proxy (Logo) */}
+                     <div className="relative z-10 p-4 md:p-5 rounded-full bg-linear-to-b from-gray-800 to-black border border-white/10 md:shadow-[0_0_30px_rgba(0,0,0,0.8)] shadow-none">
+                       <img src="/vox.svg" alt="Voxtrona Logo" className="w-10 h-10 md:w-14 md:h-14 object-contain opacity-90" />
+                     </div>
+                     {/* Inner Glow - Simpler on mobile */}
+                     <div className="absolute inset-0 rounded-full bg-white/5 md:blur-xl blur-md" />
+                  </motion.div>
 
-                    {/* Ring 2 - Reverse Rotation */}
-                    <motion.div 
-                        animate={{ rotateY: 60, rotateZ: -360 }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                        className="absolute w-48 h-48 rounded-full border border-purple-500/30 border-b-purple-400/80 shadow-[0_0_30px_rgba(168,85,247,0.3)]"
-                    />
-
-                    {/* Ring 3 - Slow Orbital */}
-                    <motion.div 
-                        animate={{ rotateX: -45, rotateY: 45, rotateZ: 360 }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                        className="absolute w-64 h-64 rounded-full border border-white/5 border-l-white/40"
-                    />
-                    
-                    {/* Expanding Wave Pulse */}
-                     <motion.div 
-                        animate={{ scale: [1, 2.5], opacity: [0.5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
-                        className="absolute inset-0 rounded-full border border-white/20"
-                    />
+                  {/* PHASE 1: Speakers Projecting Sound (Persistent) */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center transform-style-3d [--radius:100px] md:[--radius:160px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                  >
+                     {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
+                       <div 
+                         key={`speaker-${i}`}
+                         className="absolute top-1/2 left-1/2 w-48 h-1" // Long narrow container for waves
+                         style={{ 
+                           transform: `translate(-50%, -50%) rotate(${deg}deg) translateX(var(--radius))` // Position radially using CSS var
+                         }}
+                       >
+                          {/* Speaker Emitter Dot */}
+                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_10px_white]" />
+                          
+                          {/* Sound Waves Moving Towards Center */}
+                          {[1, 2, 3].map((wave, j) => (
+                             <motion.div
+                               key={`wave-${i}-${j}`}
+                               className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-12 border-l-2 border-white/30 rounded-l-full"
+                               initial={{ x: 0, opacity: 0, scale: 0.5 }}
+                               animate={{ x: -120, opacity: [0, 1, 0], scale: 1.5 }} // Move inward
+                               transition={{ 
+                                 duration: 2, 
+                                 repeat: Infinity, 
+                                 ease: "linear",
+                                 delay: j * 0.4 + (i * 0.1) 
+                               }}
+                             />
+                          ))}
+                       </div>
+                     ))}
+                  </motion.div>
                 </div>
 
-                {/* Text Scrambler */}
-                <div className="h-8 mb-6 overflow-hidden flex flex-col items-center justify-center w-[400px]">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={index}
-                            initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
-                            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                            exit={{ y: -20, opacity: 0, filter: "blur(5px)" }}
-                            className="text-sm md:text-base font-bold text-center text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-white to-purple-400 tracking-[0.3em] font-mono"
-                        >
-                            {words[index]}
-                        </motion.div>
-                    </AnimatePresence>
+                {/* Text Section */}
+                <div className="flex flex-col items-center gap-2">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-sm font-medium text-gray-400 font-mono"
+                  >
+                    LOADING AUDIO ENGINE <span className="text-purple-400 ml-2">{progress}%</span>
+                  </motion.div>
                 </div>
 
-                {/* Liquid Loading Bar */}
-                <div className="w-64 h-1.5 bg-white/10 rounded-full overflow-hidden relative">
-                    <motion.div 
-                        className="absolute inset-y-0 left-0 bg-linear-to-r from-blue-500 via-white to-purple-500"
-                        style={{ width: `${progress}%` }}
-                    />
-                    <motion.div 
-                        animate={{ x: ["-100%", "100%"] }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-0 bg-linear-to-r from-transparent via-white/50 to-transparent w-full opacity-50"
-                    />
-                </div>
-                
-                <div className="mt-2 font-mono text-xs text-white/30 flex justify-between w-64">
-                    <span>CH_L: ACTIVE</span>
-                    <span>{progress}%</span>
-                    <span>CH_R: ACTIVE</span>
-                </div>
+                {/* Background Audio */}
+                <audio ref={audioRef} src="/audio/startup.mp3" />
 
             </div>
         </motion.div>
