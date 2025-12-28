@@ -10,14 +10,13 @@ import { clsx } from "clsx";
 const mainNavItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "Features", href: "/features", icon: Sparkles },
-  { name: "Support", href: "/support", icon: Headphones },
+  { name: "Report Bug", href: "/report-bug", icon: Bug },
   { name: "Download", href: "/download", icon: Download },
 ];
 
 const moreNavItems = [
   { name: "Docs", href: "/docs", icon: BookOpenText },
   { name: "Community", href: "/community", icon: Users },
-  { name: "Report Bug", href: "/report-bug", icon: Bug },
   { name: "Changelog", href: "/changelog", icon: List },
 ];
 
@@ -27,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-      
+
       {/* Dropup Menu */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -49,8 +48,8 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                     className={clsx(
                       "flex flex-col items-center justify-center p-3 rounded-2xl transition-all duration-300 gap-2 border border-transparent",
-                      isActive 
-                        ? "bg-white/10 text-white border-white/10" 
+                      isActive
+                        ? "bg-white/10 text-white border-white/10"
                         : "hover:bg-white/5 text-gray-400 hover:text-white"
                     )}
                   >
