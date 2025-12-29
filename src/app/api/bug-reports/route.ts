@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { addBugReport, listBugReports } from "@/lib/store";
 import nodemailer from "nodemailer";
 
+export const runtime = 'edge';
+
 // Create reusable transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
