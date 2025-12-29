@@ -5,5 +5,9 @@
     "compatibility_flags": [
         "nodejs_compat"
     ],
-    "pages_build_output_dir": ".vercel/output/static"
+    "main": ".vercel/output/static/_worker.js",
+    "assets": {
+        "directory": ".vercel/output/static",
+        "binding": "ASSETS"
+    }
 }
