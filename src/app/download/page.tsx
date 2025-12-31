@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap,
   CheckCircle2, AlertCircle, ExternalLink, Star, Users,
-  TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers, ArrowRight
+  TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers, ArrowRight, Tv
 } from "lucide-react";
 
 export default function DownloadPage() {
@@ -77,7 +77,7 @@ export default function DownloadPage() {
         >
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
             <Download size={16} className="animate-bounce" />
-            <span className="text-sm font-bold tracking-widest">LATEST BUILD: v2.1.1020</span>
+            <span className="text-sm font-bold tracking-widest">LATEST BUILD: v2.2.2026</span>
           </div>
 
           <h1 className="text-[15vw] md:text-[10vw] leading-[0.8] font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-white to-transparent mix-blend-overlay">
@@ -95,7 +95,7 @@ export default function DownloadPage() {
         {/* PLATFORM SELECTION */}
         <motion.div
           style={{ y: cardsY as any, opacity: cardsOpacity as any }}
-          className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-32 md:mb-64 will-change-transform"
+          className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 mb-32 md:mb-64 will-change-transform"
         >
           {/* Android Card - Enhanced */}
           <motion.div
@@ -126,27 +126,27 @@ export default function DownloadPage() {
                   </div>
                 </div>
 
-                <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4">Android</h2>
-                <p className="text-base md:text-xl text-gray-400 mb-8 md:mb-12">
+                <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Android</h2>
+                <p className="text-sm md:text-lg text-gray-400 mb-8 md:mb-12">
                   The complete mobile experience. <br />
                   Material You support included.
                 </p>
 
                 {/* Features List */}
                 <div className="mb-10 space-y-3">
-                  <div className="flex items-start gap-2 text-sm text-gray-300">
+                  <div className="flex items-start gap-2 text-xs md:text-sm text-gray-300">
                     <Sparkles size={16} className="text-green-400 mt-0.5 shrink-0" />
                     <span>Best in class <b>Spatial Audio</b> co-engineered by Dolby, Dirac & DTS:X</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
                     <Music size={16} className="text-green-400 shrink-0" />
                     <span>Supports <b>Lossless Audio</b> (FLAC/WAV)</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
                     <Layers size={16} className="text-green-400 shrink-0" />
                     <span><b>Spotify Canvas</b> & Lyrics for free</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
                     <CheckCircle2 size={16} className="text-green-400 shrink-0" />
                     <span>Background playback</span>
                   </div>
@@ -154,55 +154,56 @@ export default function DownloadPage() {
 
                 {/* Download Actions - Official & Beta */}
                 <div className="grid grid-cols-1 gap-4 mb-8">
-                  
-                  {/* Official (Disabled/Future) */}
-                  <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-1">Official</h3>
-                      <p className="text-sm text-gray-400">Stable Release • Coming Jan 1st</p>
-                    </div>
-                    {/* Arrow Button (Static/Disabled look) */}
-                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
-                       <ArrowRight size={24} className="text-white/20" />
-                    </div>
-                  </div>
 
-                  {/* Beta (Active) */}
-                  <a 
-                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev3/app-full-arm64-v8a-release.apk"
+                  {/* Official (Active) */}
+                  <a
+                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Official-R/VoxtronaMusic-full-arm64-v2.2.2026-release.apk"
                     className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
                   >
                     <div className="relative z-10">
-                      <h3 className="text-2xl font-bold text-white mb-1">Beta</h3>
-                      <p className="text-sm text-green-400 font-bold">Latest Build • v2.1.1020Rev3</p>
+                      <h3 className="text-xl font-bold text-white mb-1">Official</h3>
+                      <p className="text-xs text-green-400 font-bold">Stable Release • v2.2.2026</p>
                     </div>
 
                     {/* Animated Arrow Button */}
                     <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
-                        <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                        <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                    </div>
+                  </a>
+
+                  {/* Beta (Active) */}
+                  <a
+                    href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev3/app-full-arm64-v8a-release.apk"
+                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                  >
+                    <div className="relative z-10">
+                      <h3 className="text-xl font-bold text-white mb-1">Beta</h3>
+                      <p className="text-xs text-green-400 font-bold">Latest Build • v2.2.2026</p>
+                    </div>
+
+                    {/* Animated Arrow Button */}
+                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
                     </div>
                   </a>
 
                 </div>
 
                 {/* Version Metadata */}
-                <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs font-mono text-gray-500">
-                  <div className="flex gap-4">
-                     <div>
-                       <span className="block text-gray-600 mb-1">VERSION</span>
-                       <span className="text-gray-400">v2.1.1020Rev3</span>
-                     </div>
-                     <div>
-                       <span className="block text-gray-600 mb-1">SIZE</span>
-                       <span className="text-gray-400">44.6 MB</span>
-                     </div>
+                <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-500">
+                  <div>
+                    <span className="block text-gray-600 mb-1">LATEST</span>
+                    <span className="text-gray-400">v2.2.2026</span>
                   </div>
-                  <div className="flex gap-4">
-                      <div>
-                       <span className="block text-gray-600 mb-1">DATE</span>
-                       <span className="text-gray-400">Dec 28, 2025</span>
-                     </div>
+                  <div>
+                    <span className="block text-gray-600 mb-1">SIZE</span>
+                    <span className="text-gray-400">47 MB</span>
+                  </div>
+                  <div>
+                    <span className="block text-gray-600 mb-1">DATE</span>
+                    <span className="text-gray-400">Jan 1, 2026</span>
                   </div>
                 </div>
               </div>
@@ -215,21 +216,22 @@ export default function DownloadPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden opacity-60"
+            className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden"
           >
-            <div className="absolute inset-0 bg-linear-to-b from-blue-500/20 to-transparent opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-b from-blue-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-full bg-[conic-gradient(from_0deg,transparent_0_340deg,#3b82f6_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden flex flex-col">
               {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 transition-colors duration-500" />
+              <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-500/20 transition-colors duration-500" />
 
-              <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-5 rotate-12">
+              <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
                 <Monitor className="w-32 h-32 md:w-[240px] md:h-[240px]" />
               </div>
 
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <Monitor size={32} className="text-blue-400" />
                   </div>
                   <div className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-bold border border-yellow-500/30">
@@ -237,43 +239,172 @@ export default function DownloadPage() {
                   </div>
                 </div>
 
-                <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4">Windows</h2>
-                <p className="text-base md:text-xl text-gray-400 mb-8 md:mb-12">
+                <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Windows</h2>
+                <p className="text-sm md:text-lg text-gray-400 mb-8 md:mb-12">
                   Desktop power unleashed. <br />
                   High-res audio support.
                 </p>
 
                 {/* Features List */}
                 <div className="mb-10 space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
                     <AlertCircle size={16} className="text-yellow-400" />
                     <span>Advanced audio controls</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
                     <AlertCircle size={16} className="text-yellow-400" />
                     <span>ASIO driver support</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
                     <AlertCircle size={16} className="text-yellow-400" />
                     <span>Windows 10+</span>
                   </div>
                 </div>
 
                 {/* Download Actions placeholder */}
-                <div className="mt-auto">
-                    <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
-                        <div>
-                        <h3 className="text-2xl font-bold text-white mb-1">Official</h3>
-                        <p className="text-sm text-gray-400">Coming Q2 2026</p>
-                        </div>
-                        <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
-                          <Package size={24} className="text-white/20" />
-                        </div>
+                <div className="mt-auto mb-8 space-y-3">
+                  <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-1">Official</h3>
+                      <p className="text-xs text-gray-400">Coming Q2 2026</p>
                     </div>
+                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
+                      <Package size={24} className="text-white/20" />
+                    </div>
+                  </div>
+
+                  {/* Join Beta Button */}
+                  <a
+                    href="/beta?platform=windows"
+                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                  >
+                    <div className="relative z-10">
+                      <h3 className="text-xl font-bold text-white mb-1">Join Beta</h3>
+                      <p className="text-xs text-blue-400 font-bold">Be the first to try</p>
+                    </div>
+                    {/* Animated Arrow Button */}
+                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                    </div>
+                  </a>
                 </div>
-                
-                 {/* Version Metadata Spacer */}
-                 <div className="h-6"></div>
+
+                {/* Version Metadata */}
+                <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-500">
+                  <div>
+                    <span className="block text-gray-600 mb-1">LATEST</span>
+                    <span className="text-gray-400">v2.2.2026</span>
+                  </div>
+                  <div>
+                    <span className="block text-gray-600 mb-1">SIZE</span>
+                    <span className="text-gray-400">89 MB</span>
+                  </div>
+                  <div>
+                    <span className="block text-gray-600 mb-1">DATE</span>
+                    <span className="text-gray-400">Jan 1, 2026</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Smart TV Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-linear-to-b from-rose-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+            <div className="absolute -inset-full bg-[conic-gradient(from_0deg,transparent_0_340deg,#f43f5e_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden flex flex-col">
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-rose-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-rose-500/20 transition-colors duration-500" />
+
+              <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
+                <Tv className="w-32 h-32 md:w-[240px] md:h-[240px]" />
+              </div>
+
+              <div className="relative z-10 flex-1 flex flex-col">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-rose-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <Tv size={32} className="text-rose-400" />
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold border border-rose-500/30">
+                    PLANNED
+                  </div>
+                </div>
+
+                <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Smart TV</h2>
+                <p className="text-sm md:text-lg text-gray-400 mb-8 md:mb-12">
+                  Cinematic audio experience. <br />
+                  Designed for the big screen.
+                </p>
+
+                {/* Features List */}
+                <div className="mb-10 space-y-3">
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
+                    <AlertCircle size={16} className="text-rose-400 shrink-0" />
+                    <span>Liquid Glass Support Native</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
+                    <AlertCircle size={16} className="text-rose-400 shrink-0" />
+                    <span>Lossless Audio Engine Support</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-xs md:text-sm text-gray-300">
+                    <AlertCircle size={16} className="text-rose-400 mt-0.5 shrink-0" />
+                    <span>Support for Proprietary Audio Formats Like Dolby Atmos etc</span>
+                  </div>
+                </div>
+
+                {/* Download Actions placeholder */}
+                <div className="mt-auto mb-8 space-y-3">
+                  <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-1">Official</h3>
+                      <p className="text-xs text-gray-400">Expected Q2 2026</p>
+                    </div>
+                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
+                      <Package size={24} className="text-white/20" />
+                    </div>
+                  </div>
+
+                  {/* Join Beta Button */}
+                  <a
+                    href="/beta?platform=smarttv"
+                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                  >
+                    <div className="relative z-10">
+                      <h3 className="text-xl font-bold text-white mb-1">Join Beta</h3>
+                      <p className="text-xs text-rose-400 font-bold">Be the first to try</p>
+                    </div>
+                    {/* Animated Arrow Button */}
+                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                    </div>
+                  </a>
+                </div>
+
+                {/* Version Metadata */}
+                <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-500">
+                  <div>
+                    <span className="block text-gray-600 mb-1">LATEST</span>
+                    <span className="text-gray-400">v2.2.2026</span>
+                  </div>
+                  <div>
+                    <span className="block text-gray-600 mb-1">SIZE</span>
+                    <span className="text-gray-400">89 MB</span>
+                  </div>
+                  <div>
+                    <span className="block text-gray-600 mb-1">DATE</span>
+                    <span className="text-gray-400">Jan 1, 2026</span>
+                  </div>
+                </div>
 
               </div>
             </div>

@@ -59,7 +59,7 @@ export default function Home() {
 
       {/* HERO SECTION - Conversion-focused */}
       <div className="sticky top-0 h-screen py-0 flex items-center justify-center overflow-hidden will-change-transform">
-        
+
         <motion.div
           style={{ opacity: (heroOpacity as any), scale: (heroScale as any) }}
           className="relative z-10 w-full max-w-7xl px-4 md:px-8"
@@ -67,28 +67,28 @@ export default function Home() {
           <div className="grid md:grid-cols-[1.1fr_0.9fr] items-center gap-10 md:gap-16">
             {/* Copy + CTAs */}
             <div className="text-center md:text-left">
-                <div className="mb-4 md:mb-8 inline-flex md:inline-flex">
+              <div className="mb-4 md:mb-8 inline-flex md:inline-flex">
                 <div className="flex items-center gap-3 px-5 py-2.5 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                   <div className="flex items-end gap-1 h-3">
-                    <motion.div 
-                      animate={{ height: ["20%", "100%", "50%", "80%", "30%"] }} 
+                    <motion.div
+                      animate={{ height: ["20%", "100%", "50%", "80%", "30%"] }}
                       transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                      className="w-1 bg-blue-400 rounded-full" 
+                      className="w-1 bg-blue-400 rounded-full"
                     />
-                    <motion.div 
-                      animate={{ height: ["60%", "30%", "100%", "40%", "70%"] }} 
+                    <motion.div
+                      animate={{ height: ["60%", "30%", "100%", "40%", "70%"] }}
                       transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
-                      className="w-1 bg-purple-400 rounded-full" 
+                      className="w-1 bg-purple-400 rounded-full"
                     />
-                    <motion.div 
-                      animate={{ height: ["40%", "80%", "30%", "100%", "50%"] }} 
+                    <motion.div
+                      animate={{ height: ["40%", "80%", "30%", "100%", "50%"] }}
                       transition={{ duration: 0.7, repeat: Infinity, ease: "linear" }}
-                      className="w-1 bg-blue-400 rounded-full" 
+                      className="w-1 bg-blue-400 rounded-full"
                     />
-                    <motion.div 
-                      animate={{ height: ["80%", "40%", "90%", "20%", "60%"] }} 
+                    <motion.div
+                      animate={{ height: ["80%", "40%", "90%", "20%", "60%"] }}
                       transition={{ duration: 0.9, repeat: Infinity, ease: "linear" }}
-                      className="w-1 bg-purple-400 rounded-full" 
+                      className="w-1 bg-purple-400 rounded-full"
                     />
                   </div>
                   <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-blue-100/90 text-shadow-sm">Neural Engine Active</span>
@@ -127,11 +127,11 @@ export default function Home() {
                   <Link href="/download" className="group/btn relative flex items-center gap-4 px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full transition-all">
                     <div className="text-left">
                       <div className="text-lg font-bold text-white leading-none">Download App</div>
-                      <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">v2.1 Beta</div>
+                      <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">v2.2 Official</div>
                     </div>
                     <div className="relative w-12 h-12 rounded-full border border-white/20 flex items-center justify-center overflow-hidden bg-black/20">
-                        <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                        <ArrowRight size={20} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={20} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
                     </div>
                   </Link>
 
@@ -140,9 +140,9 @@ export default function Home() {
                     <div className="text-left">
                       <div className="text-lg font-bold text-gray-200 leading-none">Explore Features</div>
                     </div>
-                     <div className="relative w-10 h-10 rounded-full border border-white/10 flex items-center justify-center overflow-hidden">
-                        <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                        <ArrowRight size={18} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                    <div className="relative w-10 h-10 rounded-full border border-white/10 flex items-center justify-center overflow-hidden">
+                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                      <ArrowRight size={18} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
                     </div>
                   </Link>
                 </div>
@@ -152,7 +152,7 @@ export default function Home() {
 
             {/* Micro demo card */}
             <div className="hidden md:block">
-               <HeroVisual />
+              <HeroVisual />
             </div>
           </div>
         </motion.div>
@@ -160,34 +160,34 @@ export default function Home() {
 
       {/* SCROLL CONTENT - wrapped in Section for consistent spacing */}
       <Section className="relative z-20 mt-[20vh] md:mt-[30vh] lg:mt-[50vh] pb-32">
-        
+
         {/* MILESTONES SECTION */}
         <div className="max-w-7xl mx-auto px-4 mb-32 md:mb-48">
-             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                {[
-                  { label: "Active Users", value: "20k+", icon: Globe },
-                  { label: "Downloads", value: "500k+", icon: Download },
-                  { label: "Rating", value: "4.9", icon: Activity },
-                  { label: "Songs Streamed", value: "10M+", icon: Music2 },
-                ].map((stat, i) => (
-                   <motion.div 
-                     key={i}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     className="p-6 md:p-8 rounded-3xl bg-transparent border border-white/10 flex flex-col items-center justify-center text-center group hover:border-white/20 transition-colors"
-                   >
-                      <stat.icon className="text-gray-400 mb-4 group-hover:text-blue-400 transition-colors" size={24} />
-                      <div className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter">{stat.value}</div>
-                      <div className="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest">{stat.label}</div>
-                   </motion.div>
-                ))}
-             </div>
-         </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {[
+              { label: "Active Users", value: "40k+", icon: Globe },
+              { label: "Downloads", value: "700k+", icon: Download },
+              { label: "Rating", value: "4.9", icon: Activity },
+              { label: "Songs Streamed", value: "29M+", icon: Music2 },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-6 md:p-8 rounded-3xl bg-transparent border border-white/10 flex flex-col items-center justify-center text-center group hover:border-white/20 transition-colors"
+              >
+                <stat.icon className="text-gray-400 mb-4 group-hover:text-blue-400 transition-colors" size={24} />
+                <div className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter">{stat.value}</div>
+                <div className="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
         {/* SECTION 1: THE ENGINE - NEXT LEVEL UPGRADE */}
-        <motion.div 
+        <motion.div
           style={{ y: prefersReduced ? 0 : section1Y, opacity: prefersReduced ? 1 : section1Opacity }}
           className="mx-auto mb-32 md:mb-64"
         >
@@ -199,99 +199,99 @@ export default function Home() {
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-x bg-[size:200%_auto]">ENERGY</span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light">
-                Our proprietary <span className="text-blue-400 font-bold">64-bit audio engine</span> processes sound with surgical precision. 
+                Our proprietary <span className="text-blue-400 font-bold">64-bit audio engine</span> processes sound with surgical precision.
                 Experience a soundstage so wide, it feels infinite. Completely untethered.
               </p>
-              
+
               {/* Feature Tags - Minimalist */}
               <div className="flex flex-wrap gap-3">
-                 <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-gray-300">
-                   Neural Processing
-                 </div>
-                 <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-gray-300">
-                   Real-time Upscaling
-                 </div>
+                <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-gray-300">
+                  Neural Processing
+                </div>
+                <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-gray-300">
+                  Real-time Upscaling
+                </div>
               </div>
             </div>
-            
+
             {/* Right Column: Pure Organic Energy Visual */}
             <div className="relative h-[500px] md:h-[600px] w-full rounded-[3rem] border border-white/10 bg-black overflow-hidden flex items-center justify-center">
-              
+
               {/* Interactive Background */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-blue-900/20 via-black to-black" />
 
               {/* LIQUID ENERGY CORE */}
               <div className="relative w-full h-full flex items-center justify-center">
-                 {/* Blob 1: Blue - Calm movement */}
-                 <motion.div 
-                   animate={{ 
-                     scale: [1, 1.1, 1],
-                     x: [-10, 10, -10],
-                     y: [-10, 10, -10],
-                   }}
-                   transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute w-48 h-48 md:w-96 md:h-96 bg-blue-600 rounded-full blur-[80px] md:blur-[100px] opacity-50 mix-blend-screen"
-                 />
-                 
-                 {/* Blob 2: Purple - Calm counter movement */}
-                 <motion.div 
-                   animate={{ 
-                     scale: [1.1, 1, 1.1],
-                     x: [10, -10, 10],
-                     y: [10, -10, 10],
-                   }}
-                   transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute w-48 h-48 md:w-80 md:h-80 bg-purple-600 rounded-full blur-[60px] md:blur-[80px] opacity-50 mix-blend-screen"
-                 />
+                {/* Blob 1: Blue - Calm movement */}
+                <motion.div
+                  animate={isMobile ? undefined : {
+                    scale: [1, 1.1, 1],
+                    x: [-10, 10, -10],
+                    y: [-10, 10, -10],
+                  }}
+                  transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute w-48 h-48 md:w-96 md:h-96 bg-blue-600 rounded-full blur-[80px] md:blur-[100px] opacity-50 mix-blend-screen"
+                />
 
-                 {/* Blob 3: Core White Heat - Subtle */}
-                 <motion.div 
-                   animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.4, 0.3] }}
-                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute w-24 h-24 md:w-32 md:h-32 bg-white rounded-full blur-[40px] md:blur-[50px] opacity-30 mix-blend-overlay"
-                 />
+                {/* Blob 2: Purple - Calm counter movement */}
+                <motion.div
+                  animate={isMobile ? undefined : {
+                    scale: [1.1, 1, 1.1],
+                    x: [10, -10, 10],
+                    y: [10, -10, 10],
+                  }}
+                  transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute w-48 h-48 md:w-80 md:h-80 bg-purple-600 rounded-full blur-[60px] md:blur-[80px] opacity-50 mix-blend-screen"
+                />
 
-                 {/* Central Physical Element (The "Source") */}
-                 <div className="relative z-10 w-28 h-28 md:w-40 md:h-40 bg-black/50 backdrop-blur-3xl rounded-full border border-white/20 shadow-[0_0_40px_rgba(59,130,246,0.2)] flex items-center justify-center group">
-                    <div className="absolute inset-0 rounded-full bg-linear-to-br from-blue-500/10 to-purple-500/10" />
-                    <Activity size={36} className="text-white relative z-20 md:w-12 md:h-12 group-hover:scale-110 transition-transform duration-500" />
-                    
-                    {/* Orbiting Particle - Slower */}
-                    <div className="absolute inset-0 animate-[spin_8s_linear_infinite]">
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_#3b82f6]" />
-                    </div>
-                 </div>
+                {/* Blob 3: Core White Heat - Subtle */}
+                <motion.div
+                  animate={isMobile ? undefined : { scale: [1, 1.05, 1], opacity: [0.3, 0.4, 0.3] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute w-24 h-24 md:w-32 md:h-32 bg-white rounded-full blur-[40px] md:blur-[50px] opacity-30 mix-blend-overlay"
+                />
 
-                 {/* Floating Elegant Stats - Pushed to Corners */}
-                 {/* Stat 1: Latency (Bottom Left) */}
-                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="absolute left-6 bottom-6 md:left-20 md:bottom-1/3 flex items-center gap-4 py-2 px-4 rounded-full bg-black/20 backdrop-blur-md md:bg-transparent md:p-0"
-                 >
-                    <div className="text-right">
-                       <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter">0.01ms</div>
-                       <div className="text-[10px] md:text-xs text-blue-400 font-mono tracking-widest uppercase">Ultra Low Latency</div>
-                    </div>
-                    {/* Line only on Desktop */}
-                    <div className="hidden md:block w-12 h-px bg-linear-to-r from-blue-500 to-transparent" />
-                 </motion.div>
+                {/* Central Physical Element (The "Source") */}
+                <div className="relative z-10 w-28 h-28 md:w-40 md:h-40 bg-black/50 backdrop-blur-3xl rounded-full border border-white/20 shadow-[0_0_40px_rgba(59,130,246,0.2)] flex items-center justify-center group">
+                  <div className="absolute inset-0 rounded-full bg-linear-to-br from-blue-500/10 to-purple-500/10" />
+                  <Activity size={36} className="text-white relative z-20 md:w-12 md:h-12 group-hover:scale-110 transition-transform duration-500" />
 
-                 {/* Stat 2: Lossless (Top Right) */}
-                 <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="absolute right-6 top-6 md:right-20 md:top-1/3 flex items-center gap-4 py-2 px-4 rounded-full bg-black/20 backdrop-blur-md md:bg-transparent md:p-0"
-                 >
-                    {/* Line only on Desktop */}
-                    <div className="hidden md:block w-12 h-px bg-linear-to-l from-purple-500 to-transparent" />
-                    <div className="text-left">
-                       <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter">LOSSLESS</div>
-                       <div className="text-[10px] md:text-xs text-purple-400 font-mono tracking-widest uppercase">Bit-Perfect Audio</div>
-                    </div>
-                 </motion.div>
+                  {/* Orbiting Particle - Slower */}
+                  <div className="absolute inset-0 md:animate-[spin_8s_linear_infinite]">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_#3b82f6]" />
+                  </div>
+                </div>
+
+                {/* Floating Elegant Stats - Pushed to Corners */}
+                {/* Stat 1: Latency (Bottom Left) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="absolute left-6 bottom-6 md:left-20 md:bottom-1/3 flex items-center gap-4 py-2 px-4 rounded-full bg-black/20 backdrop-blur-md md:bg-transparent md:p-0"
+                >
+                  <div className="text-right">
+                    <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter">0.01ms</div>
+                    <div className="text-[10px] md:text-xs text-blue-400 font-mono tracking-widest uppercase">Ultra Low Latency</div>
+                  </div>
+                  {/* Line only on Desktop */}
+                  <div className="hidden md:block w-12 h-px bg-linear-to-r from-blue-500 to-transparent" />
+                </motion.div>
+
+                {/* Stat 2: Lossless (Top Right) */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute right-6 top-6 md:right-20 md:top-1/3 flex items-center gap-4 py-2 px-4 rounded-full bg-black/20 backdrop-blur-md md:bg-transparent md:p-0"
+                >
+                  {/* Line only on Desktop */}
+                  <div className="hidden md:block w-12 h-px bg-linear-to-l from-purple-500 to-transparent" />
+                  <div className="text-left">
+                    <div className="text-2xl md:text-3xl font-bold text-white tracking-tighter">LOSSLESS</div>
+                    <div className="text-[10px] md:text-xs text-purple-400 font-mono tracking-widest uppercase">Bit-Perfect Audio</div>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -300,25 +300,25 @@ export default function Home() {
         {/* SECTION 2: FEATURES HORIZONTAL with staggered motion */}
         <div className="mx-auto space-y-16 md:space-y-32">
           {[
-            { 
-              title: "SPATIAL", 
-              subtitle: "IMMERSION", 
+            {
+              title: "SPATIAL",
+              subtitle: "IMMERSION",
               desc: "Upscale stereo to 7.1.4 virtual surround.",
               icon: Globe,
               color: "from-blue-500 to-cyan-500",
               href: "/spatial-audio"
             },
-            { 
-              title: "NEURAL", 
-              subtitle: "EQ", 
+            {
+              title: "NEURAL",
+              subtitle: "EQ",
               desc: "AI-powered equalization that adapts to your hearing.",
               icon: Cpu,
               color: "from-purple-500 to-pink-500",
               href: "/features/power"
             },
-            { 
-              title: "CLOUD", 
-              subtitle: "SYNC", 
+            {
+              title: "CLOUD",
+              subtitle: "SYNC",
               desc: "Your library, everywhere. Instantly.",
               icon: Radio,
               color: "from-orange-500 to-red-500",
@@ -335,7 +335,7 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-linear-to-b from-white/20 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute -inset-full bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#ffffff_100%)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative h-full bg-black/20 backdrop-blur-xl rounded-[1.9rem] md:rounded-[2.9rem] p-6 md:p-24 overflow-hidden">
                 <div className={`absolute top-0 right-0 w-[200px] h-[200px] md:w-[500px] md:h-[500px] bg-linear-to-br ${item.color} opacity-10 blur-2xl md:blur-[100px] group-hover:opacity-20 transition-opacity duration-700`} />
 
@@ -365,9 +365,9 @@ export default function Home() {
                     <p className="text-base md:text-2xl text-gray-300 font-light leading-relaxed">{item.desc}</p>
                     <Link href={item.href} className="mt-8 group/btn inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                       <span className="font-bold text-sm">Explore</span>
-                       <div className="relative w-8 h-8 rounded-full border border-white/20 flex items-center justify-center overflow-hidden bg-black/20">
-                          <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                          <ArrowRight size={14} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+                      <div className="relative w-8 h-8 rounded-full border border-white/20 flex items-center justify-center overflow-hidden bg-black/20">
+                        <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                        <ArrowRight size={14} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
                       </div>
                     </Link>
                   </div>
@@ -385,16 +385,16 @@ export default function Home() {
             READY?
           </h2>
           <div className="relative z-10 inline-block">
-             <Link href="/download" className="group/btn relative flex items-center gap-6 px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full transition-all">
-                <div className="text-left">
-                  <div className="text-2xl font-bold text-white leading-none">Download Now</div>
-                  <div className="text-sm text-gray-400 mt-1 uppercase tracking-wider">Experience Hi-Fi</div>
-                </div>
-                <div className="relative w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden bg-black/20">
-                    <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                    <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
-                </div>
-              </Link>
+            <Link href="/download" className="group/btn relative flex items-center gap-6 px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full transition-all">
+              <div className="text-left">
+                <div className="text-2xl font-bold text-white leading-none">Download Now</div>
+                <div className="text-sm text-gray-400 mt-1 uppercase tracking-wider">Experience Hi-Fi</div>
+              </div>
+              <div className="relative w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden bg-black/20">
+                <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
+              </div>
+            </Link>
           </div>
         </div>
 

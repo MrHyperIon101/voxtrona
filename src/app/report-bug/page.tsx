@@ -174,7 +174,7 @@ export default function ReportBugPage() {
                                                 <Terminal className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                                                 <input
                                                     name="version"
-                                                    placeholder="v2.1.1020"
+                                                    placeholder="v2.2.2026"
                                                     className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 transition-colors hover:bg-white/10"
                                                 />
                                             </div>
@@ -242,7 +242,7 @@ export default function ReportBugPage() {
                             <div className="space-y-4">
                                 {[
                                     { title: "Check Connections", desc: "Ensure you have an active internet connection." },
-                                    { title: "Update App", desc: "Make sure you are on the latest version (v2.1.1020)." },
+                                    { title: "Update App", desc: "Make sure you are on the latest version (v2.2.2026)." },
                                     { title: "Clear Cache", desc: "Try clearing app cache from Settings > Storage." },
                                     { title: "Restart", desc: "A simple restart fixes 80% of glitches." },
                                 ].map((tip, i) => (
