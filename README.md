@@ -25,7 +25,7 @@
 
 It features a highly immersive, sci-fi inspired interface designed to "wow" users from the first interaction. The Android app is powered by a custom audio engine developed in partnership with industry leaders.
 
-> [!WARNING] > **Voxtrona is in beta.** Occasional player errors are normal due to dependencies on YouTube Music APIs.
+> [NOTE] > **Voxtrona is Officialy Released..** Occasional player errors are normal due to dependencies on YouTube Music APIs.
 
 ## ✨ Features
 
