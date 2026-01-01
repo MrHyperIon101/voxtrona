@@ -85,9 +85,16 @@ export default function Footer() {
             </div >
 
             <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-              <p className="text-gray-500 text-sm font-medium">
-                © 2025-2028 Voxtrona Music. All rights reserved.
-              </p>
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                <p className="text-gray-500 text-sm font-medium">
+                  © 2025-2028 Voxtrona Music. All rights reserved.
+                </p>
+                <div className="flex gap-6">
+                  <Link href="/privacy-policy" className="text-gray-500 hover:text-white text-sm transition-colors">
+                    Privacy Policy
+                  </Link>
+                </div>
+              </div>
               <p className="text-gray-600 text-xs uppercase tracking-widest">
                 Designed by Souvik Bagchi
               </p>
