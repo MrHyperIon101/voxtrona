@@ -67,7 +67,12 @@ export default function Home() {
           <div className="grid md:grid-cols-[1.1fr_0.9fr] items-center gap-10 md:gap-16">
             {/* Copy + CTAs */}
             <div className="text-center md:text-left">
-              <div className="mb-4 md:mb-8 inline-flex md:inline-flex">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mb-4 md:mb-8 inline-flex md:inline-flex"
+              >
                 <div className="flex items-center gap-3 px-5 py-2.5 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                   <div className="flex items-end gap-1 h-3">
                     <motion.div
@@ -93,20 +98,40 @@ export default function Home() {
                   </div>
                   <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-blue-100/90 text-shadow-sm">Neural Engine Active</span>
                 </div>
-              </div>
+              </motion.div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/30">
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.2, 0.65, 0.3, 0.9] }}
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/30"
+              >
                 Voxtrona Music
-              </h1>
-              <p className="mt-2 md:mt-4 text-sm md:text-2xl font-black tracking-tighter text-white/85">
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-2 md:mt-4 text-sm md:text-2xl font-black tracking-tighter text-white/85"
+              >
                 High‑Fidelity. Zero Compromise.
-              </p>
+              </motion.p>
 
-              <p className="mt-4 md:mt-6 text-sm md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 leading-relaxed">
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="mt-4 md:mt-6 text-sm md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 leading-relaxed"
+              >
                 Studio clarity meets intelligent processing - adapting perfectly to you.
-              </p>
+              </motion.p>
 
-              <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="mt-6 md:mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3"
+              >
                 <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors">
                   <span className="h-1.5 w-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.6)]" />
                   <span className="text-xs font-medium text-gray-300">Lossless over the air</span>
@@ -119,9 +144,14 @@ export default function Home() {
                   <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
                   <span className="text-xs font-medium text-gray-300">Spatial up to 7.1.4</span>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center md:items-start gap-4 md:gap-5 justify-center md:justify-start">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center md:items-start gap-4 md:gap-5 justify-center md:justify-start"
+              >
                 <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center md:items-start gap-4 md:gap-6 justify-center md:justify-start">
                   {/* Download Button */}
                   <Link href="/download" className="group/btn relative flex items-center gap-4 px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full transition-all">
@@ -146,7 +176,7 @@ export default function Home() {
                     </div>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
 
             </div>
 

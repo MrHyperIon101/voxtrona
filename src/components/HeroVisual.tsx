@@ -28,6 +28,9 @@ export default function HeroVisual() {
     <div className="perspective-distant w-full flex justify-center py-10" style={{ transformStyle: "preserve-3d" }}>
       <motion.div
         ref={ref}
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         onMouseMove={onMouseMove}
         onMouseLeave={() => {
           x.set(0);
