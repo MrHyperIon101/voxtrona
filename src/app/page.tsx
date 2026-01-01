@@ -328,7 +328,7 @@ export default function Home() {
             <m.div
               key={i}
               className="group relative p-[2px] rounded-[2rem] md:rounded-[3rem] overflow-hidden"
-              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              initial={{ opacity: 0, y: isMobile ? 10 : 30, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}

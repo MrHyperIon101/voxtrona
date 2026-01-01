@@ -270,11 +270,10 @@ export default function DocsPage() {
                       }
                       setActiveSection(section.id);
                     }}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                      activeSection === section.id
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${activeSection === section.id
                         ? "bg-purple-500/20 text-purple-300 border border-purple-500/30"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
-                    }`}
+                      }`}
                   >
                     <section.icon size={18} />
                     {section.title}
@@ -343,7 +342,7 @@ export default function DocsPage() {
 
               <DocSubsection title="Supported Platforms" id="introduction-supported-platforms">
                 <div className="grid md:grid-cols-3 gap-4">
-                  <PlatformCard icon={Smartphone} title="Android" status="Beta Available" statusColor="green" />
+                  <PlatformCard icon={Smartphone} title="Android" status="Official Available" statusColor="green" />
                   <PlatformCard icon={Laptop} title="Windows" status="Coming Q2 2026" statusColor="yellow" />
                   <PlatformCard icon={Laptop} title="macOS" status="Coming Soon" statusColor="yellow" />
                 </div>
@@ -357,15 +356,15 @@ export default function DocsPage() {
                   <div className="p-6 rounded-2xl bg-linear-to-br from-green-500/10 to-blue-500/10 border border-green-500/20">
                     <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
                       <Smartphone size={20} className="text-green-400" />
-                      Beta Available
+                      Official Release Available
                     </h4>
                     <p className="text-gray-300 mb-4">
-                      Voxtrona is currently available for Android devices (Android 12+ recommended). 
-                      Download the latest APK to get started.
+                      Voxtrona is currently available for Android devices (Android 12+).
+                      Download the latest stable APK to get started.
                     </p>
-                    <a href="https://github.com/MrHyperIon101/voxtrona/releases" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
+                    <a href="https://github.com/MrHyperIon101/voxtrona/releases/download/Official-R/VoxtronaMusic-full-arm64-v2.2.2026-release.apk" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-black font-bold hover:bg-green-400 transition-colors">
                       <Download size={18} />
-                      Download Latest Beta
+                      Download Official Release
                     </a>
                   </div>
                 </div>
@@ -404,7 +403,7 @@ export default function DocsPage() {
             {/* Core Playback */}
             <DocSection id="core-playback" icon={PlayCircle} title="Core Playback">
               <DocSubsection title="Audio Quality" id="core-playback-audio-quality">
-                 <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-gray-300 leading-relaxed mb-4">
                   Voxtrona offers configurable audio quality settings to balance data usage and fidelity.
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -424,25 +423,25 @@ export default function DocsPage() {
 
               <DocSubsection title="Playback Controls" id="core-playback-playback-controls">
                 <div className="space-y-4">
-                   <FeatureItem icon={PlayCircle} title="Background Playback" description="Listen to music while using other apps or with the screen off." />
-                   <FeatureItem icon={Box} title="Picture-in-Picture (PiP)" description="Watch music videos in a floating window while multitasking." />
-                   <FeatureItem icon={Sliders} title="Speed & Pitch" description="Adjust playback tempo and pitch independently for learning or fun." />
-                   <FeatureItem icon={Volume2} title="Normalize Volume" description="Automatically adjust volume to maintain consistent levels across tracks." />
+                  <FeatureItem icon={PlayCircle} title="Background Playback" description="Listen to music while using other apps or with the screen off." />
+                  <FeatureItem icon={Box} title="Picture-in-Picture (PiP)" description="Watch music videos in a floating window while multitasking." />
+                  <FeatureItem icon={Sliders} title="Speed & Pitch" description="Adjust playback tempo and pitch independently for learning or fun." />
+                  <FeatureItem icon={Volume2} title="Normalize Volume" description="Automatically adjust volume to maintain consistent levels across tracks." />
                 </div>
               </DocSubsection>
-              
-               <DocSubsection title="Gapless & Crossfade" id="core-playback-gapless-crossfade">
-                 <div className="grid md:grid-cols-2 gap-4">
-                    <FeatureCard icon={Layers} title="Gapless Playback" description="Seamless transitions between tracks in an album, perfect for live recordings." />
-                    <FeatureCard icon={Waves} title="Smart Crossfade" description="Smoothly fade between tracks with configurable duration for a radio-like experience." />
-                 </div>
+
+              <DocSubsection title="Gapless & Crossfade" id="core-playback-gapless-crossfade">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <FeatureCard icon={Layers} title="Gapless Playback" description="Seamless transitions between tracks in an album, perfect for live recordings." />
+                  <FeatureCard icon={Waves} title="Smart Crossfade" description="Smoothly fade between tracks with configurable duration for a radio-like experience." />
+                </div>
               </DocSubsection>
             </DocSection>
 
             {/* Audio Enhancements */}
             <DocSection id="audio-enhancements" icon={Waves} title="Audio Enhancements">
               <DocSubsection title="Spatial Audio" id="audio-enhancements-spatial-audio">
-                 <div className="p-6 rounded-2xl bg-linear-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-6">
+                <div className="p-6 rounded-2xl bg-linear-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-6">
                   <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
                     <Headphones className="text-indigo-400" size={20} />
                     Native Spatial Audio (Android 13+)
@@ -452,53 +451,53 @@ export default function DocsPage() {
                     Supports head tracking with compatible headphones (Galaxy Buds Pro, Pixel Buds Pro, etc.).
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                     {[
-                       { name: "Dirac Live", desc: "High bass & virtualizer" },
-                       { name: "Dolby Atmos", desc: "Wide soundstage" },
-                       { name: "DTS:X Ultra", desc: "Extreme impact" }
-                     ].map((p, i) => (
-                        <div key={i} className="bg-black/20 p-3 rounded-lg border border-white/5">
-                           <div className="font-bold text-indigo-300 text-sm">{p.name}</div>
-                           <div className="text-xs text-gray-500">{p.desc}</div>
-                        </div>
-                     ))}
+                    {[
+                      { name: "Dirac Live", desc: "High bass & virtualizer" },
+                      { name: "Dolby Atmos", desc: "Wide soundstage" },
+                      { name: "DTS:X Ultra", desc: "Extreme impact" }
+                    ].map((p, i) => (
+                      <div key={i} className="bg-black/20 p-3 rounded-lg border border-white/5">
+                        <div className="font-bold text-indigo-300 text-sm">{p.name}</div>
+                        <div className="text-xs text-gray-500">{p.desc}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </DocSubsection>
 
               <DocSubsection title="Equalizer & Effects" id="audio-enhancements-equalizer-effects">
-                 <div className="space-y-4">
-                    <FeatureItem icon={Sliders} title="Multi-Band EQ" description="5-band equalizer with custom presets." />
-                    <FeatureItem icon={Volume2} title="Bass Boost" description="Adjustable bass enhancement (0-1000 strength)." />
-                    <FeatureItem icon={Waves} title="Virtualizer" description="Surround sound simulation (0-1000 strength)." />
-                 </div>
+                <div className="space-y-4">
+                  <FeatureItem icon={Sliders} title="Multi-Band EQ" description="5-band equalizer with custom presets." />
+                  <FeatureItem icon={Volume2} title="Bass Boost" description="Adjustable bass enhancement (0-1000 strength)." />
+                  <FeatureItem icon={Waves} title="Virtualizer" description="Surround sound simulation (0-1000 strength)." />
+                </div>
               </DocSubsection>
             </DocSection>
 
             {/* Lyrics */}
-             <DocSection id="lyrics" icon={Music2} title="Lyrics">
+            <DocSection id="lyrics" icon={Music2} title="Lyrics">
               <DocSubsection title="Synced Lyrics" id="lyrics-synced-lyrics">
                 <p className="text-gray-300 mb-4">Real-time time-synced lyrics from multiple providers:</p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                   {["SimpMusic", "LRCLIB", "YouTube", "Spotify"].map(p => (
-                      <span key={p} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">{p}</span>
-                   ))}
+                  {["SimpMusic", "LRCLIB", "YouTube", "Spotify"].map(p => (
+                    <span key={p} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300">{p}</span>
+                  ))}
                 </div>
                 <FeatureItem icon={Sparkles} title="AI Translation" description="Translate lyrics on-the-fly using Gemini or OpenAI APIs." />
               </DocSubsection>
-              
-               <DocSubsection title="Spotify Canvas" id="lyrics-spotify-canvas">
-                   <div className="flex items-center gap-4 p-4 rounded-xl bg-green-500/5 border border-green-500/10">
-                      <div className="p-3 bg-green-500/20 rounded-lg text-green-400">
-                         <FileAudio size={24} />
-                      </div>
-                      <div>
-                         <h4 className="font-bold text-white">Animated Backgrounds</h4>
-                         <p className="text-sm text-gray-400">
-                            Display Spotify Canvas looping videos for supported tracks. Requires Spotify account integration.
-                         </p>
-                      </div>
-                   </div>
+
+              <DocSubsection title="Spotify Canvas" id="lyrics-spotify-canvas">
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-green-500/5 border border-green-500/10">
+                  <div className="p-3 bg-green-500/20 rounded-lg text-green-400">
+                    <FileAudio size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">Animated Backgrounds</h4>
+                    <p className="text-sm text-gray-400">
+                      Display Spotify Canvas looping videos for supported tracks. Requires Spotify account integration.
+                    </p>
+                  </div>
+                </div>
               </DocSubsection>
             </DocSection>
 
@@ -507,87 +506,87 @@ export default function DocsPage() {
             <DocSection id="library" icon={Database} title="Library & Playlists">
               <DocSubsection title="Library Management" id="library-library-management">
                 <div className="grid md:grid-cols-2 gap-4">
-                   <FeatureCard icon={HardDrive} title="Local Playlists" description="Create and manage offline playlists completely on-device." />
-                   <FeatureCard icon={Cloud} title="YouTube Sync" description="Access and edit your YouTube Music online playlists." />
-                   <FeatureCard icon={Clock} title="History" description="Recently played tracks and listening history." />
-                   <FeatureCard icon={Heart} title="Liked Songs" description="Synced favorites collection from YouTube Music." />
+                  <FeatureCard icon={HardDrive} title="Local Playlists" description="Create and manage offline playlists completely on-device." />
+                  <FeatureCard icon={Cloud} title="YouTube Sync" description="Access and edit your YouTube Music online playlists." />
+                  <FeatureCard icon={Clock} title="History" description="Recently played tracks and listening history." />
+                  <FeatureCard icon={Heart} title="Liked Songs" description="Synced favorites collection from YouTube Music." />
                 </div>
               </DocSubsection>
 
               <DocSubsection title="Offline Caching" id="library-offline-caching">
-                 <p className="text-gray-300 mb-4">
-                    Download songs for offline playback with smart cache management.
-                 </p>
-                 <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                    <div className="flex justify-between text-sm mb-2">
-                       <span className="text-gray-400">Cache Size</span>
-                       <span className="text-purple-400 font-mono">100MB - Unlimited</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                       <div className="h-full w-2/3 bg-linear-to-r from-purple-500 to-blue-500"></div>
-                    </div>
-                 </div>
+                <p className="text-gray-300 mb-4">
+                  Download songs for offline playback with smart cache management.
+                </p>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-gray-400">Cache Size</span>
+                    <span className="text-purple-400 font-mono">100MB - Unlimited</span>
+                  </div>
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full w-2/3 bg-linear-to-r from-purple-500 to-blue-500"></div>
+                  </div>
+                </div>
               </DocSubsection>
             </DocSection>
 
             {/* Discovery */}
             <DocSection id="discovery" icon={Globe} title="Home & Discovery">
-               <DocSubsection title="Personalized Feed" id="discovery-personalized-feed">
-                   <FeatureItem icon={Sparkles} title="Quick Picks" description="Algorithmically generated recommendations based on your listening habits." />
-                   <FeatureItem icon={Radio} title="Mood Mixes" description="Curated stations for Focus, Workout, Sleep, Party, and more." />
-               </DocSubsection>
-               <DocSubsection title="Charts & Trends" id="discovery-charts-trends">
-                   <p className="text-gray-300">
-                      Explore Top 100 global charts and viral hits from over available 60+ countries.
-                   </p>
-               </DocSubsection>
+              <DocSubsection title="Personalized Feed" id="discovery-personalized-feed">
+                <FeatureItem icon={Sparkles} title="Quick Picks" description="Algorithmically generated recommendations based on your listening habits." />
+                <FeatureItem icon={Radio} title="Mood Mixes" description="Curated stations for Focus, Workout, Sleep, Party, and more." />
+              </DocSubsection>
+              <DocSubsection title="Charts & Trends" id="discovery-charts-trends">
+                <p className="text-gray-300">
+                  Explore Top 100 global charts and viral hits from over available 60+ countries.
+                </p>
+              </DocSubsection>
             </DocSection>
 
             {/* Interface */}
-             <DocSection id="interface" icon={Layout} title="Interface">
-               <DocSubsection title="Liquid Glass UI" id="interface-liquid-glass-ui">
-                  <div className="grid md:grid-cols-2 gap-4 mb-4">
-                     <FeatureCard icon={Sparkles} title="Blur Effects" description="Real-time blur on player backgrounds and navigation bars." />
-                     <FeatureCard icon={Palette} title="Mesh Gradients" description="Dynamic background gradients generated from album artwork." />
-                  </div>
-               </DocSubsection>
-               <DocSubsection title="Theming" id="interface-theming">
-                  <FeatureItem icon={Moon} title="OLED Dark Mode" description="True pitch-black theme (#000000) for AMOLED battery savings." />
-                  <FeatureItem icon={Smartphone} title="Mini Player" description="Swipe gestures for quick control (Next/Prev/Dismiss)." />
-               </DocSubsection>
+            <DocSection id="interface" icon={Layout} title="Interface">
+              <DocSubsection title="Liquid Glass UI" id="interface-liquid-glass-ui">
+                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                  <FeatureCard icon={Sparkles} title="Blur Effects" description="Real-time blur on player backgrounds and navigation bars." />
+                  <FeatureCard icon={Palette} title="Mesh Gradients" description="Dynamic background gradients generated from album artwork." />
+                </div>
+              </DocSubsection>
+              <DocSubsection title="Theming" id="interface-theming">
+                <FeatureItem icon={Moon} title="OLED Dark Mode" description="True pitch-black theme (#000000) for AMOLED battery savings." />
+                <FeatureItem icon={Smartphone} title="Mini Player" description="Swipe gestures for quick control (Next/Prev/Dismiss)." />
+              </DocSubsection>
             </DocSection>
 
             {/* Settings */}
-             <DocSection id="settings" icon={Settings} title="Settings & Accounts">
-               <DocSubsection title="Integrations" id="settings-integrations">
-                  <div className="space-y-4">
-                     <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/5">
-                        <h4 className="font-bold text-red-400 mb-1">YouTube Music</h4>
-                        <p className="text-sm text-gray-400">Full account login via cookies. Syncs library and recommendations.</p>
-                     </div>
-                     <div className="p-4 rounded-xl border border-green-500/20 bg-green-500/5">
-                        <h4 className="font-bold text-green-400 mb-1">Spotify</h4>
-                        <p className="text-sm text-gray-400">Login for Lyrics, Canvas, and metadata access.</p>
-                     </div>
+            <DocSection id="settings" icon={Settings} title="Settings & Accounts">
+              <DocSubsection title="Integrations" id="settings-integrations">
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/5">
+                    <h4 className="font-bold text-red-400 mb-1">YouTube Music</h4>
+                    <p className="text-sm text-gray-400">Full account login via cookies. Syncs library and recommendations.</p>
                   </div>
-               </DocSubsection>
-               <DocSubsection title="Privacy & Data" id="settings-privacy-data">
-                   <FeatureItem icon={Shield} title="SponsorBlock" description="Automatically skip non-music segments like intros, outros, and promotions." />
-                   <FeatureItem icon={Lock} title="Proxy Support" description="Configure HTTP/SOCKS5 proxies for region bypassing." />
-                   <FeatureItem icon={HardDrive} title="Backup" description="Export downloads and settings to preserve data across updates." />
-               </DocSubsection>
+                  <div className="p-4 rounded-xl border border-green-500/20 bg-green-500/5">
+                    <h4 className="font-bold text-green-400 mb-1">Spotify</h4>
+                    <p className="text-sm text-gray-400">Login for Lyrics, Canvas, and metadata access.</p>
+                  </div>
+                </div>
+              </DocSubsection>
+              <DocSubsection title="Privacy & Data" id="settings-privacy-data">
+                <FeatureItem icon={Shield} title="SponsorBlock" description="Automatically skip non-music segments like intros, outros, and promotions." />
+                <FeatureItem icon={Lock} title="Proxy Support" description="Configure HTTP/SOCKS5 proxies for region bypassing." />
+                <FeatureItem icon={HardDrive} title="Backup" description="Export downloads and settings to preserve data across updates." />
+              </DocSubsection>
             </DocSection>
 
-             {/* Localization */}
+            {/* Localization */}
             <DocSection id="localization" icon={Languages} title="Localization">
-               <DocSubsection title="Global Support" id="localization-global-support">
-                   <div className="flex flex-wrap gap-3">
-                      {["English", "日本語", "한국어", "中文", "Español", "Français", "Deutsch", "Italino", "Русский", "Polski", "Português", "Türkçe", "Tiếng Việt", "Indonesian", "Ukrainian", "Arabic", "Hindi"].map(l => (
-                         <span key={l} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-sm">{l}</span>
-                      ))}
-                      <span className="px-3 py-1 text-gray-500 italic text-sm">+ many more</span>
-                   </div>
-               </DocSubsection>
+              <DocSubsection title="Global Support" id="localization-global-support">
+                <div className="flex flex-wrap gap-3">
+                  {["English", "日本語", "한국어", "中文", "Español", "Français", "Deutsch", "Italino", "Русский", "Polski", "Português", "Türkçe", "Tiếng Việt", "Indonesian", "Ukrainian", "Arabic", "Hindi"].map(l => (
+                    <span key={l} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-sm">{l}</span>
+                  ))}
+                  <span className="px-3 py-1 text-gray-500 italic text-sm">+ many more</span>
+                </div>
+              </DocSubsection>
             </DocSection>
 
             {/* Troubleshooting */}

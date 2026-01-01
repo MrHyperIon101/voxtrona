@@ -89,8 +89,10 @@ const jsonLd = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
@@ -106,6 +108,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        {modal}
         <Navbar />
         <script
           type="application/ld+json"

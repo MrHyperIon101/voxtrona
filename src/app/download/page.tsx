@@ -7,6 +7,7 @@ import {
   CheckCircle2, AlertCircle, ExternalLink, Star, Users,
   TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers, ArrowRight, Tv
 } from "lucide-react";
+import Link from "next/link";
 
 export default function DownloadPage() {
   const containerRef = useRef(null);
@@ -274,7 +275,7 @@ export default function DownloadPage() {
                   </div>
 
                   {/* Join Beta Button */}
-                  <a
+                  <Link
                     href="/beta?platform=windows"
                     className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
                   >
@@ -287,7 +288,7 @@ export default function DownloadPage() {
                       <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                       <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
                     </div>
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Version Metadata */}
@@ -374,7 +375,7 @@ export default function DownloadPage() {
                   </div>
 
                   {/* Join Beta Button */}
-                  <a
+                  <Link
                     href="/beta?platform=smarttv"
                     className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
                   >
@@ -387,7 +388,7 @@ export default function DownloadPage() {
                       <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                       <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
                     </div>
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Version Metadata */}
@@ -443,9 +444,10 @@ export default function DownloadPage() {
 
         {/* SYSTEM REQUIREMENTS - Enhanced */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: isMobile ? 0.4 : 0.6 }}
           className="max-w-4xl mx-auto mb-32 md:mb-64"
         >
           <div className="rounded-3xl border border-white/10 bg-black/40 md:backdrop-blur-md overflow-hidden">
@@ -523,10 +525,10 @@ export default function DownloadPage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: isMobile ? -10 : -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.1, duration: isMobile ? 0.3 : 0.5 }}
                 className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all group"
               >
                 <div className="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center font-bold text-xl border border-purple-500/30 group-hover:scale-110 transition-transform">
