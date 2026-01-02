@@ -1,20 +1,79 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState, useEffect, useMemo } from "react";
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
 import {
   Download, Smartphone, Monitor, Shield, Terminal, Cpu, HardDrive, Zap,
   CheckCircle2, AlertCircle, ExternalLink, Star, Users,
   TrendingUp, Package, FileText, Github, MessageCircle, Sparkles, Music, Layers, ArrowRight, Tv
 } from "lucide-react";
 import Link from "next/link";
+import { clsx } from "clsx";
 
-export default function DownloadPage() {
-  const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false);
+// --- Components ---
 
-  React.useEffect(() => {
+function CardSpotlight({ children }: { children: React.ReactNode }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
+
+  // Optimization: Cache rect on mouse enter to avoid layout thrashing on move
+  const handleMouseEnter = () => {
+    if (cardRef.current) {
+      rectRef.current = cardRef.current.getBoundingClientRect();
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!rectRef.current) return;
+    mouseX.set(e.clientX - rectRef.current.left);
+    mouseY.set(e.clientY - rectRef.current.top);
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className="group relative border border-white/10 bg-gray-900/20 overflow-hidden rounded-3xl"
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 md:group-hover:opacity-100 hidden md:block"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(255, 255, 255, 0.1),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      <div className="relative h-full">{children}</div>
+    </div>
+  );
+}
+
+const SpecGrid = ({ features, colorClass }: { features: { icon: any, label: string, desc: string }[], colorClass: string }) => (
+  <div className="grid grid-cols-2 gap-3 mb-8 flex-1">
+    {features.map((item, i) => (
+      <div key={i} className="p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group/feat">
+        <div className={clsx("mb-2 p-1.5 w-fit rounded-lg transition-transform group-hover/feat:scale-110", colorClass)}>
+          <item.icon size={16} />
+        </div>
+        <div className="font-bold text-sm text-white">{item.label}</div>
+        <div className="text-[10px] text-gray-400 uppercase tracking-wider font-mono">{item.desc}</div>
+      </div>
+    ))}
+  </div>
+);
+
+const AnimatedParticles = () => {
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
     setMounted(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -22,6 +81,39 @@ export default function DownloadPage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  if (!mounted || isMobile) return null;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      {[...Array(20)].map((_, i) => (
+        <Particle key={i} />
+      ))}
+    </div>
+  );
+};
+
+const Particle = () => {
+  const randomX = Math.random() * 100;
+  const randomY = Math.random() * 100;
+  const randomScale = Math.random() * 0.5 + 0.5;
+  const randomDuration = Math.random() * 3 + 2;
+  const randomDelay = Math.random() * 2;
+
+  return (
+    <motion.div
+      className="absolute w-1 h-1 bg-white/20 rounded-full"
+      style={{ left: `${randomX}%`, top: `${randomY}%` }}
+      initial={{ scale: randomScale, opacity: 0 }}
+      animate={{ y: [0, -100, 0], opacity: [0, 0.5, 0] }}
+      transition={{ duration: randomDuration, repeat: Infinity, delay: randomDelay }}
+    />
+  );
+};
+
+// --- Main Page Component ---
+
+export default function DownloadPage() {
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -30,185 +122,92 @@ export default function DownloadPage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
-  const cardsY = useTransform(scrollYProgress, [0.1, 0.4], [100, 0]);
-  const cardsOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
-
   return (
-    <div ref={containerRef} className="relative min-h-[200svh] md:min-h-[250vh]">
+    <div ref={containerRef} className="relative min-h-[200svh] md:min-h-[250vh] text-white selection:bg-white/20">
 
-      {/* Animated Background Particles - Desktop Only */}
-      {mounted && (
-        <div className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden">
-          {[...Array(20)].map((_, i) => {
-            const randomX = Math.random() * 100;
-            const randomY = Math.random() * 100;
-            const randomScale = Math.random() * 0.5 + 0.5;
-            const randomDuration = Math.random() * 3 + 2;
-            const randomDelay = Math.random() * 2;
-
-            return (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
-                style={{
-                  left: `${randomX}%`,
-                  top: `${randomY}%`,
-                }}
-                initial={{ scale: randomScale, opacity: 0 }}
-                animate={{
-                  y: [0, -100, 0],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{
-                  duration: randomDuration,
-                  repeat: Infinity,
-                  delay: randomDelay
-                }}
-              />
-            );
-          })}
-        </div>
-      )}
+      <AnimatedParticles />
 
       {/* HERO SECTION */}
-      <div className="sticky top-0 h-screen py-0 flex items-center justify-center overflow-hidden pointer-events-none">
+      <div className="sticky top-0 h-screen py-0 flex items-center justify-center overflow-hidden pointer-events-none z-10">
         <motion.div
-          style={{ opacity: heroOpacity as any, scale: heroScale as any }}
+          style={{ opacity: heroOpacity, scale: heroScale }}
           className="relative z-10 text-center px-4 will-change-transform"
         >
-          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-white/80">
             <Download size={16} className="animate-bounce" />
             <span className="text-sm font-bold tracking-widest">LATEST BUILD: v2.2.2026</span>
           </div>
 
-          <h1 className="text-[15vw] md:text-[10vw] leading-[0.8] font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-white to-transparent mix-blend-overlay">
+          <h1 className="text-[12vw] md:text-[8vw] leading-[0.9] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-transparent">
             DEPLOY
-          </h1>
-          <h1 className="text-[15vw] md:text-[10vw] leading-[0.8] font-black tracking-tighter text-white/10">
+            <br />
             THE CORE
           </h1>
         </motion.div>
       </div>
 
       {/* SCROLL CONTENT */}
-      <div className="relative z-20 mt-[20vh] pb-32 px-4">
+      <div className="relative z-20 mt-[30vh] pb-32 px-4 md:px-8">
 
         {/* PLATFORM SELECTION */}
-        <motion.div
-          style={{ y: cardsY as any, opacity: cardsOpacity as any }}
-          className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 mb-32 md:mb-64 will-change-transform"
-        >
-          {/* Android Card - Enhanced */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-32">
+
+          {/* Android Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden"
+            transition={{ duration: 0.5 }}
+            className="h-full"
           >
-            <div className="absolute inset-0 bg-linear-to-b from-green-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-            <div className="absolute -inset-full bg-[conic-gradient(from_0deg,transparent_0_340deg,#22c55e_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardSpotlight>
+              <div className="relative h-full bg-black/40 backdrop-blur-xl p-8 flex flex-col md:min-h-[600px]">
+                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                  <Smartphone size={120} className="transition-transform duration-500 group-hover:scale-110" />
+                </div>
 
-            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden">
-              {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-green-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-green-500/20 transition-colors duration-500" />
-
-              <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
-                <Smartphone className="w-32 h-32 md:w-[240px] md:h-[240px]" />
-              </div>
-
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <div className="relative z-10 mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center mb-6 border border-green-500/20 shadow-[0_0_30px_rgba(34,197,94,0.1)]">
                     <Smartphone size={32} className="text-green-400" />
                   </div>
-                  <div className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold border border-green-500/30">
-                    RECOMMENDED
-                  </div>
+                  <h2 className="text-3xl font-bold mb-2">Android</h2>
+                  <p className="text-gray-400">The complete mobile high-fidelity experience.</p>
                 </div>
 
-                <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Android</h2>
-                <p className="text-sm md:text-lg text-gray-400 mb-8 md:mb-12">
-                  The complete mobile experience. <br />
-                  Material You support included.
-                </p>
+                <SpecGrid
+                  colorClass="bg-green-500/10 text-green-400"
+                  features={[
+                    { icon: Sparkles, label: "Spatial Audio", desc: "Dolby / DTS:X" },
+                    { icon: Music, label: "Lossless", desc: "FLAC & WAV" },
+                    { icon: Layers, label: "Visuals", desc: "Lyrics + Canvas" },
+                    { icon: CheckCircle2, label: "Playback", desc: "Background Mode" }
+                  ]}
+                />
 
-                {/* Features List */}
-                <div className="mb-10 space-y-3">
-                  <div className="flex items-start gap-2 text-xs md:text-sm text-gray-300">
-                    <Sparkles size={16} className="text-green-400 mt-0.5 shrink-0" />
-                    <span>Best in class <b>Spatial Audio</b> co-engineered by Dolby, Dirac & DTS:X</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <Music size={16} className="text-green-400 shrink-0" />
-                    <span>Supports <b>Lossless Audio</b> (FLAC/WAV)</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <Layers size={16} className="text-green-400 shrink-0" />
-                    <span><b>Spotify Canvas</b> & Lyrics for free</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <CheckCircle2 size={16} className="text-green-400 shrink-0" />
-                    <span>Background playback</span>
-                  </div>
-                </div>
-
-                {/* Download Actions - Official & Beta */}
-                <div className="grid grid-cols-1 gap-4 mb-8">
-
-                  {/* Official (Active) */}
+                <div className="space-y-3">
                   <a
                     href="https://github.com/MrHyperIon101/voxtrona/releases/download/Official-R/VoxtronaMusic-full-arm64-v2.2.2026-release.apk"
-                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                    className="group/btn relative w-full p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-all flex items-center justify-between"
                   >
-                    <div className="relative z-10">
-                      <h3 className="text-xl font-bold text-white mb-1">Official</h3>
-                      <p className="text-xs text-green-400 font-bold">Stable Release • v2.2.2026</p>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-white">Download Official</span>
+                      <span className="text-[10px] text-green-400 tracking-wider font-mono">v2.2.2026 • STABLE</span>
                     </div>
-
-                    {/* Animated Arrow Button */}
-                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
-                    </div>
+                    <ArrowRight size={20} className="text-white/50 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
-
-                  {/* Beta (Active) */}
                   <a
                     href="https://github.com/MrHyperIon101/voxtrona/releases/download/Rev3/app-full-arm64-v8a-release.apk"
-                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                    className="group/btn relative w-full p-4 rounded-xl bg-transparent border border-white/10 hover:bg-white/5 transition-all flex items-center justify-between"
                   >
-                    <div className="relative z-10">
-                      <h3 className="text-xl font-bold text-white mb-1">Beta</h3>
-                      <p className="text-xs text-green-400 font-bold">Latest Build • v2.2.2026</p>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-white/80">Get Beta</span>
+                      <span className="text-[10px] text-gray-500 tracking-wider font-mono">DAILY BUILD</span>
                     </div>
-
-                    {/* Animated Arrow Button */}
-                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
-                    </div>
+                    <ArrowRight size={20} className="text-white/30 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
-
-                </div>
-
-                {/* Version Metadata */}
-                <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-500">
-                  <div>
-                    <span className="block text-gray-600 mb-1">LATEST</span>
-                    <span className="text-gray-400">v2.2.2026</span>
-                  </div>
-                  <div>
-                    <span className="block text-gray-600 mb-1">SIZE</span>
-                    <span className="text-gray-400">47 MB</span>
-                  </div>
-                  <div>
-                    <span className="block text-gray-600 mb-1">DATE</span>
-                    <span className="text-gray-400">Jan 1, 2026</span>
-                  </div>
                 </div>
               </div>
-            </div>
+            </CardSpotlight>
           </motion.div>
 
           {/* Windows Card */}
@@ -216,332 +215,171 @@ export default function DownloadPage() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="h-full"
           >
-            <div className="absolute inset-0 bg-linear-to-b from-blue-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-            <div className="absolute -inset-full bg-[conic-gradient(from_0deg,transparent_0_340deg,#3b82f6_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardSpotlight>
+              <div className="relative h-full bg-black/40 backdrop-blur-xl p-8 flex flex-col md:min-h-[600px]">
+                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                  <Monitor size={120} className="transition-transform duration-500 group-hover:scale-110" />
+                </div>
 
-            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden flex flex-col">
-              {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-500/20 transition-colors duration-500" />
-
-              <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
-                <Monitor className="w-32 h-32 md:w-[240px] md:h-[240px]" />
-              </div>
-
-              <div className="relative z-10 flex-1 flex flex-col">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <div className="relative z-10 mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 shadow-[0_0_30px_rgba(59,130,246,0.1)]">
                     <Monitor size={32} className="text-blue-400" />
                   </div>
-                  <div className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-bold border border-yellow-500/30">
-                    IN DEVELOPMENT
+                  <div className="flex items-center justify-between mb-2">
+                    <h2 className="text-3xl font-bold">Windows</h2>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">DEV</span>
                   </div>
+                  <p className="text-gray-400">Desktop power unleashed with ASIO support.</p>
                 </div>
 
-                <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Windows</h2>
-                <p className="text-sm md:text-lg text-gray-400 mb-8 md:mb-12">
-                  Desktop power unleashed. <br />
-                  High-res audio support.
-                </p>
+                <SpecGrid
+                  colorClass="bg-blue-500/10 text-blue-400"
+                  features={[
+                    { icon: AlertCircle, label: "Audio Engine", desc: "Advanced EQ" },
+                    { icon: AlertCircle, label: "Drivers", desc: "ASIO Support" },
+                    { icon: AlertCircle, label: "Native", desc: "Win 10/11" },
+                    { icon: AlertCircle, label: "Bitrate", desc: "Hi-Res Ready" },
+                  ]}
+                />
 
-                {/* Features List */}
-                <div className="mb-10 space-y-3">
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <AlertCircle size={16} className="text-yellow-400" />
-                    <span>Advanced audio controls</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <AlertCircle size={16} className="text-yellow-400" />
-                    <span>ASIO driver support</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <AlertCircle size={16} className="text-yellow-400" />
-                    <span>Windows 10+</span>
-                  </div>
-                </div>
-
-                {/* Download Actions placeholder */}
-                <div className="mt-auto mb-8 space-y-3">
-                  <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-1">Official</h3>
-                      <p className="text-xs text-gray-400">Coming Q2 2026</p>
+                <div className="space-y-3">
+                  <button disabled className="w-full p-4 rounded-xl bg-white/5 border border-white/5 text-white/30 cursor-not-allowed flex items-center justify-between">
+                    <div className="flex flex-col text-left">
+                      <span className="font-bold">Official Release</span>
+                      <span className="text-[10px] tracking-wider font-mono">COMING SOON</span>
                     </div>
-                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
-                      <Package size={24} className="text-white/20" />
-                    </div>
-                  </div>
-
-                  {/* Join Beta Button */}
+                  </button>
                   <Link
                     href="/beta?platform=windows"
-                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                    className="group/btn relative w-full p-4 rounded-xl bg-transparent border border-white/10 hover:bg-white/5 transition-all flex items-center justify-between"
                   >
-                    <div className="relative z-10">
-                      <h3 className="text-xl font-bold text-white mb-1">Join Beta</h3>
-                      <p className="text-xs text-blue-400 font-bold">Be the first to try</p>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-white/80">Join Beta</span>
+                      <span className="text-[10px] text-blue-400 tracking-wider font-mono">EARLY ACCESS</span>
                     </div>
-                    {/* Animated Arrow Button */}
-                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
-                    </div>
+                    <ArrowRight size={20} className="text-white/30 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-
-                {/* Version Metadata */}
-                <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-500">
-                  <div>
-                    <span className="block text-gray-600 mb-1">LATEST</span>
-                    <span className="text-gray-400">v2.2.2026</span>
-                  </div>
-                  <div>
-                    <span className="block text-gray-600 mb-1">SIZE</span>
-                    <span className="text-gray-400">89 MB</span>
-                  </div>
-                  <div>
-                    <span className="block text-gray-600 mb-1">DATE</span>
-                    <span className="text-gray-400">Jan 1, 2026</span>
-                  </div>
-                </div>
-
               </div>
-            </div>
+            </CardSpotlight>
           </motion.div>
 
-          {/* Smart TV Card */}
+          {/* TV Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="group relative p-[2px] rounded-3xl md:rounded-[3rem] overflow-hidden"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="h-full"
           >
-            <div className="absolute inset-0 bg-linear-to-b from-rose-500/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-            <div className="absolute -inset-full bg-[conic-gradient(from_0deg,transparent_0_340deg,#f43f5e_360deg)] md:animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardSpotlight>
+              <div className="relative h-full bg-black/40 backdrop-blur-xl p-8 flex flex-col md:min-h-[600px]">
+                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                  <Tv size={120} className="transition-transform duration-500 group-hover:scale-110" />
+                </div>
 
-            <div className="relative h-full bg-black/80 md:backdrop-blur-xl rounded-3xl md:rounded-[2.9rem] p-6 md:p-12 overflow-hidden flex flex-col">
-              {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-rose-500/10 blur-[60px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-rose-500/20 transition-colors duration-500" />
-
-              <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 rotate-12 group-hover:rotate-0">
-                <Tv className="w-32 h-32 md:w-[240px] md:h-[240px]" />
-              </div>
-
-              <div className="relative z-10 flex-1 flex flex-col">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-rose-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <div className="relative z-10 mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-rose-500/10 flex items-center justify-center mb-6 border border-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.1)]">
                     <Tv size={32} className="text-rose-400" />
                   </div>
-                  <div className="px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold border border-rose-500/30">
-                    PLANNED
+                  <div className="flex items-center justify-between mb-2">
+                    <h2 className="text-3xl font-bold">Smart TV</h2>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">PLAN</span>
                   </div>
+                  <p className="text-gray-400">Cinematic audio for the big screen.</p>
                 </div>
 
-                <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Smart TV</h2>
-                <p className="text-sm md:text-lg text-gray-400 mb-8 md:mb-12">
-                  Cinematic audio experience. <br />
-                  Designed for the big screen.
-                </p>
+                <SpecGrid
+                  colorClass="bg-rose-500/10 text-rose-400"
+                  features={[
+                    { icon: AlertCircle, label: "Interface", desc: "TV Native" },
+                    { icon: AlertCircle, label: "Passthrough", desc: "Dolby Atmos" },
+                    { icon: AlertCircle, label: "Control", desc: "Remote API" },
+                    { icon: AlertCircle, label: "Engine", desc: "Lossless" },
+                  ]}
+                />
 
-                {/* Features List */}
-                <div className="mb-10 space-y-3">
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <AlertCircle size={16} className="text-rose-400 shrink-0" />
-                    <span>Liquid Glass Support Native</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300">
-                    <AlertCircle size={16} className="text-rose-400 shrink-0" />
-                    <span>Lossless Audio Engine Support</span>
-                  </div>
-                  <div className="flex items-start gap-2 text-xs md:text-sm text-gray-300">
-                    <AlertCircle size={16} className="text-rose-400 mt-0.5 shrink-0" />
-                    <span>Support for Proprietary Audio Formats Like Dolby Atmos etc</span>
-                  </div>
-                </div>
-
-                {/* Download Actions placeholder */}
-                <div className="mt-auto mb-8 space-y-3">
-                  <div className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between opacity-50 cursor-not-allowed">
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-1">Official</h3>
-                      <p className="text-xs text-gray-400">Expected Q2 2026</p>
+                <div className="space-y-3">
+                  <button disabled className="w-full p-4 rounded-xl bg-white/5 border border-white/5 text-white/30 cursor-not-allowed flex items-center justify-between">
+                    <div className="flex flex-col text-left">
+                      <span className="font-bold">Official Release</span>
+                      <span className="text-[10px] tracking-wider font-mono">TBA</span>
                     </div>
-                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center">
-                      <Package size={24} className="text-white/20" />
-                    </div>
-                  </div>
-
-                  {/* Join Beta Button */}
+                  </button>
                   <Link
                     href="/beta?platform=smarttv"
-                    className="group/btn relative p-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                    className="group/btn relative w-full p-4 rounded-xl bg-transparent border border-white/10 hover:bg-white/5 transition-all flex items-center justify-between"
                   >
-                    <div className="relative z-10">
-                      <h3 className="text-xl font-bold text-white mb-1">Join Beta</h3>
-                      <p className="text-xs text-rose-400 font-bold">Be the first to try</p>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-white/80">Join Waitlist</span>
+                      <span className="text-[10px] text-rose-400 tracking-wider font-mono">NOTIFY ME</span>
                     </div>
-                    {/* Animated Arrow Button */}
-                    <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center overflow-hidden group-hover/btn:border-white transition-colors duration-300 bg-black/20 backdrop-blur-sm">
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                      <ArrowRight size={24} className="relative z-10 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:text-black transition-all duration-300" />
-                    </div>
+                    <ArrowRight size={20} className="text-white/30 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
+              </div>
+            </CardSpotlight>
+          </motion.div>
 
-                {/* Version Metadata */}
-                <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs font-mono text-gray-500">
-                  <div>
-                    <span className="block text-gray-600 mb-1">LATEST</span>
-                    <span className="text-gray-400">v2.2.2026</span>
+        </div>
+
+        {/* Requirements & Installation - Cleaned up for mobile */}
+        <div className="max-w-4xl mx-auto space-y-16">
+
+          {/* Requirements */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8"
+          >
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Terminal className="text-purple-400" />
+              System Requirements
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { label: "Processor", val: "Snapdragon 600+ / i3", icon: Cpu, color: "blue" },
+                { label: "RAM", val: "2GB (Android) / 4GB (PC)", icon: Zap, color: "green" },
+                { label: "Storage", val: "100MB Free Space", icon: HardDrive, color: "purple" },
+                { label: "OS", val: "Android 8.0+ / Win 10", icon: Shield, color: "red" },
+              ].map((req, i) => (
+                <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-black/20 border border-white/5">
+                  <div className={`p-3 rounded-xl bg-${req.color}-500/10`}>
+                    <req.icon size={20} className={`text-${req.color}-400`} />
                   </div>
                   <div>
-                    <span className="block text-gray-600 mb-1">SIZE</span>
-                    <span className="text-gray-400">89 MB</span>
-                  </div>
-                  <div>
-                    <span className="block text-gray-600 mb-1">DATE</span>
-                    <span className="text-gray-400">Jan 1, 2026</span>
+                    <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">{req.label}</div>
+                    <div className="font-medium text-white">{req.val}</div>
                   </div>
                 </div>
-
-              </div>
+              ))}
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* QUICK LINKS SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-32 md:mb-64"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">Quick Access</h3>
+          {/* Quick Links */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: Github, label: "Source Code", href: "#", color: "purple" },
-              { icon: FileText, label: "Changelog", href: "/changelog", color: "blue" },
-              { icon: MessageCircle, label: "Community", href: "/community", color: "green" },
-              { icon: Shield, label: "Privacy", href: "/features/privacy", color: "red" }
+              { icon: Github, label: "Source", href: "#" },
+              { icon: FileText, label: "Changelog", href: "/changelog" },
+              { icon: MessageCircle, label: "Community", href: "/community" },
+              { icon: Shield, label: "Privacy", href: "/features/privacy" }
             ].map((link, i) => (
-              <a
+              <Link
                 key={i}
                 href={link.href}
-                className="group relative p-px rounded-2xl overflow-hidden block"
+                className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center flex flex-col items-center gap-2"
               >
-                <div className="absolute inset-0 bg-linear-to-b from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className={`relative bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 group-hover:border-${link.color}-500/30 transition-all text-center`}>
-                  <link.icon className={`mx-auto mb-3 text-${link.color}-400`} size={28} />
-                  <div className="text-sm font-semibold">{link.label}</div>
-                </div>
-              </a>
+                <link.icon size={24} className="text-white/70" />
+                <span className="text-sm font-medium">{link.label}</span>
+              </Link>
             ))}
           </div>
-        </motion.div>
 
-        {/* SYSTEM REQUIREMENTS - Enhanced */}
-        <motion.div
-          initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: isMobile ? 0.4 : 0.6 }}
-          className="max-w-4xl mx-auto mb-32 md:mb-64"
-        >
-          <div className="rounded-3xl border border-white/10 bg-black/40 md:backdrop-blur-md overflow-hidden">
-            <div className="p-6 md:p-8 border-b border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10">
-              <h3 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
-                <Terminal size={28} className="text-purple-400" />
-                System Requirements
-              </h3>
-              <p className="text-sm text-gray-400 mt-2">Minimum specifications for optimal performance</p>
-            </div>
-            <div className="p-6 md:p-8 grid md:grid-cols-2 gap-8 md:gap-12">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                    <Cpu size={24} className="text-blue-400" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-white font-bold mb-1">Processor</div>
-                    <div className="text-sm text-gray-400">Snapdragon 600+ / Intel Core i3</div>
-                    <div className="text-xs text-gray-500 mt-1">64-bit recommended</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <Zap size={24} className="text-green-400" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-white font-bold mb-1">RAM</div>
-                    <div className="text-sm text-gray-400">2GB (Android) / 4GB (Windows)</div>
-                    <div className="text-xs text-gray-500 mt-1">4GB+ for better multitasking</div>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
-                    <HardDrive size={24} className="text-purple-400" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-white font-bold mb-1">Storage</div>
-                    <div className="text-sm text-gray-400">100MB Free Space</div>
-                    <div className="text-xs text-gray-500 mt-1">Plus space for music library</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20">
-                    <Shield size={24} className="text-red-400" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-white font-bold mb-1">Operating System</div>
-                    <div className="text-sm text-gray-400">Android 8.0+ / Windows 10+</div>
-                    <div className="text-xs text-gray-500 mt-1">Latest versions recommended</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* INSTALLATION GUIDE */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">Installation Guide</h3>
-          <div className="space-y-4">
-            {[
-              { step: "1", title: "Download the APK", desc: "Click the download button above to get the latest version" },
-              { step: "2", title: "Enable Unknown Sources", desc: "Go to Settings → Security → Enable 'Install from Unknown Sources'" },
-              { step: "3", title: "Install the App", desc: "Open the downloaded APK file and follow the prompts" },
-              { step: "4", title: "Grant Permissions", desc: "Allow storage and audio permissions when prompted" },
-              { step: "5", title: "Enjoy!", desc: "Launch Voxtrona and start experiencing premium audio" }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: isMobile ? -10 : -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: isMobile ? 0.3 : 0.5 }}
-                className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all group"
-              >
-                <div className="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center font-bold text-xl border border-purple-500/30 group-hover:scale-110 transition-transform">
-                  {item.step}
-                </div>
-                <div className="flex-1">
-                  <div className="font-bold text-lg mb-1">{item.title}</div>
-                  <div className="text-sm text-gray-400">{item.desc}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        </div>
 
       </div>
     </div>
